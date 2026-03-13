@@ -149,7 +149,22 @@
       .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
       .tag { padding: 8px 12px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
       .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .quickstart-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 24px; align-items: start; }
       .list { display: grid; gap: 14px; }
+      .check-list { display: grid; gap: 12px; margin-top: 20px; }
+      .check-item {
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 18px;
+        background: rgba(255,255,255,0.03);
+        padding: 16px 18px;
+        color: var(--text-soft);
+      }
+      .check-item strong { color: var(--text); }
+      .meta-note {
+        margin-top: 18px;
+        color: var(--text-muted);
+        font-size: 14px;
+      }
       .list-item {
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 20px;
@@ -205,7 +220,7 @@
             <a href="#" id="switch-en">EN</a>
           </div>
           <a class="btn btn-ghost" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn btn-primary" href="#bottom-cta" data-i18n="nav.download">立即下载</a>
+          <a class="btn btn-primary" href="#quickstart" data-i18n="nav.download">快速开始</a>
         </div>
       </div>
     </header>
@@ -220,8 +235,8 @@
               <h1>赋予每个人和团队的本地化 AI 生产力底座。</h1>
               <p class="hero-subtitle">过去两年，我们都在和网页里的对话框“聊天”。但真实的商业世界需要的不是聊天，而是干活——是把非结构化的大模型算力，真正变成跨国订单、自动运行的脚本、和结构化的企业资产。</p>
               <div class="hero-cta">
-                <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">获取开源版本</a>
-                <a class="btn btn-secondary" href="#manifesto">阅读开源宣言</a>
+                <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+                <a class="btn btn-secondary" href="#quickstart">如何开始</a>
               </div>
             </div>
 
@@ -229,8 +244,8 @@
               <h1>A Local-First AI Productivity Foundation for Every Individual and Team.</h1>
               <p class="hero-subtitle">For the past two years, most of us have been chatting with AI in browser windows. But real business does not need conversation alone — it needs work. AgentCore OS is built to turn raw model capability into orders, scripts, and structured operating assets.</p>
               <div class="hero-cta">
-                <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">Get the Open-Source Release</a>
-                <a class="btn btn-secondary" href="#manifesto">Read the Manifesto</a>
+                <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">View the GitHub Repository</a>
+                <a class="btn btn-secondary" href="#quickstart">How to Start</a>
               </div>
             </div>
 
@@ -272,6 +287,36 @@
           <span>Apache 2.0 Open Source</span>
           <span>Tauri Edge Architecture</span>
           <span>macOS / Windows</span>
+        </div>
+      </section>
+
+      <section class="section" id="quickstart">
+        <div class="container">
+          <div class="section-head">
+            <h2>如何开始使用 AgentCore OS</h2>
+            <p>这个官网当前展示的是产品定位与开源方向。想真正开始预览或参与，最快的路径不是“下载一个神秘安装包”，而是先从仓库、许可证和本地静态预览开始。</p>
+          </div>
+          <div class="quickstart-grid">
+            <div class="card">
+              <span class="mini">Getting Started</span>
+              <h3>三步进入真实使用场景</h3>
+              <div class="check-list">
+                <div class="check-item"><strong>第一步：</strong>打开 GitHub 仓库，确认项目说明、目录结构和当前公开内容。</div>
+                <div class="check-item"><strong>第二步：</strong>查看 Apache 2.0 许可证，明确可用边界、修改方式和商业集成空间。</div>
+                <div class="check-item"><strong>第三步：</strong>直接在本地打开 <code>index.html</code>，或通过 GitHub Pages 查看当前线上着陆页效果。</div>
+              </div>
+              <p class="meta-note">这是一页纯静态站点，没有复杂依赖，也不需要额外构建工具就能预览当前官网内容。</p>
+            </div>
+            <div class="card">
+              <span class="mini">What You Get</span>
+              <h3>当前公开版本适合谁</h3>
+              <div class="check-list">
+                <div class="check-item"><strong>创客 / 独立开发者：</strong>先理解产品定位，再决定是否 fork、二次修改或嵌入自己的产品故事。</div>
+                <div class="check-item"><strong>业务负责人：</strong>先看本地优先、安全审批和真实场景部分，判断它是否适合你的团队工作流。</div>
+                <div class="check-item"><strong>集成者：</strong>先从仓库与协议出发，再评估怎么接到你自己的自动化系统里。</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -447,8 +492,8 @@
             <h2 id="cta-title">让算力回归本地，让 AI 真正下地干活。</h2>
             <p id="cta-body" style="max-width:760px;color:var(--text-soft);margin-top:18px;">如果你要的不是“聊两句”，而是一个能沉淀资产、守住边界、接管流程的本地 AI 生产力底座，那么 AgentCore OS 已经准备好了。</p>
             <div class="hero-cta">
-              <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer" id="cta-btn1">前往 GitHub 获取开源版本</a>
-              <a class="btn btn-secondary" href="#manifesto" id="cta-btn2">再次查看开源宣言</a>
+              <a class="btn btn-primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer" id="cta-btn1">前往 GitHub 仓库</a>
+              <a class="btn btn-secondary" href="#quickstart" id="cta-btn2">查看快速开始</a>
             </div>
             <p id="cta-note" style="margin-top:16px;color:var(--text-muted);font-size:14px;">AgentCore OS（智枢 OS）V1.0 · Local-First · Human-in-the-loop · Apache 2.0</p>
           </div>
@@ -473,7 +518,7 @@
             <div class="footer-links">
               <a href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer" id="f2-l1">GitHub 仓库</a>
               <a href="#manifesto" id="f2-l2">开源宣言</a>
-              <a href="#bottom-cta" id="f2-l3">获取版本</a>
+              <a href="#quickstart" id="f2-l3">快速开始</a>
             </div>
           </div>
           <div>
@@ -496,10 +541,10 @@
       };
 
       const en = {
-        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDevelopers: 'Developers', navDownload: 'Download',
+        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDevelopers: 'Developers', navDownload: 'Quick Start',
         heroTitle: 'A Local-First AI Productivity Foundation for Every Individual and Team.',
         heroSub: 'For the past two years, most of us have been chatting with AI in browser windows. But real business does not need conversation alone — it needs work. AgentCore OS is built to turn raw model capability into orders, scripts, and structured operating assets.',
-        heroBtn1: 'Get the Open-Source Release', heroBtn2: 'Read the Manifesto',
+        heroBtn1: 'View the GitHub Repository', heroBtn2: 'How to Start',
         heroSideTitle: 'This is not another chat client.',
         heroSideBody: 'AgentCore OS is a Tauri-based local AI operating system designed for real operational flow. Its purpose is not to keep you talking, but to let AI participate in real work while waiting at key approval boundaries.',
         hp1Title: '100% Data Stays Local', hp1Body: 'The execution brain and asset database remain on your own device, without hidden telemetry uploads.',
@@ -531,9 +576,9 @@
         d2Title: 'Ready for Developers and Integrators', d2Body: 'Use it as a personal desktop AI operating system, an internal automation layer, or the foundation for your own digital workforce platform.',
         ctaTitle: 'Bring Compute Back to Local. Let AI Do Real Work.',
         ctaBody: 'If what you want is not more chatting, but a local AI foundation that preserves assets, respects boundaries, and takes over workflows, AgentCore OS is ready.',
-        ctaBtn1: 'Open the GitHub Repository', ctaBtn2: 'Read the Manifesto Again', ctaNote: 'AgentCore OS V1.0 · Local-First · Human-in-the-loop · Apache 2.0',
+        ctaBtn1: 'Open the GitHub Repository', ctaBtn2: 'View Quick Start', ctaNote: 'AgentCore OS V1.0 · Local-First · Human-in-the-loop · Apache 2.0',
         f1Title: 'Product', f1l1: 'Philosophy', f1l2: 'Use Cases', f1l3: 'Architecture', f1l4: 'Developers',
-        f2Title: 'Resources', f2l1: 'GitHub Repository', f2l2: 'Manifesto', f2l3: 'Get the Release',
+        f2Title: 'Resources', f2l1: 'GitHub Repository', f2l2: 'Manifesto', f2l3: 'Quick Start',
         f3Title: 'License', f3l1: 'Apache 2.0', f3l2: 'Open Source', f3l3: 'Back to Top'
       };
 
