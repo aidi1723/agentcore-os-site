@@ -144,6 +144,16 @@
         pointer-events: none;
       }
       .trust-items { display: flex; flex-wrap: wrap; gap: 14px 24px; padding: 15px 0; color: var(--text-muted); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+      .trust-items span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 32px;
+        padding: 0 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.06);
+        background: rgba(255,255,255,0.02);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.012);
+      }
       .section { padding: 54px 0; position: relative; }
       .section h2 { margin: 0 0 12px; font-size: clamp(30px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; }
       .section-head { max-width: 680px; margin-bottom: 18px; }
@@ -356,19 +366,42 @@
         .hero-subtitle { margin-top: 12px; font-size: 15px; max-width: none; }
         .hero-cta { gap: 8px; margin-top: 16px; }
         .hero-cta .btn { width: 100%; }
+        .hero-cta .btn-secondary { background: rgba(255,255,255,0.022); }
         .chips { gap: 7px; margin-top: 14px; }
         .chip { font-size: 11px; padding: 6px 9px; }
-        .hero-copy-panel { padding: 15px; border-radius: 16px; }
+        .hero-copy-panel { padding: 15px; border-radius: 16px; background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.014)); }
+        .hero-copy-panel .section-kicker { margin-bottom: 8px !important; }
         .hero-copy-panel h3 { font-size: 14px; }
-        .hero-copy-panel p { font-size: 13px; }
+        .hero-copy-panel p { font-size: 13px; margin-top: 6px; }
         .hero-points { grid-template-columns: 1fr; gap: 7px; margin-top: 12px; }
-        .hero-point { border-radius: 13px; padding: 11px 12px; }
-        .hero-point strong { font-size: 11px; }
-        .trust-items { font-size: 11px; gap: 7px 10px; padding: 10px 0; letter-spacing: 0.035em; }
+        .hero-point { border-radius: 13px; padding: 11px 12px; background: rgba(255,255,255,0.028); }
+        .hero-point strong { font-size: 11px; margin-bottom: 2px; }
+        .trust-items {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          font-size: 10px;
+          gap: 8px;
+          padding: 10px 0;
+          letter-spacing: 0.02em;
+        }
+        .trust-items span {
+          min-height: 0;
+          padding: 9px 10px;
+          line-height: 1.35;
+          justify-content: center;
+          text-align: center;
+          border-radius: 12px;
+          background: rgba(255,255,255,0.026);
+        }
         .section { padding: 34px 0; }
         .section h2 { font-size: clamp(25px, 6.8vw, 32px); }
         .section-head { margin-bottom: 14px; }
         .section-head p, .quickstart-intro, .meta-note, .doc-link span { font-size: 14px; }
+        .quickstart-grid > .card:first-child .quickstart-intro { margin-bottom: 4px; }
+        .quickstart-grid > .card:first-child .doc-links.compact .doc-link:nth-child(n+3) { display: none; }
+        .quickstart-grid > .card:last-child .quickstart-intro { display: none; }
+        .quickstart-grid > .card:last-child .check-list { gap: 8px; margin-top: 10px; }
+        .check-item { padding: 11px 12px; }
         .card, .usecase, .cta-box, .manifesto { padding: 16px; border-radius: 18px; }
         .card h3 { font-size: 19px; }
         .usecase h3 { font-size: 21px; }
@@ -378,8 +411,10 @@
         .check-list, .doc-links { gap: 10px; }
         .list-item, .check-item, .doc-link, .fold { border-radius: 14px; }
         .doc-link { padding: 13px 14px; }
+        .doc-link strong { margin-bottom: 3px; }
         .fold summary { padding: 13px 14px; }
         .fold-body { padding: 0 14px 14px; }
+        .meta-note { font-size: 13px; }
         .footer-grid { grid-template-columns: 1fr; gap: 14px; }
         .footer-grid > :first-child { grid-column: auto; }
         .footer-links { gap: 7px; margin-top: 10px; }
@@ -453,7 +488,7 @@
           <div class="hero-copy-panel">
             <div class="section-kicker" style="margin-bottom:10px;">Product Thesis</div>
             <h3 id="hero-side-title">这不是又一个 Chat 客户端。</h3>
-            <p id="hero-side-body">它是一个真正运行在本地设备上的 AI 操作系统：不是让你多聊几句，而是让 AI 进入真实业务流，并在关键节点等待你的最终确认。</p>
+            <p id="hero-side-body">它不是陪你闲聊，而是让 AI 在本地进入真实业务流，在关键节点停下来等你拍板。</p>
             <div class="hero-points">
               <div class="hero-point">
                 <strong id="hp1-title">100% 数据不出域</strong>
@@ -802,7 +837,7 @@
     <script>
       const zhElements = {
         heroSideTitle: '这不是又一个 Chat 客户端。',
-        heroSideBody: '它是一个基于 Tauri 边车架构打造的、真正运行在本地设备上的 AI 操作系统。它的目标不是让你多聊几句，而是让 AI 参与真实业务流，并在关键节点上等待你的最终确认。'
+        heroSideBody: '它不是陪你闲聊，而是让 AI 在本地进入真实业务流，在关键节点停下来等你拍板。'
       };
 
       const en = {
