@@ -291,6 +291,7 @@
           <a href="#philosophy" data-i18n="nav.philosophy">核心理念</a>
           <a href="#use-cases" data-i18n="nav.useCases">落地场景</a>
           <a href="#architecture" data-i18n="nav.architecture">架构优势</a>
+          <a href="#quickstart" data-i18n="nav.docs">使用文档</a>
           <a href="#developers" data-i18n="nav.developers">开发者</a>
         </nav>
 
@@ -367,95 +368,6 @@
           <span>Apache 2.0 Open Source</span>
           <span>Tauri Edge Architecture</span>
           <span>macOS / Windows</span>
-        </div>
-      </section>
-
-      <section class="section" id="quickstart">
-        <div class="container">
-          <div class="section-head">
-            <h2>如何开始使用 AgentCore OS</h2>
-            <p>这个官网当前展示的是产品定位与开源方向。想真正开始预览或参与，最快的路径不是“下载一个神秘安装包”，而是先从仓库、许可证和本地静态预览开始。</p>
-          </div>
-          <div class="quickstart-grid">
-            <div class="card">
-              <span class="mini">Getting Started</span>
-              <h3>从官网进入真实使用路径</h3>
-              <p class="quickstart-intro">保留首页摘要，把真正的长文内容放进 docs。这里先给你最关键、最能点开的入口。</p>
-              <div class="doc-links compact">
-                <a class="doc-link" href="docs/index.html">
-                  <strong>Docs 文档中心</strong>
-                  <span>统一查看全部文档入口。</span>
-                </a>
-                <a class="doc-link" href="docs/getting-started.html">
-                  <strong>快速开始文档</strong>
-                  <span>按顺序进入当前公开版本。</span>
-                </a>
-                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">
-                  <strong>GitHub 仓库</strong>
-                  <span>查看源码、目录与提交记录。</span>
-                </a>
-                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site/blob/main/README.md" target="_blank" rel="noreferrer">
-                  <strong>README</strong>
-                  <span>查看项目说明与本地预览方式。</span>
-                </a>
-              </div>
-              <details class="fold">
-                <summary>更多入口与说明</summary>
-                <div class="fold-body">
-                  <div class="doc-links">
-                    <a class="doc-link" href="https://aidi1723.github.io/agentcore-os-site/" target="_blank" rel="noreferrer">
-                      <strong>线上预览地址</strong>
-                      <span>直接查看 GitHub Pages 当前发布效果。</span>
-                    </a>
-                  </div>
-                  <p class="meta-note">当前站点仍然是纯静态官网，所以最合理的“如何使用”不是伪造下载按钮，而是把真实入口和文档路径给全。</p>
-                </div>
-              </details>
-            </div>
-            <div class="card">
-              <span class="mini">Usage Guide</span>
-              <h3>按角色阅读，不再只看口号</h3>
-              <p class="quickstart-intro">首页只保留角色导向和文档入口，细节说明交给 docs 页面，避免这一屏信息过载。</p>
-              <div class="check-list">
-                <div class="check-item"><strong>创客 / 独立开发者：</strong>先看场景与架构，判断是否值得 fork 或改版。</div>
-                <div class="check-item"><strong>业务负责人：</strong>重点看本地优先、人工审批与可控边界。</div>
-                <div class="check-item"><strong>集成者：</strong>从协议、仓库和架构入手，再决定如何接入。</div>
-              </div>
-              <div class="doc-links compact">
-                <a class="doc-link" href="docs/usage-notes.html">
-                  <strong>使用说明</strong>
-                  <span>更完整的阅读路径。</span>
-                </a>
-                <a class="doc-link" href="docs/install-deploy.html">
-                  <strong>安装部署</strong>
-                  <span>本地预览与 Pages 发布。</span>
-                </a>
-                <a class="doc-link" href="docs/workflows.html">
-                  <strong>典型工作流</strong>
-                  <span>查看审批流、自动化流与协同流。</span>
-                </a>
-                <a class="doc-link" href="docs/faq.html">
-                  <strong>FAQ</strong>
-                  <span>先把常见疑问说清楚。</span>
-                </a>
-              </div>
-              <details class="fold">
-                <summary>展开更多跳转</summary>
-                <div class="fold-body">
-                  <div class="doc-links">
-                    <a class="doc-link" href="#use-cases">
-                      <strong>典型使用场景</strong>
-                      <span>直接跳到 Use Cases，看它解决的到底是什么问题。</span>
-                    </a>
-                    <a class="doc-link" href="#architecture">
-                      <strong>产品架构</strong>
-                      <span>继续看本地优先、边车、审批与可控自动化的设计思路。</span>
-                    </a>
-                  </div>
-                </div>
-              </details>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -610,6 +522,95 @@
         </div>
       </section>
 
+      <section class="section" id="quickstart">
+        <div class="container">
+          <div class="section-head">
+            <h2>使用文档</h2>
+            <p>把“如何开始使用 AgentCore OS”放在落地场景和架构之后：先理解它解决什么问题、底层怎么构成，再进入真正可点击、可继续阅读的文档入口。</p>
+          </div>
+          <div class="quickstart-grid">
+            <div class="card">
+              <span class="mini">Getting Started</span>
+              <h3>如何开始使用 AgentCore OS</h3>
+              <p class="quickstart-intro">先从最关键的真实入口开始：仓库、README、文档中心和线上预览，而不是空的下载按钮。</p>
+              <div class="doc-links compact">
+                <a class="doc-link" href="docs/index.html">
+                  <strong>Docs 文档中心</strong>
+                  <span>统一查看全部文档入口。</span>
+                </a>
+                <a class="doc-link" href="docs/getting-started.html">
+                  <strong>快速开始文档</strong>
+                  <span>按顺序进入当前公开版本。</span>
+                </a>
+                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">
+                  <strong>GitHub 仓库</strong>
+                  <span>查看源码、目录与提交记录。</span>
+                </a>
+                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site/blob/main/README.md" target="_blank" rel="noreferrer">
+                  <strong>README</strong>
+                  <span>查看项目说明与本地预览方式。</span>
+                </a>
+              </div>
+              <details class="fold">
+                <summary>更多入口与说明</summary>
+                <div class="fold-body">
+                  <div class="doc-links">
+                    <a class="doc-link" href="https://aidi1723.github.io/agentcore-os-site/" target="_blank" rel="noreferrer">
+                      <strong>线上预览地址</strong>
+                      <span>直接查看 GitHub Pages 当前发布效果。</span>
+                    </a>
+                  </div>
+                  <p class="meta-note">当前站点仍然是纯静态官网，所以最合理的“如何使用”不是伪造下载按钮，而是把真实入口和文档路径给全。</p>
+                </div>
+              </details>
+            </div>
+            <div class="card">
+              <span class="mini">Usage Guide</span>
+              <h3>按角色阅读，不再只看口号</h3>
+              <p class="quickstart-intro">首页只保留角色导向和文档入口，细节说明交给 docs 页面，避免这一屏信息过载。</p>
+              <div class="check-list">
+                <div class="check-item"><strong>创客 / 独立开发者：</strong>先看场景与架构，再进入使用说明与工作流。</div>
+                <div class="check-item"><strong>业务负责人：</strong>重点看本地优先、人工审批与可控边界，再评估是否适合团队。</div>
+                <div class="check-item"><strong>集成者：</strong>从协议、仓库和架构入手，再进入安装部署与 FAQ。</div>
+              </div>
+              <div class="doc-links compact">
+                <a class="doc-link" href="docs/usage-notes.html">
+                  <strong>使用说明</strong>
+                  <span>更完整的阅读路径。</span>
+                </a>
+                <a class="doc-link" href="docs/install-deploy.html">
+                  <strong>安装部署</strong>
+                  <span>本地预览与 Pages 发布。</span>
+                </a>
+                <a class="doc-link" href="docs/workflows.html">
+                  <strong>典型工作流</strong>
+                  <span>查看审批流、自动化流与协同流。</span>
+                </a>
+                <a class="doc-link" href="docs/faq.html">
+                  <strong>FAQ</strong>
+                  <span>先把常见疑问说清楚。</span>
+                </a>
+              </div>
+              <details class="fold">
+                <summary>展开更多跳转</summary>
+                <div class="fold-body">
+                  <div class="doc-links">
+                    <a class="doc-link" href="#use-cases">
+                      <strong>返回落地场景</strong>
+                      <span>重新对照 Use Cases，看文档和场景之间如何对应。</span>
+                    </a>
+                    <a class="doc-link" href="#architecture">
+                      <strong>回看产品架构</strong>
+                      <span>继续看本地优先、边车、审批与可控自动化的设计思路。</span>
+                    </a>
+                  </div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section section-tight" id="developers">
         <div class="container split-grid">
           <div class="card">
@@ -680,7 +681,7 @@
       };
 
       const en = {
-        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDevelopers: 'Developers', navDownload: 'Quick Start',
+        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDocs: 'Docs', navDevelopers: 'Developers', navDownload: 'Quick Start',
         heroTitle: 'A Local-First AI Productivity Foundation for Every Individual and Team.',
         heroSub: 'For the past two years, most of us have been chatting with AI in browser windows. But real business does not need conversation alone — it needs work. AgentCore OS is built to turn raw model capability into orders, scripts, and structured operating assets.',
         heroBtn1: 'View the GitHub Repository', heroBtn2: 'How to Start',
@@ -733,6 +734,7 @@
           document.querySelector('[data-i18n="nav.philosophy"]').textContent = en.navPhilosophy;
           document.querySelector('[data-i18n="nav.useCases"]').textContent = en.navUseCases;
           document.querySelector('[data-i18n="nav.architecture"]').textContent = en.navArchitecture;
+          document.querySelector('[data-i18n="nav.docs"]').textContent = en.navDocs;
           document.querySelector('[data-i18n="nav.developers"]').textContent = en.navDevelopers;
           document.querySelector('[data-i18n="nav.download"]').textContent = en.navDownload;
           document.getElementById('hero-side-title').textContent = en.heroSideTitle;
