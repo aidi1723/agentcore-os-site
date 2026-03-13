@@ -22,6 +22,11 @@
       .item p, .item li { color:var(--soft); }
       ul { margin:10px 0 0 18px; }
       .muted { color:var(--muted); font-size:14px; }
+      .doc-nav { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
+      .doc-nav a { display:inline-flex; padding:10px 14px; border-radius:999px; border:1px solid var(--line); text-decoration:none; background:rgba(255,255,255,.04); }
+      .doc-nav a.active { background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.34); color: #ffe08a; }
+      .doc-pager { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+      .doc-pager a { display:inline-flex; padding:10px 16px; border-radius:999px; border:1px solid var(--line); text-decoration:none; background:rgba(255,255,255,.04); }
     </style>
   </head>
   <body>
@@ -29,8 +34,16 @@
       <div class="top">
         <a class="btn" href="../index.html#quickstart">返回首页</a>
         <div>
-          <a class="btn" href="getting-started.html">快速开始</a>
-          <a class="btn primary" href="install-deploy.html">安装与部署</a>
+          <a class="btn" href="index.html">Docs 首页</a>
+          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        </div>
+        <div class="doc-nav">
+          <a href="index.html">Docs 首页</a>
+          <a href="getting-started.html">快速开始</a>
+          <a href="usage-notes.html">使用说明</a>
+          <a href="install-deploy.html">安装部署</a>
+          <a href="workflows.html">典型工作流</a>
+          <a href="faq.html" class="active">FAQ</a>
         </div>
       </div>
 
@@ -87,6 +100,10 @@
           </ul>
           <p class="muted">如果后续补齐完整产品仓库、安装器或 API 文档，这个 FAQ 也应该同步更新，避免官网承诺超前于公开内容。</p>
         </article>
+      <div class="doc-pager">
+        <a href="workflows.html">← 典型工作流</a>
+        <a href="index.html">返回 Docs 首页 →</a>
+      </div>
       </section>
     </main>
   </body>

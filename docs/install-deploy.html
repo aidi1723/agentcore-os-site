@@ -36,6 +36,11 @@
       .linkcard { display:block; text-decoration:none; border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:16px; background:rgba(255,255,255,.03); }
       .linkcard strong { display:block; margin-bottom:4px; }
       .note { color:var(--muted); font-size:14px; margin-top:12px; }
+      .doc-nav { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
+      .doc-nav a { display:inline-flex; padding:10px 14px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); text-decoration:none; }
+      .doc-nav a.active { background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.34); color: #ffe08a; }
+      .doc-pager { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+      .doc-pager a { display:inline-flex; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); text-decoration:none; }
     </style>
   </head>
   <body>
@@ -43,9 +48,17 @@
       <div class="wrap">
         <a class="brand" href="../index.html">AgentCore OS</a>
         <div class="actions">
-          <a class="btn" href="getting-started.html">快速开始</a>
-          <a class="btn" href="usage-notes.html">使用说明</a>
-          <a class="btn primary" href="../index.html#quickstart">返回首页</a>
+          <a class="btn" href="index.html">Docs 首页</a>
+          <a class="btn" href="../index.html#quickstart">返回首页</a>
+          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        </div>
+        <div class="doc-nav">
+          <a href="index.html">Docs 首页</a>
+          <a href="getting-started.html">快速开始</a>
+          <a href="usage-notes.html">使用说明</a>
+          <a href="install-deploy.html" class="active">安装部署</a>
+          <a href="workflows.html">典型工作流</a>
+          <a href="faq.html">FAQ</a>
         </div>
       </div>
     </header>
@@ -132,6 +145,10 @@ python3 -m http.server 8000</code></pre>
           </div>
           <p class="note">这一页讲的是当前官网仓库怎么预览和发布，不代表完整桌面产品已经在这个仓库里公开交付。</p>
         </article>
+      <div class="doc-pager">
+        <a href="usage-notes.html">← 使用说明</a>
+        <a href="workflows.html">下一篇：典型工作流 →</a>
+      </div>
       </section>
     </main>
   </body>

@@ -66,6 +66,11 @@
       .linkcard strong { display:block; margin-bottom:4px; }
       code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius:8px; }
       .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+      .doc-nav { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
+      .doc-nav a { display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); text-decoration:none; }
+      .doc-nav a.active { background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.34); color: #ffe08a; }
+      .doc-pager { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+      .doc-pager a { display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); text-decoration:none; }
       @media (max-width: 840px) { .grid { grid-template-columns: 1fr; } }
     </style>
   </head>
@@ -76,6 +81,14 @@
         <div class="actions">
           <a class="btn" href="../index.html#quickstart">返回首页</a>
           <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+        </div>
+        <div class="doc-nav">
+          <a href="index.html">Docs 首页</a>
+          <a href="getting-started.html" class="active">快速开始</a>
+          <a href="usage-notes.html">使用说明</a>
+          <a href="install-deploy.html">安装部署</a>
+          <a href="workflows.html">典型工作流</a>
+          <a href="faq.html">FAQ</a>
         </div>
       </div>
     </header>
@@ -154,6 +167,10 @@
           </div>
           <p class="note">说明：如果后续仓库补充了更完整的产品文档、安装说明或 API 文档，这里可以继续扩展为 docs 目录，而不是把所有内容都塞回首页。</p>
         </aside>
+      <div class="doc-pager">
+        <a href="index.html">← Docs 首页</a>
+        <a href="usage-notes.html">下一篇：使用说明 →</a>
+      </div>
       </section>
     </main>
   </body>
