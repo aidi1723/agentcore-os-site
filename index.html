@@ -83,7 +83,7 @@
         border: 1px solid var(--amber-border); background: var(--amber-soft);
         color: #fcd34d; font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
       }
-      h1 { margin: 20px 0 0; font-size: clamp(42px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.04em; }
+      h1 { margin: 20px 0 0; font-size: clamp(40px, 4.8vw, 66px); line-height: 1.08; letter-spacing: -0.045em; max-width: 10.8em; text-wrap: balance; }
       .hero-subtitle { margin-top: 22px; font-size: 18px; color: var(--text-soft); max-width: 760px; }
       .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 30px; }
       .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
@@ -113,9 +113,11 @@
       }
       .trust-items { display: flex; flex-wrap: wrap; gap: 16px 28px; padding: 16px 0; color: var(--text-muted); font-size: 14px; }
       .section { padding: 88px 0; }
-      .section h2 { margin: 0 0 16px; font-size: clamp(30px, 3vw, 44px); line-height: 1.1; letter-spacing: -0.035em; }
+      .section h2 { margin: 0 0 16px; font-size: clamp(30px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; }
       .section-head { max-width: 760px; margin-bottom: 34px; }
       .section-head p { color: var(--text-soft); margin: 0; }
+      #philosophy .section-head { max-width: 680px; }
+      #philosophy #p-title { max-width: 15em; }
       .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
       .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; align-items: stretch; }
       .card {
