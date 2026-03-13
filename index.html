@@ -51,19 +51,19 @@
       .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
       .navbar {
         position: sticky; top: 0; z-index: 20;
-        backdrop-filter: blur(14px);
-        background: rgba(9, 9, 11, 0.8);
-        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(18px);
+        background: rgba(9, 9, 11, 0.72);
+        border-bottom: 1px solid rgba(255,255,255,0.07);
       }
-      .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
-      .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.02em; }
+      .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 0; }
+      .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.015em; }
       .brand img {
-        width: 38px; height: 38px; border-radius: 12px; object-fit: cover;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 0 18px rgba(251, 191, 36, 0.14);
+        width: 34px; height: 34px; border-radius: 10px; object-fit: cover;
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: 0 0 14px rgba(251, 191, 36, 0.1);
       }
-      .nav-links, .nav-actions { display: flex; align-items: center; gap: 24px; }
-      .nav-links a { color: var(--text-soft); font-size: 14px; }
+      .nav-links, .nav-actions { display: flex; align-items: center; gap: 18px; }
+      .nav-links a { color: var(--text-soft); font-size: 13px; letter-spacing: 0.01em; }
       .nav-links a:hover { color: var(--text); }
       .btn {
         display: inline-flex; align-items: center; justify-content: center;
@@ -76,8 +76,11 @@
       .btn-primary:hover { background: linear-gradient(180deg, #ffd666 0%, #f6be26 100%); box-shadow: 0 14px 30px rgba(251, 191, 36, 0.2); }
       .btn-secondary { border-color: rgba(255,255,255,0.12); color: var(--text); background: rgba(255,255,255,0.03); }
       .btn-secondary:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.06); box-shadow: 0 12px 26px rgba(0,0,0,0.18); }
-      .btn-ghost { border-color: rgba(255,255,255,0.08); color: var(--text-soft); background: rgba(255,255,255,0.015); box-shadow: none; }
-      .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.16); background: rgba(255,255,255,0.04); }
+      .btn-ghost { border-color: rgba(255,255,255,0.07); color: var(--text-soft); background: rgba(255,255,255,0.012); box-shadow: none; }
+      .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.14); background: rgba(255,255,255,0.03); }
+      .lang-switch { color: var(--text-muted); font-size: 12px; letter-spacing: 0.02em; }
+      .lang-switch a { color: var(--text-muted); }
+      .lang-switch a.active, .lang-switch a:hover { color: var(--text); }
       .hero { padding: 56px 0 30px; }
       .hero-grid { display: grid; grid-template-columns: minmax(0,1.18fr) minmax(320px,0.82fr); gap: 34px; align-items: stretch; }
       .eyebrow, .section-kicker {
@@ -95,10 +98,10 @@
         background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
       }
       .hero-copy-panel {
-        border: 1px solid rgba(255,255,255,0.08);
-        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.014));
-        border-radius: 20px; padding: 20px;
-        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255,255,255,0.075);
+        background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.012));
+        border-radius: 18px; padding: 18px;
+        box-shadow: 0 12px 28px rgba(0,0,0,0.16);
         position: relative;
       }
       .hero-copy-panel::before {
@@ -109,15 +112,15 @@
         background: linear-gradient(90deg, rgba(251,191,36,0.45), rgba(251,191,36,0));
         opacity: 0.7;
       }
-      .hero-copy-panel h3 { margin: 0; font-size: 16px; letter-spacing: -0.01em; }
-      .hero-copy-panel p { margin-top: 10px; color: var(--text-soft); }
-      .hero-points { display: grid; gap: 8px; margin-top: 16px; }
+      .hero-copy-panel h3 { margin: 0; font-size: 15px; letter-spacing: -0.01em; }
+      .hero-copy-panel p { margin-top: 8px; color: var(--text-soft); font-size: 14px; }
+      .hero-points { display: grid; gap: 6px; margin-top: 14px; }
       .hero-point {
-        border: 1px solid rgba(255,255,255,0.07);
-        background: rgba(255,255,255,0.025);
-        border-radius: 16px; padding: 14px 16px;
+        border: 1px solid rgba(255,255,255,0.065);
+        background: rgba(255,255,255,0.02);
+        border-radius: 14px; padding: 12px 14px;
       }
-      .hero-point strong { display: block; font-size: 13px; color: #f3cd63; margin-bottom: 4px; letter-spacing: -0.01em; }
+      .hero-point strong { display: block; font-size: 12px; color: #f3cd63; margin-bottom: 3px; letter-spacing: -0.01em; }
       .trustbar {
         border-top: 1px solid rgba(255,255,255,0.08);
         border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -272,17 +275,17 @@
         box-shadow: 0 12px 28px rgba(0,0,0,0.18);
       }
       .section-tight .section-head { margin-bottom: 20px; }
-      footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 34px 0 24px; background: linear-gradient(180deg, rgba(255,255,255,0.016), rgba(255,255,255,0.008)); position: relative; }
-      footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, rgba(251,191,36,0), rgba(251,191,36,0.24), rgba(251,191,36,0)); }
-      .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 18px; align-items: start; }
-      .footer-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); }
-      .footer-links { display: grid; gap: 10px; margin-top: 14px; }
+      footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 0 22px; background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.005)); position: relative; }
+      footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, rgba(251,191,36,0), rgba(251,191,36,0.16), rgba(251,191,36,0)); }
+      .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 16px; align-items: start; }
+      .footer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); }
+      .footer-links { display: grid; gap: 8px; margin-top: 12px; }
       .footer-links a { color: var(--text-soft); font-size: 14px; transition: color .18s ease, transform .18s ease; }
       .footer-links a:hover { color: var(--text); transform: translateX(2px); }
-      .copyright { margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); color: var(--text-muted); font-size: 13px; }
-      .lang-switch { font-size: 13px; color: var(--text-muted); }
-      .lang-switch a { padding: 0 8px; }
-      .lang-switch a.active { color: var(--text); }
+      .copyright { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--text-muted); font-size: 12px; }
+      .lang-switch { color: var(--text-muted); font-size: 12px; letter-spacing: 0.02em; }
+      .lang-switch a { padding: 0 6px; color: var(--text-muted); }
+      .lang-switch a.active, .lang-switch a:hover { color: var(--text); }
       .lang-block { display: none; }
       .lang-block.active { display: block; }
 
@@ -300,7 +303,7 @@
 
       @media (max-width: 640px) {
         .container { width: min(var(--max), calc(100% - 24px)); }
-        .nav-inner { gap: 12px; padding: 10px 0; }
+        .nav-inner { gap: 10px; padding: 9px 0; }
         .nav-actions { gap: 8px; }
         .brand span { font-size: 15px; }
         .btn { min-height: 40px; padding: 10px 14px; font-size: 13px; }
@@ -385,8 +388,9 @@
           </div>
 
           <div class="hero-copy-panel">
+            <div class="section-kicker" style="margin-bottom:10px;">Product Thesis</div>
             <h3 id="hero-side-title">这不是又一个 Chat 客户端。</h3>
-            <p id="hero-side-body">它是一个基于 Tauri 边车架构打造的、真正运行在本地设备上的 AI 操作系统。它的目标不是让你多聊几句，而是让 AI 参与真实业务流，并在关键节点上等待你的最终确认。</p>
+            <p id="hero-side-body">它是一个真正运行在本地设备上的 AI 操作系统：不是让你多聊几句，而是让 AI 进入真实业务流，并在关键节点等待你的最终确认。</p>
             <div class="hero-points">
               <div class="hero-point">
                 <strong id="hp1-title">100% 数据不出域</strong>
@@ -699,6 +703,7 @@
             <div class="footer-links">
               <a href="#top">Local-First AI Productivity OS</a>
               <a href="#manifesto">让算力回归本地，让 AI 真正下地干活</a>
+              <a href="#quickstart">Private by default. Useful by design.</a>
             </div>
           </div>
           <div>
