@@ -160,6 +160,22 @@
         color: var(--text-soft);
       }
       .check-item strong { color: var(--text); }
+      .doc-links { display: grid; gap: 12px; margin-top: 18px; }
+      .doc-link {
+        display: block;
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        padding: 14px 16px;
+        transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      }
+      .doc-link:hover {
+        transform: translateY(-1px);
+        border-color: rgba(251,191,36,.36);
+        background: rgba(255,255,255,0.06);
+      }
+      .doc-link strong { display:block; color: var(--text); margin-bottom: 4px; }
+      .doc-link span { color: var(--text-muted); font-size: 14px; }
       .meta-note {
         margin-top: 18px;
         color: var(--text-muted);
@@ -299,21 +315,49 @@
           <div class="quickstart-grid">
             <div class="card">
               <span class="mini">Getting Started</span>
-              <h3>三步进入真实使用场景</h3>
-              <div class="check-list">
-                <div class="check-item"><strong>第一步：</strong>打开 GitHub 仓库，确认项目说明、目录结构和当前公开内容。</div>
-                <div class="check-item"><strong>第二步：</strong>查看 Apache 2.0 许可证，明确可用边界、修改方式和商业集成空间。</div>
-                <div class="check-item"><strong>第三步：</strong>直接在本地打开 <code>index.html</code>，或通过 GitHub Pages 查看当前线上着陆页效果。</div>
+              <h3>从官网进入真实使用路径</h3>
+              <p>你说得对，上一版这里只有说明，没有真正可点开的入口。我已经把这里改成文档导航区，下面这些现在都应该能直接打开。</p>
+              <div class="doc-links">
+                <a class="doc-link" href="docs/getting-started.html">
+                  <strong>快速开始文档</strong>
+                  <span>从仓库、README、许可证到线上预览，一步一步看清当前公开版本怎么用。</span>
+                </a>
+                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">
+                  <strong>GitHub 仓库</strong>
+                  <span>查看源码、目录结构、提交记录与后续演进。</span>
+                </a>
+                <a class="doc-link" href="https://github.com/aidi1723/agentcore-os-site/blob/main/README.md" target="_blank" rel="noreferrer">
+                  <strong>README</strong>
+                  <span>查看当前项目说明、技术栈和本地预览方式。</span>
+                </a>
+                <a class="doc-link" href="https://aidi1723.github.io/agentcore-os-site/" target="_blank" rel="noreferrer">
+                  <strong>线上预览地址</strong>
+                  <span>直接查看 GitHub Pages 当前发布效果。</span>
+                </a>
               </div>
-              <p class="meta-note">这是一页纯静态站点，没有复杂依赖，也不需要额外构建工具就能预览当前官网内容。</p>
+              <p class="meta-note">当前站点仍然是纯静态官网，所以最合理的“如何使用”不是伪造下载按钮，而是把真实入口和文档路径给全。</p>
             </div>
             <div class="card">
-              <span class="mini">What You Get</span>
-              <h3>当前公开版本适合谁</h3>
+              <span class="mini">Usage Guide</span>
+              <h3>按角色阅读，不再只看口号</h3>
               <div class="check-list">
-                <div class="check-item"><strong>创客 / 独立开发者：</strong>先理解产品定位，再决定是否 fork、二次修改或嵌入自己的产品故事。</div>
-                <div class="check-item"><strong>业务负责人：</strong>先看本地优先、安全审批和真实场景部分，判断它是否适合你的团队工作流。</div>
-                <div class="check-item"><strong>集成者：</strong>先从仓库与协议出发，再评估怎么接到你自己的自动化系统里。</div>
+                <div class="check-item"><strong>创客 / 独立开发者：</strong>先看使用场景，再看架构与仓库，判断是否值得 fork、改版或嵌入自己的产品叙事。</div>
+                <div class="check-item"><strong>业务负责人：</strong>重点看本地优先、人工审批、可控边界，判断它是否适合你的业务流和团队流程。</div>
+                <div class="check-item"><strong>集成者：</strong>从仓库、协议和架构三块入手，再决定如何接到你自己的自动化系统里。</div>
+              </div>
+              <div class="doc-links">
+                <a class="doc-link" href="docs/usage-notes.html">
+                  <strong>使用说明与阅读路径</strong>
+                  <span>把首页内容整理成更像文档的阅读顺序，方便第一次接触的人快速理解。</span>
+                </a>
+                <a class="doc-link" href="#use-cases">
+                  <strong>典型使用场景</strong>
+                  <span>直接跳到 Use Cases，看它解决的到底是什么问题。</span>
+                </a>
+                <a class="doc-link" href="#architecture">
+                  <strong>产品架构</strong>
+                  <span>继续看本地优先、边车、审批与可控自动化的设计思路。</span>
+                </a>
               </div>
             </div>
           </div>

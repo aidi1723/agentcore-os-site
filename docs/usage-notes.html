@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentCore OS - 使用说明与阅读路径</title>
+    <meta name="description" content="AgentCore OS 使用说明与阅读路径：根据不同角色，快速理解首页内容和后续查看顺序。" />
+    <style>
+      :root { --bg:#09090b; --panel:#12141a; --text:#f5f5f7; --soft:rgba(245,245,247,.75); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:960px; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+      .wrap { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:36px 0 72px; }
+      a { color:inherit; }
+      .top { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:26px; }
+      .btn { display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid var(--line); text-decoration:none; background:rgba(255,255,255,.04); }
+      .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
+      h1 { font-size:clamp(30px, 5vw, 48px); line-height:1.08; margin:0 0 12px; }
+      .lead { color:var(--soft); max-width:760px; }
+      .grid { display:grid; gap:18px; margin-top:28px; }
+      .card { border:1px solid var(--line); border-radius:20px; padding:22px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)); }
+      .card h2 { margin-top:0; font-size:22px; }
+      ul { margin:10px 0 0 18px; color:var(--soft); }
+      li + li { margin-top:8px; }
+      .muted { color:rgba(245,245,247,.56); font-size:14px; }
+      .row { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a class="btn" href="../index.html#quickstart">返回首页</a>
+        <div class="row">
+          <a class="btn" href="getting-started.html">快速开始</a>
+          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        </div>
+      </div>
+
+      <h1>使用说明与阅读路径</h1>
+      <p class="lead">首页已经包含大量定位信息，但如果用户第一次接触 AgentCore OS，容易停在“理念很强、到底怎么用”这一层。所以这页把首页内容拆成更容易行动的阅读路径。</p>
+
+      <div class="grid">
+        <section class="card">
+          <h2>如果你是创客 / 独立开发者</h2>
+          <ul>
+            <li>先看首页的 <strong>Use Cases</strong>，确认它想解决的是不是你自己的自动化问题。</li>
+            <li>再看 <strong>Architecture</strong>，理解本地优先、审批边界和资产沉淀这些核心主张。</li>
+            <li>最后回到 GitHub 仓库，评估是否值得 fork 成你自己的品牌页或产品入口。</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>如果你是业务负责人</h2>
+          <ul>
+            <li>重点看首页里的“不是聊天，而是让 AI 进入真实业务流”这一主线。</li>
+            <li>关注 Human-in-the-loop 审批、本地存储、边界可控这几个关键词。</li>
+            <li>把它理解成一个生产力底座，而不是一个单点聊天工具。</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>如果你是集成者 / 技术合作方</h2>
+          <ul>
+            <li>先确认许可证与仓库公开范围。</li>
+            <li>再看首页的架构与开发者定位，判断未来如何嵌入自己的自动化系统或产品矩阵。</li>
+            <li>如果后续要扩展，这个站点本身也适合作为文档门户继续长出来。</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h2>当前最实用的入口</h2>
+          <ul>
+            <li><a href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a></li>
+            <li><a href="https://github.com/aidi1723/agentcore-os-site/blob/main/README.md" target="_blank" rel="noreferrer">README</a></li>
+            <li><a href="https://aidi1723.github.io/agentcore-os-site/" target="_blank" rel="noreferrer">GitHub Pages 线上地址</a></li>
+            <li><a href="../index.html#use-cases">首页 Use Cases</a></li>
+            <li><a href="../index.html#architecture">首页 Architecture</a></li>
+          </ul>
+          <p class="muted">后续如果你愿意，我建议继续补三类正式文档：安装部署、典型工作流、FAQ。</p>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

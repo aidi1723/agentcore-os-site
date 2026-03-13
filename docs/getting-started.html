@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentCore OS - 快速开始</title>
+    <meta name="description" content="AgentCore OS 快速开始文档：如何预览官网、查看仓库、理解许可证与后续接入方向。" />
+    <style>
+      :root {
+        --bg: #09090b;
+        --panel: #111318;
+        --panel-2: #161a22;
+        --text: #f5f5f7;
+        --soft: rgba(245,245,247,.76);
+        --muted: rgba(245,245,247,.52);
+        --line: rgba(255,255,255,.1);
+        --amber: #fbbf24;
+        --max: 980px;
+        --radius: 20px;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(180deg, #0c0d10 0%, #09090b 100%);
+        color: var(--text);
+        line-height: 1.7;
+      }
+      a { color: inherit; }
+      .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+      .top {
+        padding: 22px 0;
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(14px);
+        background: rgba(9,9,11,.72);
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+      .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+      .brand { font-weight: 700; text-decoration: none; }
+      .actions { display:flex; gap:12px; flex-wrap:wrap; }
+      .btn {
+        display:inline-flex; align-items:center; justify-content:center;
+        padding: 10px 16px; border-radius: 999px; text-decoration:none;
+        border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);
+      }
+      .btn.primary { background: var(--amber); color:#111; border-color: transparent; font-weight:700; }
+      .hero { padding: 60px 0 28px; }
+      .eyebrow { color: var(--amber); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+      h1 { font-size: clamp(32px, 5vw, 52px); line-height:1.08; margin: 10px 0 14px; }
+      .lead { color: var(--soft); font-size: 18px; max-width: 760px; }
+      .grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; padding: 22px 0 60px; }
+      .card {
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+        border:1px solid var(--line); border-radius: var(--radius); padding: 24px;
+      }
+      .step { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.08); }
+      .step:first-of-type { border-top: 0; padding-top: 0; }
+      .step h3 { margin: 0 0 8px; font-size: 20px; }
+      .step p, li { color: var(--soft); }
+      .links { display:grid; gap:12px; margin-top:14px; }
+      .linkcard {
+        display:block; text-decoration:none; border:1px solid rgba(255,255,255,.1);
+        border-radius:16px; padding:16px; background: rgba(255,255,255,.03);
+      }
+      .linkcard strong { display:block; margin-bottom:4px; }
+      code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius:8px; }
+      .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
+      @media (max-width: 840px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="../index.html">AgentCore OS</a>
+        <div class="actions">
+          <a class="btn" href="../index.html#quickstart">返回首页</a>
+          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Getting Started</div>
+        <h1>如何开始使用 AgentCore OS</h1>
+        <p class="lead">当前公开站点是一个官网落地页，不是完整安装包分发页。所以“如何开始”最合理的路径，是先理解公开内容、查看仓库与许可证，再通过静态方式预览当前网站，并据此决定后续接入或扩展方向。</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="step">
+            <h3>第一步：先看公开内容和仓库结构</h3>
+            <p>先进入 GitHub 仓库，确认你当前拿到的到底是什么：官网源码、README、静态资源，以及 GitHub Pages 部署方式。</p>
+            <div class="links">
+              <a class="linkcard" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">
+                <strong>GitHub 仓库</strong>
+                <span>查看源码、目录结构、提交记录与后续演进。</span>
+              </a>
+              <a class="linkcard" href="https://github.com/aidi1723/agentcore-os-site/blob/main/README.md" target="_blank" rel="noreferrer">
+                <strong>README</strong>
+                <span>当前仓库的简要说明、技术栈与本地预览方式。</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="step">
+            <h3>第二步：看清许可证与可用边界</h3>
+            <p>如果你要 fork、改版、接入商业项目，先看许可证最稳。当前项目页面与文案都强调 Apache 2.0，因此建议把这一点作为对外沟通的基础信息之一。</p>
+            <div class="links">
+              <a class="linkcard" href="https://github.com/aidi1723/agentcore-os-site/blob/main/LICENSE" target="_blank" rel="noreferrer">
+                <strong>Apache 2.0 许可证</strong>
+                <span>确认修改、分发、商业集成和保留声明等基本边界。</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="step">
+            <h3>第三步：预览当前公开版本</h3>
+            <p>这个仓库当前是纯静态站点，最简单的预览方式有两种：</p>
+            <ul>
+              <li>直接打开仓库中的 <code>index.html</code>。</li>
+              <li>访问 GitHub Pages 线上地址，看部署后的真实落地页效果。</li>
+            </ul>
+            <div class="links">
+              <a class="linkcard" href="https://aidi1723.github.io/agentcore-os-site/" target="_blank" rel="noreferrer">
+                <strong>线上预览地址</strong>
+                <span>查看当前 GitHub Pages 发布版本。</span>
+              </a>
+              <a class="linkcard" href="https://github.com/aidi1723/agentcore-os-site/blob/main/index.html" target="_blank" rel="noreferrer">
+                <strong>index.html</strong>
+                <span>直接查看当前首页源码与文案结构。</span>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card">
+          <h3>继续往下怎么用</h3>
+          <p>如果你不是来看官网，而是想评估 AgentCore OS 的使用方式，建议顺着下面的顺序继续读：</p>
+          <div class="links">
+            <a class="linkcard" href="../index.html#use-cases">
+              <strong>典型使用场景</strong>
+              <span>看它面向的业务流、审批流和自动化定位。</span>
+            </a>
+            <a class="linkcard" href="../index.html#architecture">
+              <strong>产品架构</strong>
+              <span>理解本地优先、边车、审批、防火墙等设计理念。</span>
+            </a>
+            <a class="linkcard" href="usage-notes.html">
+              <strong>使用说明与阅读路径</strong>
+              <span>我帮你补的一页，把首页内容整理成更像文档的阅读入口。</span>
+            </a>
+          </div>
+          <p class="note">说明：如果后续仓库补充了更完整的产品文档、安装说明或 API 文档，这里可以继续扩展为 docs 目录，而不是把所有内容都塞回首页。</p>
+        </aside>
+      </section>
+    </main>
+  </body>
+</html>
