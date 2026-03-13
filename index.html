@@ -316,40 +316,77 @@
       .lang-block.active { display: block; }
 
       @media (max-width: 980px) {
-        .hero-grid, .grid-3, .grid-4, .split-grid, .footer-grid, .quickstart-grid, .doc-links.compact, .usecase-list { grid-template-columns: 1fr; }
+        .hero-grid, .grid-3, .grid-4, .split-grid, .quickstart-grid, .doc-links.compact, .usecase-list { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+        .footer-grid > :first-child { grid-column: 1 / -1; }
         .nav-links { display: none; }
         .container { width: min(var(--max), calc(100% - 32px)); }
-        .hero { padding: 44px 0 28px; }
+        .nav-inner { padding: 11px 0; }
+        .nav-actions { gap: 10px; }
+        .btn { min-height: 42px; padding: 10px 16px; }
+        .hero { padding: 40px 0 26px; }
         .hero-grid { gap: 20px; }
-        .trust-items { gap: 8px 14px; }
-        .section { padding: 42px 0; }
-        .section-head { margin-bottom: 16px; }
+        .hero-subtitle { max-width: 36rem; font-size: 16px; }
+        .hero-copy-panel { max-width: 720px; }
+        .hero-points { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+        .hero-point { padding: 11px 12px; }
+        .trust-items { gap: 8px 14px; padding: 13px 0; font-size: 11px; }
+        .section { padding: 40px 0; }
+        .section-head { margin-bottom: 16px; max-width: 620px; }
         .card, .usecase, .hero-copy-panel, .cta-box, .manifesto { padding: 18px; }
+        .usecase h3 { font-size: 24px; }
+        .tag-row { gap: 8px; padding-top: 16px; }
+        .doc-link { min-height: 0; }
+        .cta-box h2 { max-width: 11.5em !important; }
       }
 
       @media (max-width: 640px) {
         .container { width: min(var(--max), calc(100% - 24px)); }
-        .nav-inner { gap: 10px; padding: 9px 0; }
-        .nav-actions { gap: 8px; }
+        .navbar { backdrop-filter: blur(14px); }
+        .nav-inner { gap: 10px; padding: 9px 0; align-items: flex-start; }
+        .nav-actions { gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-actions .btn-ghost { display: none; }
+        .lang-switch { width: 100%; text-align: right; order: -1; }
+        .brand { gap: 8px; }
+        .brand img { width: 30px; height: 30px; border-radius: 9px; }
         .brand span { font-size: 15px; }
         .btn { min-height: 40px; padding: 10px 14px; font-size: 13px; }
-        h1 { font-size: clamp(32px, 8.8vw, 44px); line-height: 1.04; max-width: 8.8em; }
-        .hero-subtitle { margin-top: 12px; font-size: 15px; }
+        .hero { padding: 30px 0 22px; }
+        h1 { font-size: clamp(32px, 8.8vw, 44px); line-height: 1.04; letter-spacing: -0.045em; max-width: 8.2em; }
+        .hero-subtitle { margin-top: 12px; font-size: 15px; max-width: none; }
         .hero-cta { gap: 8px; margin-top: 16px; }
         .hero-cta .btn { width: 100%; }
         .chips { gap: 7px; margin-top: 14px; }
         .chip { font-size: 11px; padding: 6px 9px; }
-        .trust-items { font-size: 12px; gap: 7px 12px; padding: 10px 0; }
-        .section { padding: 36px 0; }
+        .hero-copy-panel { padding: 15px; border-radius: 16px; }
+        .hero-copy-panel h3 { font-size: 14px; }
+        .hero-copy-panel p { font-size: 13px; }
+        .hero-points { grid-template-columns: 1fr; gap: 7px; margin-top: 12px; }
+        .hero-point { border-radius: 13px; padding: 11px 12px; }
+        .hero-point strong { font-size: 11px; }
+        .trust-items { font-size: 11px; gap: 7px 10px; padding: 10px 0; letter-spacing: 0.035em; }
+        .section { padding: 34px 0; }
         .section h2 { font-size: clamp(25px, 6.8vw, 32px); }
         .section-head { margin-bottom: 14px; }
         .section-head p, .quickstart-intro, .meta-note, .doc-link span { font-size: 14px; }
-        .card, .usecase, .hero-copy-panel, .cta-box, .manifesto { padding: 16px; border-radius: 18px; }
+        .card, .usecase, .cta-box, .manifesto { padding: 16px; border-radius: 18px; }
         .card h3 { font-size: 19px; }
-        .usecase h3 { font-size: 22px; }
+        .usecase h3 { font-size: 21px; }
+        .usecase .label { margin-top: 8px; }
+        .tag-row { gap: 7px; padding-top: 14px; }
+        .tag { padding: 7px 10px; font-size: 11px; }
+        .check-list, .doc-links { gap: 10px; }
         .list-item, .check-item, .doc-link, .fold { border-radius: 14px; }
-        .footer-grid { gap: 16px; }
-        .copyright { margin-top: 20px; padding-top: 14px; font-size: 12px; }
+        .doc-link { padding: 13px 14px; }
+        .fold summary { padding: 13px 14px; }
+        .fold-body { padding: 0 14px 14px; }
+        .footer-grid { grid-template-columns: 1fr; gap: 14px; }
+        .footer-grid > :first-child { grid-column: auto; }
+        .footer-links { gap: 7px; margin-top: 10px; }
+        .copyright { margin-top: 18px; padding-top: 14px; font-size: 12px; }
+        .cta-box h2 { max-width: 100% !important; }
+        #cta-body { margin-top: 12px !important; }
+        #cta-note { font-size: 12px !important; line-height: 1.6; }
       }
     </style>
   </head>
