@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentCore OS - FAQ</title>
+    <meta name="description" content="AgentCore OS 常见问题：它是什么、适合谁、当前公开了什么、如何预览官网与后续文档。" />
+    <style>
+      :root { --bg:#09090b; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.55); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:980px; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:linear-gradient(180deg,#0b0c10 0%, #09090b 100%); color:var(--text); line-height:1.74; }
+      a { color:inherit; }
+      .wrap { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:32px 0 72px; }
+      .top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+      .btn { display:inline-block; text-decoration:none; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
+      .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
+      h1 { font-size:clamp(34px, 5vw, 54px); line-height:1.06; margin:0 0 12px; }
+      .lead { color:var(--soft); max-width:760px; }
+      .faq { display:grid; gap:18px; margin-top:28px; }
+      .item { border:1px solid var(--line); border-radius:20px; padding:22px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)); }
+      .item h2 { margin:0 0 10px; font-size:22px; }
+      .item p, .item li { color:var(--soft); }
+      ul { margin:10px 0 0 18px; }
+      .muted { color:var(--muted); font-size:14px; }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top">
+        <a class="btn" href="../index.html#quickstart">返回首页</a>
+        <div>
+          <a class="btn" href="getting-started.html">快速开始</a>
+          <a class="btn primary" href="install-deploy.html">安装与部署</a>
+        </div>
+      </div>
+
+      <h1>FAQ</h1>
+      <p class="lead">把首页里最容易让人误会、但又最常问的问题先说清楚。这样用户不会看完一圈还停在“听起来很强，但到底是什么”。</p>
+
+      <section class="faq">
+        <article class="item">
+          <h2>1. AgentCore OS 到底是什么？</h2>
+          <p>从当前官网表达看，它被定义为一个 <strong>本地优先的 AI 生产力底座 / AI 操作系统</strong>，核心不是“聊天”，而是让 AI 进入真实业务流、自动化流和审批流。</p>
+        </article>
+
+        <article class="item">
+          <h2>2. 它是一个聊天工具吗？</h2>
+          <p>不是首页想强调的重点。首页反复强调的主线是：它不是又一个聊天客户端，而是一个能够承接工作流、资产、审批和本地执行边界的系统。</p>
+        </article>
+
+        <article class="item">
+          <h2>3. 当前这个 GitHub 仓库公开了什么？</h2>
+          <p>当前 <code>aidi1723/agentcore-os-site</code> 仓库公开的是官网静态站点本身，也就是 landing page 和 docs 页面的源码，不等于完整桌面产品安装包仓库。</p>
+        </article>
+
+        <article class="item">
+          <h2>4. 那我现在能怎么用它？</h2>
+          <ul>
+            <li>先通过官网理解产品定位。</li>
+            <li>通过 GitHub 仓库查看公开内容。</li>
+            <li>通过 README、快速开始、安装部署页看清当前可预览范围。</li>
+            <li>如果你是品牌方或集成方，也可以先把这个站点当作对外入口继续完善。</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <h2>5. 当前站点适合谁？</h2>
+          <ul>
+            <li>创客 / 独立开发者：看是否值得 fork 或延展成自己的产品页。</li>
+            <li>业务负责人：判断它的本地优先、审批边界是否适合团队工作流。</li>
+            <li>集成者：评估协议、定位和架构表达是否适合作为未来集成入口。</li>
+          </ul>
+        </article>
+
+        <article class="item">
+          <h2>6. 为什么首页之前会让人觉得“按钮打不开”？</h2>
+          <p>因为那一版更像解释性内容，而不是文档导航。现在已经补上了真实可点击入口，包括快速开始、使用说明、安装与部署、FAQ 等页面。</p>
+        </article>
+
+        <article class="item">
+          <h2>7. 现在要去哪里开始？</h2>
+          <ul>
+            <li><a href="getting-started.html">快速开始</a></li>
+            <li><a href="install-deploy.html">安装与部署</a></li>
+            <li><a href="usage-notes.html">使用说明与阅读路径</a></li>
+            <li><a href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a></li>
+          </ul>
+          <p class="muted">如果后续补齐完整产品仓库、安装器或 API 文档，这个 FAQ 也应该同步更新，避免官网承诺超前于公开内容。</p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
