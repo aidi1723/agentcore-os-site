@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentCore OS Docs</title>
+    <meta name="description" content="AgentCore OS 文档中心：快速开始、使用说明、安装部署、典型工作流与 FAQ。" />
+    <style>
+      :root { --bg:#09090b; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.55); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:1080px; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:linear-gradient(180deg,#0b0c10 0%, #09090b 100%); color:var(--text); line-height:1.72; }
+      a { color:inherit; text-decoration:none; }
+      .wrap { width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+      .top { position:sticky; top:0; backdrop-filter:blur(14px); background:rgba(9,9,11,.72); border-bottom:1px solid rgba(255,255,255,.06); }
+      .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; flex-wrap:wrap; }
+      .brand { font-weight:700; }
+      .btn { display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
+      .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
+      .hero { padding:56px 0 26px; }
+      .eyebrow { color:var(--amber); text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:700; }
+      h1 { font-size:clamp(34px, 6vw, 58px); line-height:1.04; margin:10px 0 12px; }
+      .lead { color:var(--soft); font-size:18px; max-width:780px; }
+      .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; padding:18px 0 72px; }
+      .card { display:block; border:1px solid var(--line); border-radius:22px; padding:24px; background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)); }
+      .card:hover { border-color:rgba(251,191,36,.34); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); }
+      .mini { color:var(--amber); font-size:12px; text-transform:uppercase; letter-spacing:.08em; font-weight:700; }
+      .card h2 { margin:8px 0 8px; font-size:24px; }
+      .card p { color:var(--soft); margin:0; }
+      .meta { margin-top:12px; color:var(--muted); font-size:14px; }
+      @media (max-width: 820px) { .grid { grid-template-columns:1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <div class="brand">AgentCore OS Docs</div>
+        <div>
+          <a class="btn" href="../index.html#quickstart">返回首页</a>
+          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Documentation</div>
+        <h1>文档中心</h1>
+        <p class="lead">这里把 AgentCore OS 官网页面里分散的信息收拢成一个可导航的 docs 入口。当前重点不是 API 细节，而是让第一次接触的人快速理解：它是什么、怎么开始、当前公开了什么、以及典型能落到哪些工作流上。</p>
+      </section>
+
+      <section class="grid">
+        <a class="card" href="getting-started.html">
+          <div class="mini">Start Here</div>
+          <h2>快速开始</h2>
+          <p>从仓库、README、许可证到线上预览，快速进入当前公开版本的真实入口。</p>
+          <div class="meta">适合第一次打开官网的人</div>
+        </a>
+
+        <a class="card" href="usage-notes.html">
+          <div class="mini">Reading Path</div>
+          <h2>使用说明与阅读路径</h2>
+          <p>按创客、业务负责人、集成者三类角色，整理首页内容的阅读顺序。</p>
+          <div class="meta">适合“理念看懂了，但还想继续往下读”的人</div>
+        </a>
+
+        <a class="card" href="install-deploy.html">
+          <div class="mini">Preview & Publish</div>
+          <h2>安装与部署</h2>
+          <p>说明当前官网仓库如何本地预览、如何通过 GitHub Pages 发布，以及何时该升级站点结构。</p>
+          <div class="meta">适合维护站点和继续扩展文档的人</div>
+        </a>
+
+        <a class="card" href="workflows.html">
+          <div class="mini">Workflow Examples</div>
+          <h2>典型工作流</h2>
+          <p>不再停在口号层，直接展示 AgentCore OS 适合承接的几类真实业务流与审批流。</p>
+          <div class="meta">适合判断“这东西到底能用在哪”的人</div>
+        </a>
+
+        <a class="card" href="faq.html">
+          <div class="mini">Common Questions</div>
+          <h2>FAQ</h2>
+          <p>快速回答它是什么、适合谁、当前公开了什么、为什么官网和完整产品仓库不是一回事。</p>
+          <div class="meta">适合第一次接触、需要快速去误解的人</div>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
