@@ -78,13 +78,14 @@
       .btn-secondary:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.06); box-shadow: 0 12px 26px rgba(0,0,0,0.18); }
       .btn-ghost { border-color: rgba(255,255,255,0.08); color: var(--text-soft); background: rgba(255,255,255,0.015); box-shadow: none; }
       .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.16); background: rgba(255,255,255,0.04); }
-      .hero { padding: 60px 0 36px; }
-      .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; align-items: start; }
-      .eyebrow {
-        display: inline-flex; padding: 8px 14px; border-radius: 999px;
-        border: 1px solid var(--amber-border); background: var(--amber-soft);
-        color: #fcd34d; font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
+      .hero { padding: 56px 0 30px; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0,1.18fr) minmax(320px,0.82fr); gap: 34px; align-items: stretch; }
+      .eyebrow, .section-kicker {
+        display: inline-flex; padding: 7px 12px; border-radius: 999px;
+        border: 1px solid rgba(251,191,36,0.16); background: rgba(251,191,36,0.06);
+        color: #f3cd63; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
       }
+      .section-kicker { margin-bottom: 12px; }
       h1 { margin: 20px 0 0; font-size: clamp(40px, 4.8vw, 66px); line-height: 1.08; letter-spacing: -0.045em; max-width: 10.8em; text-wrap: balance; }
       .hero-subtitle { margin-top: 18px; font-size: 18px; color: var(--text-soft); max-width: 720px; }
       .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
@@ -94,20 +95,29 @@
         background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
       }
       .hero-copy-panel {
-        border: 1px solid rgba(251,191,36,0.18);
-        background: linear-gradient(135deg, rgba(251,191,36,0.065), rgba(255,255,255,0.018));
-        border-radius: 26px; padding: 24px;
+        border: 1px solid rgba(255,255,255,0.08);
+        background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.014));
+        border-radius: 20px; padding: 20px;
         box-shadow: var(--shadow-soft);
+        position: relative;
       }
-      .hero-copy-panel h3 { margin: 0; font-size: 18px; }
-      .hero-copy-panel p { margin-top: 12px; color: var(--text-soft); }
-      .hero-points { display: grid; gap: 10px; margin-top: 18px; }
+      .hero-copy-panel::before {
+        content: '';
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(251,191,36,0.45), rgba(251,191,36,0));
+        opacity: 0.7;
+      }
+      .hero-copy-panel h3 { margin: 0; font-size: 16px; letter-spacing: -0.01em; }
+      .hero-copy-panel p { margin-top: 10px; color: var(--text-soft); }
+      .hero-points { display: grid; gap: 8px; margin-top: 16px; }
       .hero-point {
         border: 1px solid rgba(255,255,255,0.07);
         background: rgba(255,255,255,0.025);
         border-radius: 16px; padding: 14px 16px;
       }
-      .hero-point strong { display: block; font-size: 14px; color: #fcd34d; margin-bottom: 6px; }
+      .hero-point strong { display: block; font-size: 13px; color: #f3cd63; margin-bottom: 4px; letter-spacing: -0.01em; }
       .trustbar {
         border-top: 1px solid rgba(255,255,255,0.08);
         border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -117,8 +127,8 @@
       .trust-items { display: flex; flex-wrap: wrap; gap: 14px 24px; padding: 14px 0; color: var(--text-muted); font-size: 13px; letter-spacing: 0.01em; }
       .section { padding: 54px 0; position: relative; }
       .section h2 { margin: 0 0 12px; font-size: clamp(30px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; }
-      .section-head { max-width: 700px; margin-bottom: 18px; }
-      .section-head p { color: var(--text-soft); margin: 0; max-width: 62ch; }
+      .section-head { max-width: 680px; margin-bottom: 18px; }
+      .section-head p { color: var(--text-soft); margin: 0; max-width: 58ch; }
       #philosophy .section-head { max-width: 680px; }
       #philosophy #p-title { max-width: 15em; }
       .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
@@ -141,9 +151,9 @@
         box-shadow: var(--shadow-hover);
       }
       .card .mini {
-        display: inline-flex; padding: 6px 10px; border-radius: 999px;
-        border: 1px solid var(--amber-border); background: var(--amber-soft);
-        color: #fcd34d; font-size: 12px; margin-bottom: 12px;
+        display: inline-flex; padding: 5px 9px; border-radius: 999px;
+        border: 1px solid rgba(251,191,36,0.14); background: rgba(251,191,36,0.05);
+        color: #f3cd63; font-size: 11px; margin-bottom: 10px; letter-spacing: 0.02em;
       }
       .card h3 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; }
       .card p { margin-top: 12px; color: var(--text-soft); }
@@ -189,9 +199,9 @@
       .check-list { display: grid; gap: 10px; margin-top: 14px; }
       .check-item {
         border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 18px;
-        background: rgba(255,255,255,0.03);
-        padding: 14px 16px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.016));
+        padding: 13px 15px;
         color: var(--text-soft);
       }
       .check-item strong { color: var(--text); }
@@ -250,9 +260,9 @@
       .fold-body p { margin: 0; }
       .list-item {
         border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 18px;
-        background: rgba(255,255,255,0.03);
-        padding: 18px 18px 17px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.016));
+        padding: 16px 16px 15px;
       }
       .list-item strong { display: block; color: #fcd34d; margin-bottom: 6px; }
       .cta-box {
@@ -262,10 +272,11 @@
         box-shadow: 0 12px 28px rgba(0,0,0,0.18);
       }
       .section-tight .section-head { margin-bottom: 20px; }
-      footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 32px 0 24px; background: linear-gradient(180deg, rgba(255,255,255,0.016), rgba(255,255,255,0.01)); }
-      .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-      .footer-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); }
-      .footer-links { display: grid; gap: 12px; margin-top: 16px; }
+      footer { border-top: 1px solid rgba(255,255,255,0.07); padding: 34px 0 24px; background: linear-gradient(180deg, rgba(255,255,255,0.016), rgba(255,255,255,0.008)); position: relative; }
+      footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, rgba(251,191,36,0), rgba(251,191,36,0.24), rgba(251,191,36,0)); }
+      .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 18px; align-items: start; }
+      .footer-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--text-muted); }
+      .footer-links { display: grid; gap: 10px; margin-top: 14px; }
       .footer-links a { color: var(--text-soft); font-size: 14px; transition: color .18s ease, transform .18s ease; }
       .footer-links a:hover { color: var(--text); transform: translateX(2px); }
       .copyright { margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); color: var(--text-muted); font-size: 13px; }
@@ -418,6 +429,7 @@
       <section class="section" id="philosophy">
         <div class="container">
           <div class="section-head">
+            <div class="section-kicker">Vision</div>
             <h2 id="p-title">我们的愿景：让 AI 生产力真正普及</h2>
             <p id="p-sub">无论你是企业老板，普通创客、电脑小白、还是管理复杂链条的业务负责人，都能以极低门槛拥有一个绝对安全、数据私有、且能自动流转业务链条的生产力底座。</p>
           </div>
@@ -444,6 +456,7 @@
       <section class="section">
         <div class="container">
           <div class="section-head">
+            <div class="section-kicker">Security</div>
             <h2 id="s-title">极致安全：最让人安心的本地防线</h2>
             <p id="s-sub">安全不是一个口号，而是整个系统设计的出发点。</p>
           </div>
@@ -475,6 +488,7 @@
       <section class="section" id="use-cases">
         <div class="container">
           <div class="section-head">
+            <div class="section-kicker">Use Cases</div>
             <h2 id="u-title">真实落地：经过实战检验的成熟场景</h2>
             <p id="u-sub">AgentCore OS 不是概念演示，而是面向真实业务的执行底座。</p>
           </div>
@@ -533,6 +547,7 @@
       <section class="section" id="architecture">
         <div class="container">
           <div class="section-head">
+            <div class="section-kicker">Architecture</div>
             <h2 id="a-title">工业级架构，小白级体验</h2>
             <p id="a-sub">底层架构足够强，表面体验足够轻。</p>
           </div>
@@ -559,6 +574,7 @@
       <section class="section" id="quickstart">
         <div class="container">
           <div class="section-head">
+            <div class="section-kicker">Docs</div>
             <h2>使用文档</h2>
             <p>把“如何开始使用 AgentCore OS”放在落地场景和架构之后：先理解它解决什么问题、底层怎么构成，再进入真正可点击、可继续阅读的文档入口。</p>
           </div>
@@ -678,6 +694,13 @@
     <footer>
       <div class="container">
         <div class="footer-grid">
+          <div>
+            <div class="footer-title">AgentCore OS</div>
+            <div class="footer-links">
+              <a href="#top">Local-First AI Productivity OS</a>
+              <a href="#manifesto">让算力回归本地，让 AI 真正下地干活</a>
+            </div>
+          </div>
           <div>
             <div class="footer-title" id="f1-title">产品</div>
             <div class="footer-links">
