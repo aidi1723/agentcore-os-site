@@ -33,6 +33,9 @@
         --radius: 26px;
         --shadow-soft: 0 14px 34px rgba(0,0,0,0.18);
         --shadow-hover: 0 18px 40px rgba(0,0,0,0.24);
+        --content-narrow: 64ch;
+        --section-gap: 68px;
+        --card-gap: 20px;
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
@@ -44,7 +47,10 @@
           radial-gradient(circle at top center, rgba(251, 191, 36, 0.08), transparent 24%),
           radial-gradient(circle at 50% 38%, rgba(255,255,255,0.03), transparent 34%),
           linear-gradient(180deg, #0a0a0d 0%, #09090b 32%, #0b0b0f 100%);
-        line-height: 1.65;
+        line-height: 1.72;
+        letter-spacing: 0.002em;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
       a { color: inherit; text-decoration: none; }
       img { display: block; max-width: 100%; }
@@ -63,11 +69,12 @@
         box-shadow: 0 0 14px rgba(251, 191, 36, 0.1);
       }
       .nav-links, .nav-actions { display: flex; align-items: center; gap: 18px; }
-      .nav-links a { color: var(--text-soft); font-size: 13px; letter-spacing: 0.01em; }
+      .nav-links a { color: var(--text-soft); font-size: 13px; font-weight: 500; letter-spacing: 0.015em; }
       .nav-links a:hover { color: var(--text); }
       .btn {
         display: inline-flex; align-items: center; justify-content: center;
         min-height: 46px; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;
+        letter-spacing: 0.01em;
         border: 1px solid transparent; transition: transform .18s ease, border-color .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
         box-shadow: 0 10px 24px rgba(0,0,0,0.12);
       }
@@ -81,7 +88,7 @@
       .lang-switch { color: var(--text-muted); font-size: 12px; letter-spacing: 0.02em; }
       .lang-switch a { color: var(--text-muted); }
       .lang-switch a.active, .lang-switch a:hover { color: var(--text); }
-      .hero { padding: 58px 0 34px; position: relative; }
+      .hero { padding: 66px 0 42px; position: relative; }
       .hero::after {
         content: '';
         position: absolute;
@@ -90,25 +97,25 @@
         background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.018));
         pointer-events: none;
       }
-      .hero-grid { display: grid; grid-template-columns: minmax(0,1.22fr) minmax(320px,0.78fr); gap: 34px; align-items: stretch; }
+      .hero-grid { display: grid; grid-template-columns: minmax(0,1.16fr) minmax(340px,0.84fr); gap: 42px; align-items: stretch; }
       .eyebrow, .section-kicker {
         display: inline-flex; padding: 7px 12px; border-radius: 999px;
         border: 1px solid rgba(251,191,36,0.16); background: rgba(251,191,36,0.06);
         color: #f3cd63; font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em;
       }
       .section-kicker { margin-bottom: 12px; }
-      h1 { margin: 18px 0 0; font-size: clamp(44px, 5.2vw, 72px); line-height: 1.02; letter-spacing: -0.055em; max-width: 9.2em; text-wrap: balance; }
-      .hero-subtitle { margin-top: 16px; font-size: 18px; color: var(--text-soft); max-width: 640px; }
-      .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 24px; }
-      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+      h1 { margin: 18px 0 0; font-size: clamp(46px, 5vw, 70px); line-height: 1.04; letter-spacing: -0.05em; max-width: 8.8em; text-wrap: balance; }
+      .hero-subtitle { margin-top: 18px; font-size: 19px; line-height: 1.8; color: var(--text-soft); max-width: 34em; }
+      .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
       .chip {
-        padding: 8px 12px; border-radius: 999px; font-size: 12px;
+        padding: 8px 13px; border-radius: 999px; font-size: 12px; line-height: 1.35;
         background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);
       }
       .hero-copy-panel {
         border: 1px solid rgba(255,255,255,0.075);
         background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.012));
-        border-radius: 18px; padding: 18px;
+        border-radius: 20px; padding: 22px;
         box-shadow: 0 12px 28px rgba(0,0,0,0.16);
         position: relative;
       }
@@ -120,15 +127,15 @@
         background: linear-gradient(90deg, rgba(251,191,36,0.45), rgba(251,191,36,0));
         opacity: 0.7;
       }
-      .hero-copy-panel h3 { margin: 0; font-size: 15px; letter-spacing: -0.01em; }
-      .hero-copy-panel p { margin-top: 8px; color: var(--text-soft); font-size: 14px; }
-      .hero-points { display: grid; gap: 6px; margin-top: 14px; }
+      .hero-copy-panel h3 { margin: 0; font-size: 16px; letter-spacing: -0.01em; }
+      .hero-copy-panel p { margin-top: 10px; color: var(--text-soft); font-size: 14px; line-height: 1.75; }
+      .hero-points { display: grid; gap: 10px; margin-top: 16px; }
       .hero-point {
         border: 1px solid rgba(255,255,255,0.065);
         background: rgba(255,255,255,0.02);
-        border-radius: 14px; padding: 12px 14px;
+        border-radius: 14px; padding: 14px 16px;
       }
-      .hero-point strong { display: block; font-size: 12px; color: #f3cd63; margin-bottom: 3px; letter-spacing: -0.01em; }
+      .hero-point strong { display: block; font-size: 12px; color: #f3cd63; margin-bottom: 5px; letter-spacing: -0.01em; }
       .trustbar {
         position: relative;
         border-top: 1px solid rgba(255,255,255,0.07);
@@ -143,30 +150,30 @@
         background: linear-gradient(90deg, rgba(251,191,36,0), rgba(251,191,36,0.06), rgba(251,191,36,0));
         pointer-events: none;
       }
-      .trust-items { display: flex; flex-wrap: wrap; gap: 14px 24px; padding: 15px 0; color: var(--text-muted); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+      .trust-items { display: flex; flex-wrap: wrap; gap: 14px 18px; padding: 16px 0; color: var(--text-muted); font-size: 12px; letter-spacing: 0.035em; text-transform: uppercase; }
       .trust-items span {
         display: inline-flex;
         align-items: center;
-        min-height: 32px;
-        padding: 0 12px;
+        min-height: 34px;
+        padding: 0 13px;
         border-radius: 999px;
         border: 1px solid rgba(255,255,255,0.06);
         background: rgba(255,255,255,0.02);
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.012);
       }
-      .section { padding: 54px 0; position: relative; }
-      .section h2 { margin: 0 0 12px; font-size: clamp(30px, 3vw, 44px); line-height: 1.08; letter-spacing: -0.04em; text-wrap: balance; }
-      .section-head { max-width: 680px; margin-bottom: 18px; }
-      .section-head p { color: var(--text-soft); margin: 0; max-width: 58ch; }
+      .section { padding: var(--section-gap) 0; position: relative; }
+      .section h2 { margin: 0 0 14px; font-size: clamp(31px, 2.9vw, 46px); line-height: 1.12; letter-spacing: -0.038em; text-wrap: balance; }
+      .section-head { max-width: 720px; margin-bottom: 24px; }
+      .section-head p { color: var(--text-soft); margin: 0; max-width: var(--content-narrow); line-height: 1.8; }
       #philosophy .section-head { max-width: 680px; }
       #philosophy #p-title { max-width: 15em; }
-      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
-      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; align-items: stretch; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--card-gap); align-items: stretch; }
+      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--card-gap); align-items: stretch; }
       .card {
         background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.018));
         border: 1px solid rgba(255,255,255,0.085);
         border-radius: 20px;
-        padding: 20px;
+        padding: 22px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -184,24 +191,24 @@
         border: 1px solid rgba(251,191,36,0.14); background: rgba(251,191,36,0.05);
         color: #f3cd63; font-size: 11px; margin-bottom: 10px; letter-spacing: 0.02em;
       }
-      .card h3 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.02em; }
-      .card p { margin-top: 12px; color: var(--text-soft); }
+      .card h3 { margin: 0; font-size: 23px; line-height: 1.24; letter-spacing: -0.022em; text-wrap: balance; }
+      .card p { margin-top: 12px; color: var(--text-soft); line-height: 1.78; max-width: 34ch; }
       .manifesto {
         border: 1px solid rgba(255,255,255,0.085);
         background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.014));
-        border-radius: 22px; padding: 22px;
+        border-radius: 24px; padding: 28px;
         box-shadow: var(--shadow-soft);
       }
-      .manifesto-title { font-size: clamp(28px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.03em; margin: 0 0 16px; }
-      .manifesto-lead { font-size: 17px; color: var(--text-soft); max-width: 820px; }
+      .manifesto-title { font-size: clamp(30px, 3vw, 42px); line-height: 1.16; letter-spacing: -0.032em; margin: 0 0 18px; max-width: none; }
+      .manifesto-lead { font-size: 18px; line-height: 1.84; color: var(--text-soft); max-width: 56ch; }
       .quote-line {
-        margin-top: 18px; padding-left: 16px; border-left: 3px solid rgba(251,191,36,0.55);
-        color: #f8e7a2; font-size: 16px;
+        margin-top: 22px; padding-left: 18px; border-left: 3px solid rgba(251,191,36,0.55);
+        color: #f8e7a2; font-size: 16px; line-height: 1.78; max-width: 60ch;
       }
-      .usecase-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: stretch; }
+      .usecase-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--card-gap); align-items: stretch; }
       .usecase {
         border: 1px solid rgba(255,255,255,0.085); border-radius: 20px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.016)); padding: 20px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.016)); padding: 22px;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -214,35 +221,36 @@
         background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.024));
         box-shadow: var(--shadow-hover);
       }
-      .usecase h3 { margin: 0; font-size: 28px; line-height: 1.18; letter-spacing: -0.02em; }
-      .usecase .label { color: #fcd34d; font-weight: 600; margin: 10px 0 0; }
-      .usecase p { color: var(--text-soft); }
+      .usecase h3 { margin: 0; font-size: 30px; line-height: 1.16; letter-spacing: -0.024em; text-wrap: balance; max-width: none; }
+      .usecase .label { color: #fcd34d; font-weight: 600; margin: 12px 0 0; }
+      .usecase p { color: var(--text-soft); line-height: 1.8; max-width: 38ch; }
       .usecase .label + p { margin-top: 10px; }
       .tag-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 18px; }
       .tag { padding: 8px 12px; border-radius: 999px; font-size: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--text-muted); }
-      .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
-      .quickstart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
+      .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--card-gap); align-items: stretch; }
+      .quickstart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--card-gap); align-items: stretch; }
       .quickstart-grid > .card { height: 100%; display: flex; flex-direction: column; }
-      .quickstart-intro { color: var(--text-soft); max-width: 46ch; }
+      .quickstart-intro { color: var(--text-soft); max-width: 42ch; line-height: 1.8; }
       .list { display: grid; gap: 10px; align-content: stretch; }
-      .check-list { display: grid; gap: 10px; margin-top: 14px; }
+      .check-list { display: grid; gap: 12px; margin-top: 16px; }
       .check-item {
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(255,255,255,0.026), rgba(255,255,255,0.016));
-        padding: 13px 15px;
+        padding: 14px 16px;
         color: var(--text-soft);
+        line-height: 1.74;
       }
       .check-item strong { color: var(--text); }
-      .doc-links { display: grid; gap: 12px; margin-top: 18px; }
-      .doc-links.compact { grid-template-columns: 1fr 1fr; }
+      .doc-links { display: grid; gap: 14px; margin-top: 20px; }
+      .doc-links.compact { grid-template-columns: 1fr 1fr; gap: 14px; }
       .doc-link {
         display: block;
         border: 1px solid rgba(255,255,255,0.09);
         border-radius: 16px;
         background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.028));
-        padding: 14px 16px;
-        min-height: 88px;
+        padding: 15px 16px;
+        min-height: 96px;
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.018);
         transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
       }
@@ -252,15 +260,17 @@
         background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.035));
         box-shadow: 0 10px 24px rgba(0,0,0,0.18);
       }
-      .doc-link strong { display:block; color: var(--text); margin-bottom: 4px; }
-      .doc-link span { color: var(--text-muted); font-size: 14px; }
+      .doc-link strong { display:block; color: var(--text); margin-bottom: 6px; font-size: 15px; line-height: 1.45; }
+      .doc-link span { color: var(--text-muted); font-size: 14px; line-height: 1.72; }
       .meta-note {
-        margin-top: 12px;
+        margin-top: 14px;
         color: var(--text-muted);
         font-size: 14px;
+        line-height: 1.75;
+        max-width: 56ch;
       }
       .fold {
-        margin-top: 16px;
+        margin-top: 18px;
         border: 1px solid rgba(255,255,255,0.08);
         border-radius: 16px;
         background: rgba(255,255,255,0.025);
@@ -309,7 +319,7 @@
       }
       .list-item strong { display: block; color: #fcd34d; margin-bottom: 6px; }
       .cta-box {
-        border-radius: 24px; padding: 28px;
+        border-radius: 24px; padding: 32px;
         border: 1px solid rgba(251,191,36,0.16);
         background: linear-gradient(135deg, rgba(18,18,22,0.98) 0%, rgba(13,13,17,0.99) 100%);
         box-shadow: 0 18px 42px rgba(0,0,0,0.22);
@@ -325,12 +335,16 @@
         pointer-events: none;
       }
       .section-tight .section-head { margin-bottom: 20px; }
-      footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 30px 0 22px; background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.005)); position: relative; }
+      #p-title, #s-title, #u-title, #cta-title {
+        white-space: nowrap;
+        max-width: none !important;
+      }
+      footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 36px 0 24px; background: linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.005)); position: relative; }
       footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, rgba(251,191,36,0), rgba(251,191,36,0.16), rgba(251,191,36,0)); }
-      .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 16px; align-items: start; }
+      .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 18px; align-items: start; }
       .footer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--text-muted); }
-      .footer-links { display: grid; gap: 8px; margin-top: 12px; }
-      .footer-links a { color: var(--text-soft); font-size: 14px; transition: color .18s ease, transform .18s ease; }
+      .footer-links { display: grid; gap: 10px; margin-top: 14px; }
+      .footer-links a { color: var(--text-soft); font-size: 14px; line-height: 1.7; transition: color .18s ease, transform .18s ease; }
       .footer-links a:hover { color: var(--text); transform: translateX(2px); }
       .copyright { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.06); color: var(--text-muted); font-size: 12px; }
       .lang-switch { color: var(--text-muted); font-size: 12px; letter-spacing: 0.02em; }
@@ -499,11 +513,11 @@
         </a>
 
         <nav class="nav-links">
-          <a href="#philosophy" data-i18n="nav.philosophy">核心理念</a>
+          <a href="#manifesto" data-i18n="nav.product">产品介绍</a>
+          <a href="#safety" data-i18n="nav.advantages">核心优势</a>
           <a href="#use-cases" data-i18n="nav.useCases">落地场景</a>
-          <a href="#architecture" data-i18n="nav.architecture">架构优势</a>
-          <a href="#quickstart" data-i18n="nav.docs">使用文档</a>
-          <a href="#developers" data-i18n="nav.developers">开发者</a>
+          <a href="#download" data-i18n="nav.download">下载</a>
+          <a href="#quickstart" data-i18n="nav.docs">使用说明</a>
         </nav>
 
         <div class="nav-actions">
@@ -525,50 +539,51 @@
             <div class="eyebrow">🚀 AgentCore OS（智枢 OS）V1.0</div>
 
             <div id="lang-zh" class="lang-block active">
-              <h1>让 AI 真正成为每个人和团队的生产力系统</h1>
-              <p class="hero-subtitle">不是再做一个聊天界面，而是让更多人以更低门槛拥有安全、数据私有、真正能干活、并且能持续沉淀业务资产的本地 AI 生产力底座。</p>
+              <h1>让 AI 从聊天工具，变成真正能出活的数字员工系统</h1>
+              <p class="hero-subtitle">AgentCore OS（智枢 OS）是一套本地优先的 AI 企业工作桌面。你不需要理解工作流、节点或 API，只需要像老板一样下达任务，让销售部、财务部、技术部、IT 部门这些数字员工开始干活。</p>
               <div class="hero-cta">
-                <a class="btn btn-primary" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">查看源码仓库</a>
-                <a class="btn btn-secondary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg">Mac 下载</a>
-                <a class="btn btn-ghost" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe">Windows 下载</a>
+                <a class="btn btn-primary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg">立即下载 Mac 版</a>
+                <a class="btn btn-secondary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe">下载 Windows 版</a>
+                <a class="btn btn-ghost" href="docs/index.html">查看使用说明</a>
               </div>
             </div>
 
             <div id="lang-en" class="lang-block">
-              <h1>Turn AI into a real productivity system for every individual and team.</h1>
-              <p class="hero-subtitle">Not another chat interface, but a lower-friction, privacy-first local AI foundation that can do real work and continuously accumulate operational assets.</p>
+              <h1>Turn AI from a chat tool into a digital workforce system that delivers real work.</h1>
+              <p class="hero-subtitle">AgentCore OS is a local-first AI business workspace. You do not need to understand workflows, nodes, or APIs. You simply assign work like a business owner, and digital employees across sales, finance, engineering, and IT start executing.</p>
               <div class="hero-cta">
-                <a class="btn btn-primary" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">View Source Repository</a>
-                <a class="btn btn-secondary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg">Mac Download</a>
-                <a class="btn btn-ghost" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe">Windows Download</a>
+                <a class="btn btn-primary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg">Download for Mac</a>
+                <a class="btn btn-secondary" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe">Download for Windows</a>
+                <a class="btn btn-ghost" href="docs/index.html">View Docs</a>
               </div>
             </div>
 
             <div class="chips">
-              <span class="chip">Local-First</span>
-              <span class="chip">Human-in-the-loop</span>
-              <span class="chip">Apache 2.0</span>
-              <span class="chip">BYOK</span>
-              <span class="chip">Tauri Desktop</span>
+              <span class="chip" id="chip-1">本地优先</span>
+              <span class="chip" id="chip-2">数据可控</span>
+              <span class="chip" id="chip-3">私有模型可接入</span>
+              <span class="chip" id="chip-4">数字员工协作</span>
+              <span class="chip" id="chip-5">人工审批边界</span>
+              <span class="chip" id="chip-6">可持续沉淀企业资产</span>
             </div>
           </div>
 
           <div class="hero-copy-panel">
             <div class="section-kicker" style="margin-bottom:10px;">Product Thesis</div>
-            <h3 id="hero-side-title">这不是又一个 Chat 客户端。</h3>
-            <p id="hero-side-body">它不是陪你闲聊，而是让 AI 在本地进入真实业务流，在关键节点停下来等你拍板。</p>
+            <h3 id="hero-side-title">这不是又一个 AI 聊天窗口</h3>
+            <p id="hero-side-body">它的目标不是陪你聊天，而是让 AI 真正进入你的业务流程，像一个部门、一个员工、一套企业职能那样稳定工作。</p>
             <div class="hero-points">
               <div class="hero-point">
-                <strong id="hp1-title">100% 数据不出域</strong>
-                <span id="hp1-body">运行大脑和资产数据库驻留本地设备，没有偷偷上传的遥测数据。</span>
+                <strong id="hp1-title">数据留在自己手里</strong>
+                <span id="hp1-body">支持本地、局域网和私有模型部署，适合工厂、外贸、政务、医疗等高敏感场景。</span>
               </div>
               <div class="hero-point">
-                <strong id="hp2-title">琥珀色终极防火墙</strong>
-                <span id="hp2-body">涉及改文件、发邮件等敏感操作时，系统会悬停等待你的物理授权。</span>
+                <strong id="hp2-title">关键动作必须你拍板</strong>
+                <span id="hp2-body">发邮件、改文件、推进外部动作前，系统会停在人工确认边界。</span>
               </div>
               <div class="hero-point">
-                <strong id="hp3-title">让 AI 真正下地干活</strong>
-                <span id="hp3-body">把模型能力沉淀为流程资产，而不是停留在一次性对话里。</span>
+                <strong id="hp3-title">结果会沉淀，不是一次性对话</strong>
+                <span id="hp3-body">报价单、图纸结论、客户跟进、财务核对、开发说明，都会沉淀成企业资产。</span>
               </div>
             </div>
           </div>
@@ -577,21 +592,22 @@
 
       <section class="trustbar">
         <div class="container trust-items">
-          <span>100% Local-First</span>
-          <span>BYOK Model Access</span>
-          <span>Human-in-the-loop Approval</span>
-          <span>Apache 2.0 Open Source</span>
-          <span>Tauri Edge Architecture</span>
-          <span>macOS / Windows</span>
+          <span id="trust-1">本地优先</span>
+          <span id="trust-2">支持 Ollama / vLLM / 私有模型</span>
+          <span id="trust-3">多部门协作</span>
+          <span id="trust-4">Human-in-the-loop</span>
+          <span id="trust-5">Tauri 桌面壳</span>
+          <span id="trust-6">Apache 2.0</span>
+          <span id="trust-7">Mac / Windows</span>
         </div>
       </section>
 
       <section class="section" id="manifesto">
         <div class="container">
           <div class="manifesto">
-            <h2 class="manifesto-title" id="m-title">AgentCore OS（智枢 OS）V1.0 正式开源</h2>
-            <p class="manifesto-lead" id="m-lead">今天，我们正式开源 AgentCore OS（智枢 OS）V1.0。这不是又一个套壳的聊天工具，而是一个面向真实业务流转的本地化 AI 操作系统。</p>
-            <div class="quote-line" id="m-quote">打破云端算力垄断，让“超级数字员工”回归每一个人的桌面。</div>
+            <h2 class="manifesto-title" id="m-title">AgentCore OS V1.0：让 AI 真正进入企业工作，而不是停留在对话框里</h2>
+            <p class="manifesto-lead" id="m-lead">AgentCore OS（智枢 OS）已经从“工作流工具集合”升级为“数字员工工作桌面”。它不是再造一个聊天界面，也不是只给极客使用的实验平台，而是把 AI 包装成老板能理解、团队能使用、业务能落地的企业操作系统。</p>
+            <div class="quote-line" id="m-quote">让 AI 像员工一样出活，让企业像使用团队一样使用 AI。</div>
           </div>
         </div>
       </section>
@@ -600,55 +616,55 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Vision</div>
-            <h2 id="p-title">我们的愿景：让 AI 生产力真正普及</h2>
-            <p id="p-sub">无论你是企业老板，普通创客、电脑小白、还是管理复杂链条的业务负责人，都能以极低门槛拥有一个绝对安全、数据私有、且能自动流转业务链条的生产力底座。</p>
+            <h2 id="p-title">我们的目标，不是教用户学 AI，而是让 AI 学会干活</h2>
+            <p id="p-sub">我们希望把复杂的工作流、模型接入、任务编排和审批边界，全部藏到系统背后，让用户以最贴近业务的方式使用 AI。</p>
           </div>
           <div class="grid-3">
             <article class="card">
               <span class="mini">For More People</span>
-              <h3 id="p1-title">让普通人也能真正用起来</h3>
-              <p id="p1-body">不是只有懂技术的人才能上手。我们希望让更多普通用户也能拥有自动化能力、本地知识能力和流程编排能力。</p>
+              <h3 id="p1-title">老板能直接用</h3>
+              <p id="p1-body">不再要求用户理解工作流、节点、模型参数和 API。用户只需要点部门、派任务、看结果。</p>
             </article>
             <article class="card">
               <span class="mini">For Real Work</span>
-              <h3 id="p2-title">让业务团队更快把事做成</h3>
-              <p id="p2-body">让业务团队不必长期等待开发排期，而是能更快搭建可执行、可复用、可审计的工作流，把想法真正落到业务里。</p>
+              <h3 id="p2-title">业务能真正落地</h3>
+              <p id="p2-body">从客户询盘、图纸处理、财务核对到开发需求，系统围绕真实业务而不是演示场景设计。</p>
             </article>
             <article class="card">
               <span class="mini">For Long-Term Value</span>
-              <h3 id="p3-title">让 AI 能力沉淀成长期资产</h3>
-              <p id="p3-body">把零散对话逐步沉淀为结构化知识、自动脚本、业务节点和长期可积累的流程资产，而不是一次性消耗掉。</p>
+              <h3 id="p3-title">资产能持续沉淀</h3>
+              <p id="p3-body">每一次任务执行都能沉淀成企业自己的知识、模板、记录和操作资产，而不是一次性对话。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="safety">
         <div class="container">
           <div class="section-head">
-            <div class="section-kicker">Security</div>
-            <h2 id="s-title">极致安全：最让人安心的本地防线</h2>
-            <p id="s-sub">安全不是一个口号，而是整个系统设计的出发点。</p>
+            <div class="section-kicker">Safety & Control</div>
+            <h2 id="s-title">真正适合企业落地的，不是最会聊天的 AI，而是最可控的 AI</h2>
+            <p id="s-sub">安全、边界、私有化能力，决定了它能不能进入真实业务。</p>
           </div>
           <div class="split-grid">
             <div class="list">
               <div class="list-item">
-                <strong id="s1-title">100% 数据不出域</strong>
-                <span id="s1-body">系统的运行大脑和资产数据库全部驻留在你的本地设备上。核心客户名单、报价、项目文档尽可能只留在你自己的硬盘里。</span>
+                <strong id="s1-title">数据不出域</strong>
+                <span id="s1-body">支持本地模型、局域网模型和企业私有网关，敏感数据不必发送到公网。</span>
               </div>
               <div class="list-item">
-                <strong id="s2-title">纯粹的 BYOK（自带密钥）</strong>
-                <span id="s2-body">可接入 GPT、Claude、GLM、通义千问、Kimi、DeepSeek 等国内外模型，实现真正的算力自由与模型可替换性。</span>
+                <strong id="s2-title">模型自由接入</strong>
+                <span id="s2-body">可接 OpenAI、Kimi、DeepSeek、Qwen，也可接 Ollama、vLLM 和私有部署模型。</span>
               </div>
             </div>
             <div class="list">
               <div class="list-item">
-                <strong id="s3-title">“琥珀色”终极防火墙</strong>
-                <span id="s3-body">凡涉及修改本地文件、发送对外邮件等敏感动作，系统都会悬停等待。没有你的授权，AI 不会越界执行。</span>
+                <strong id="s3-title">关键动作有人审批</strong>
+                <span id="s3-body">涉及对外发送、重要修改、正式交付等动作时，保留人工确认。</span>
               </div>
               <div class="list-item">
-                <strong id="s4-title">Human-in-the-loop 是默认机制</strong>
-                <span id="s4-body">关键节点永远保留人工确认，效率和控制权不再是二选一。</span>
+                <strong id="s4-title">默认保留企业控制权</strong>
+                <span id="s4-body">AI 可以提高效率，但最终控制权始终留在人手里。</span>
               </div>
             </div>
           </div>
@@ -659,55 +675,55 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Use Cases</div>
-            <h2 id="u-title">真实落地：经过实战检验的成熟场景</h2>
-            <p id="u-sub">AgentCore OS 不是概念演示，而是面向真实业务的执行底座。</p>
+            <h2 id="u-title">它不是一个万能 AI，而是一套可落地的数字员工团队</h2>
+            <p id="u-sub">每个场景都围绕真实部门职责展开，而不是只做演示型对话。</p>
           </div>
           <div class="usecase-list">
             <article class="usecase">
               <h3 id="u1-title">🤝 销售与外贸</h3>
-              <p class="label" id="u1-short">自动监控跨国询盘，瞬间完成背调。</p>
-              <p id="u1-body">结合本地门窗等产品规格库与历史报价单，自动生成多语种跟进邮件、客户背景摘要与下一步动作建议。真正发送之前，由你确认最后一步。</p>
+              <p class="label" id="u1-short">自动整理海外询盘、深挖客户背景、匹配产品资料、生成多语种跟进邮件，并在发送前等待老板确认。</p>
+              <p id="u1-body">围绕真实外贸流程，把客户背调、跟进邮件、报价联动和回款跟踪串成完整链路。</p>
               <div class="tag-row">
                 <span class="tag" id="u1-t1">客户背调</span>
-                <span class="tag" id="u1-t2">多语种邮件</span>
-                <span class="tag" id="u1-t3">报价资料联动</span>
-                <span class="tag" id="u1-t4">发前确认</span>
+                <span class="tag" id="u1-t2">跟进邮件</span>
+                <span class="tag" id="u1-t3">报价联动</span>
+                <span class="tag" id="u1-t4">回款跟踪</span>
               </div>
             </article>
 
             <article class="usecase">
-              <h3 id="u2-title">💻 普通人与创客</h3>
-              <p class="label" id="u2-short">用大白话描述想法，本地编程 Agent 开始干活。</p>
-              <p id="u2-body">底层编程 Agent 可在本地编写代码、调试查错、生成自动化脚本和可运行工具，帮助更多人跨过技术门槛。</p>
+              <h3 id="u2-title">💼 财务与审计部</h3>
+              <p class="label" id="u2-short">归集单据、水单、回款记录和发票，完成核对、审计提醒、毛利复盘和财务简报输出。</p>
+              <p id="u2-body">把散落在不同渠道里的财务材料统一汇总，再做结构化核对与复盘输出。</p>
               <div class="tag-row">
-                <span class="tag" id="u2-t1">自然语言开发</span>
-                <span class="tag" id="u2-t2">自动调试</span>
-                <span class="tag" id="u2-t3">脚本生成</span>
-                <span class="tag" id="u2-t4">本地执行</span>
+                <span class="tag" id="u2-t1">单据核对</span>
+                <span class="tag" id="u2-t2">审计清单</span>
+                <span class="tag" id="u2-t3">毛利复盘</span>
+                <span class="tag" id="u2-t4">财务简报</span>
               </div>
             </article>
 
             <article class="usecase">
-              <h3 id="u3-title">🏭 工业与车间</h3>
-              <p class="label" id="u3-short">打通生产计划、采购单与交期预警。</p>
-              <p id="u3-body">系统可追踪供应链异常、识别延期风险，并把工业设备图纸和复杂说明书转化成互动式排障指南与现场问答支持。</p>
+              <h3 id="u3-title">🛠 技术与生产支持部</h3>
+              <p class="label" id="u3-short">看图纸、挑图纸、整理制图要求，把复杂图纸和零散要求转成可执行的后续任务。</p>
+              <p id="u3-body">让技术支持和生产支持从“看文件”进入“生成任务、衔接生产、输出要求”的阶段。</p>
               <div class="tag-row">
-                <span class="tag" id="u3-t1">交期追踪</span>
-                <span class="tag" id="u3-t2">供应链预警</span>
-                <span class="tag" id="u3-t3">图纸转说明</span>
-                <span class="tag" id="u3-t4">现场排障</span>
+                <span class="tag" id="u3-t1">审图选图</span>
+                <span class="tag" id="u3-t2">制图要求</span>
+                <span class="tag" id="u3-t3">图纸整理</span>
+                <span class="tag" id="u3-t4">生产衔接</span>
               </div>
             </article>
 
             <article class="usecase">
-              <h3 id="u4-title">🚀 运营与增长</h3>
-              <p class="label" id="u4-short">监控竞品动态，提炼选题，裂变内容矩阵。</p>
-              <p id="u4-body">自动抓取痛点、提炼洞察、生成多平台、多语种 SEO 内容和增长素材，把临时灵感沉淀成可持续运转的内容引擎。</p>
+              <h3 id="u4-title">💻 IT 与研发部</h3>
+              <p class="label" id="u4-short">把网站、App、脚本和系统需求拆清楚，形成开发说明、范围清单和交付计划。</p>
+              <p id="u4-body">把开发需求说清楚、拆清楚、交付清楚，而不是停留在口头想法。</p>
               <div class="tag-row">
-                <span class="tag" id="u4-t1">竞品监控</span>
-                <span class="tag" id="u4-t2">选题提炼</span>
-                <span class="tag" id="u4-t3">SEO 内容矩阵</span>
-                <span class="tag" id="u4-t4">多平台分发</span>
+                <span class="tag" id="u4-t1">网站开发</span>
+                <span class="tag" id="u4-t2">App 开发</span>
+                <span class="tag" id="u4-t3">脚本自动化</span>
+                <span class="tag" id="u4-t4">开发交付</span>
               </div>
             </article>
           </div>
@@ -718,8 +734,8 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Architecture</div>
-            <h2 id="a-title">工业级架构，小白级体验</h2>
-            <p id="a-sub">底层架构足够强，表面体验足够轻。</p>
+            <h2 id="a-title">底层够硬，表面够简单</h2>
+            <p id="a-sub">桌面体验、部门交互和运行时守护一起构成真正可落地的数字员工系统。</p>
           </div>
           <div class="grid-3">
             <article class="card">
@@ -745,29 +761,29 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Downloads</div>
-            <h2 id="download-title">下载与国内访问入口</h2>
-            <p id="download-sub">这个 ECS 站点主要面向国内用户，所以把最常用的入口前置：优先提供安装包、国内仓库、文档中心和线上访问地址，减少跳到外部站点后的访问阻力。当前公开版本为 <strong>0.2.0-beta.2</strong>：Mac 提供 Apple Silicon（aarch64）.dmg，Windows 提供 x64 .exe 安装包。</p>
+            <h2 id="download-title">下载与使用入口</h2>
+            <p id="download-sub">当前公开版本为 <strong>0.2.0-beta.2</strong>。适合先体验桌面壳、部门工作台和行业蓝图入口。</p>
           </div>
           <div class="quickstart-grid">
             <div class="card">
               <span class="mini">macOS · Apple Silicon</span>
-              <h3 id="download-mac-title">Mac 下载与源码获取</h3>
-              <p class="quickstart-intro" id="download-mac-intro">推荐 Mac 用户直接下载正式安装包；如需查看源码、提交记录和文档路径，也可以从国内仓库入口继续深入。</p>
+              <h3 id="download-mac-title">Mac 下载与源码入口</h3>
+              <p class="quickstart-intro" id="download-mac-intro">Mac 用户可直接下载 Apple Silicon 安装包，也可以从国内仓库查看源码和文档。</p>
               <div class="doc-links compact">
                 <a class="doc-link" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg" target="_blank" rel="noreferrer">
                   <strong id="download-mac">Mac 下载</strong>
                   <span id="download-mac-note">版本 0.2.0-beta.2 · Apple Silicon（aarch64）· .dmg 安装包。</span>
                 </a>
                 <a class="doc-link" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">
-                  <strong id="download-mirror">国内开源站仓库</strong>
-                  <span id="download-mirror-note">访问 CNB.cool：查看项目、代码、提交与说明。</span>
+                  <strong id="download-mirror">国内仓库</strong>
+                  <span id="download-mirror-note">查看源码、提交记录与文档入口。</span>
                 </a>
               </div>
             </div>
             <div class="card">
               <span class="mini">Windows · x64</span>
               <h3 id="download-win-title">Windows 下载与文档入口</h3>
-              <p class="quickstart-intro" id="download-win-intro">Windows 用户可直接下载 x64 安装包；如果你想先了解安装方式、典型工作流和 FAQ，也可以先进入文档中心。</p>
+              <p class="quickstart-intro" id="download-win-intro">Windows 用户可直接下载 x64 安装包；如果你想先看完整说明，建议先进入文档中心。</p>
               <div class="doc-links compact">
                 <a class="doc-link" href="http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe" target="_blank" rel="noreferrer">
                   <strong id="download-win">Windows 下载</strong>
@@ -787,42 +803,42 @@
         <div class="container">
           <div class="section-head">
             <div class="section-kicker">Docs</div>
-            <h2 id="quickstart-title">使用文档</h2>
-            <p id="quickstart-sub">把“如何开始使用 AgentCore OS”放在落地场景和架构之后：先理解它解决什么问题、底层怎么构成，再进入真正可点击、可继续阅读的文档入口。</p>
+            <h2 id="quickstart-title">使用说明</h2>
+            <p id="quickstart-sub">不再只是讲概念，而是告诉你如何真正把系统跑起来、配起来、用起来。</p>
           </div>
           <div class="quickstart-grid">
             <div class="card">
               <span class="mini">Getting Started</span>
-              <h3 id="quickstart-card-title">如何开始使用 AgentCore OS</h3>
-              <p class="quickstart-intro" id="quickstart-card-intro">先从最关键的真实入口开始：仓库、README、文档中心和线上预览，而不是空的下载按钮。</p>
+              <h3 id="quickstart-card-title">第一次使用怎么开始</h3>
+              <p class="quickstart-intro" id="quickstart-card-intro">先启动桌面，再选择行业蓝图，接着配置模型，最后直接点部门下达任务。</p>
               <div class="doc-links compact">
                 <a class="doc-link" href="docs/index.html">
                   <strong id="quickstart-docs">Docs 文档中心</strong>
                   <span id="quickstart-docs-note">统一查看全部文档入口。</span>
                 </a>
                 <a class="doc-link" href="docs/getting-started.html">
-                  <strong id="quickstart-getting-started">快速开始文档</strong>
-                  <span id="quickstart-getting-started-note">按顺序进入当前公开版本。</span>
+                  <strong id="quickstart-getting-started">快速开始</strong>
+                  <span id="quickstart-getting-started-note">先从启动桌面和选择蓝图开始。</span>
                 </a>
                 <a class="doc-link" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">
-                  <strong id="quickstart-mirror">国内开源站仓库</strong>
+                  <strong id="quickstart-mirror">国内仓库</strong>
                   <span id="quickstart-mirror-note">查看源码、目录与提交记录。</span>
                 </a>
                 <a class="doc-link" href="https://cnb.cool/aidiyangyu/agentcore-os/blob/main/README.md" target="_blank" rel="noreferrer">
                   <strong id="quickstart-readme">README</strong>
-                  <span id="quickstart-readme-note">查看项目说明与本地预览方式。</span>
+                  <span id="quickstart-readme-note">查看项目整体说明。</span>
                 </a>
               </div>
               <div class="fold">
                 <button class="fold-toggle" type="button" aria-expanded="false" aria-controls="quickstart-fold-body" id="quickstart-more-toggle">
-                  <span class="fold-label" id="quickstart-more">更多入口与说明</span>
+                  <span class="fold-label" id="quickstart-more">更多入口</span>
                   <span class="fold-indicator" id="quickstart-more-indicator">展开</span>
                 </button>
                 <div class="fold-body" id="quickstart-fold-body" hidden>
                   <div class="doc-links">
                     <a class="doc-link" href="http://59.110.93.188" target="_blank" rel="noreferrer">
-                      <strong id="quickstart-live">线上预览地址</strong>
-                      <span id="quickstart-live-note">直接查看 ECS 当前发布效果。</span>
+                      <strong id="quickstart-live">国内仓库</strong>
+                      <span id="quickstart-live-note">返回源码与文档源头。</span>
                     </a>
                   </div>
                   <p class="meta-note">当前站点仍然以静态官网与文档为主，所以下载入口会优先指向国内仓库源码包与真实文档路径。</p>
@@ -831,45 +847,45 @@
             </div>
             <div class="card">
               <span class="mini">Usage Guide</span>
-              <h3 id="usage-card-title">按角色阅读，不再只看口号</h3>
-              <p class="quickstart-intro" id="usage-card-intro">首页只保留角色导向和文档入口，细节说明交给 docs 页面，避免这一屏信息过载。</p>
+              <h3 id="usage-card-title">按角色理解，不按术语理解</h3>
+              <p class="quickstart-intro" id="usage-card-intro">不再只是讲概念，而是告诉你如何真正把系统跑起来、配起来、用起来。</p>
               <div class="check-list">
-                <div class="check-item"><strong id="usage-role-1">创客 / 独立开发者：</strong><span id="usage-role-1-note">先看场景与架构，再进入使用说明与工作流。</span></div>
-                <div class="check-item"><strong id="usage-role-2">业务负责人：</strong><span id="usage-role-2-note">重点看本地优先、人工审批与可控边界，再评估是否适合团队。</span></div>
-                <div class="check-item"><strong id="usage-role-3">集成者：</strong><span id="usage-role-3-note">从协议、仓库和架构入手，再进入安装部署与 FAQ。</span></div>
+                <div class="check-item"><strong id="usage-role-1">企业老板：</strong><span id="usage-role-1-note">先看行业蓝图、部门入口和企业定制。</span></div>
+                <div class="check-item"><strong id="usage-role-2">业务负责人：</strong><span id="usage-role-2-note">先看部门协作、审批边界和资产沉淀。</span></div>
+                <div class="check-item"><strong id="usage-role-3">开发与集成者：</strong><span id="usage-role-3-note">先看架构、配置、部署和接口能力。</span></div>
               </div>
               <div class="doc-links compact">
                 <a class="doc-link" href="docs/usage-notes.html">
                   <strong id="usage-notes-link">使用说明</strong>
-                  <span id="usage-notes-link-note">更完整的阅读路径。</span>
+                  <span id="usage-notes-link-note">先看整体使用说明。</span>
                 </a>
                 <a class="doc-link" href="docs/install-deploy.html">
                   <strong id="usage-install-link">安装部署</strong>
-                  <span id="usage-install-link-note">本地预览与 Pages 发布。</span>
+                  <span id="usage-install-link-note">进入安装与部署路径。</span>
                 </a>
                 <a class="doc-link" href="docs/workflows.html">
                   <strong id="usage-workflows-link">典型工作流</strong>
-                  <span id="usage-workflows-link-note">查看审批流、自动化流与协同流。</span>
+                  <span id="usage-workflows-link-note">查看典型工作流。</span>
                 </a>
                 <a class="doc-link" href="docs/faq.html">
                   <strong id="usage-faq-link">FAQ</strong>
-                  <span id="usage-faq-link-note">先把常见疑问说清楚。</span>
+                  <span id="usage-faq-link-note">快速查看常见问题。</span>
                 </a>
               </div>
               <div class="fold">
                 <button class="fold-toggle" type="button" aria-expanded="false" aria-controls="usage-fold-body" id="usage-more-toggle">
-                  <span class="fold-label" id="usage-more">展开更多跳转</span>
+                  <span class="fold-label" id="usage-more">展开更多链接</span>
                   <span class="fold-indicator" id="usage-more-indicator">展开</span>
                 </button>
                 <div class="fold-body" id="usage-fold-body" hidden>
                   <div class="doc-links">
                     <a class="doc-link" href="#use-cases">
                       <strong id="usage-back-cases">返回落地场景</strong>
-                      <span id="usage-back-cases-note">重新对照 Use Cases，看文档和场景之间如何对应。</span>
+                      <span id="usage-back-cases-note">重新对照场景与文档入口。</span>
                     </a>
                     <a class="doc-link" href="#architecture">
                       <strong id="usage-back-arch">回看产品架构</strong>
-                      <span id="usage-back-arch-note">继续看本地优先、边车、审批与可控自动化的设计思路。</span>
+                      <span id="usage-back-arch-note">继续看架构、部署与接口能力。</span>
                     </a>
                   </div>
                 </div>
@@ -883,13 +899,13 @@
         <div class="container split-grid">
           <div class="card">
             <span class="mini">Open Source</span>
-            <h3 id="d1-title">Apache 2.0 开源与 Open Core 商业愿景</h3>
-            <p id="d1-body">AgentCore OS 基于 Apache 2.0 协议 100% 开源。我们欢迎个人与团队免费使用、修改并集成到商业产品中，让算力回归本地，让 AI 真正下地干活。</p>
+            <h3 id="d1-title">Apache 2.0 开源</h3>
+            <p id="d1-body">适合个人、团队和企业在此基础上继续扩展自己的数字员工系统。</p>
           </div>
           <div class="card">
             <span class="mini">Developer Ready</span>
-            <h3 id="d2-title">为开发者和集成者准备</h3>
-            <p id="d2-body">它既可以作为个人桌面 AI 操作系统使用，也可以作为企业内部工具、自动化引擎和专属数字员工平台的基础层。</p>
+            <h3 id="d2-title">可作为企业基础层</h3>
+            <p id="d2-body">既可以作为本地 AI 桌面使用，也可以作为企业内部数字员工平台的前台和编排层。</p>
           </div>
         </div>
       </section>
@@ -897,9 +913,9 @@
       <section class="section" id="bottom-cta">
         <div class="container">
           <div class="cta-box">
-            <h2 id="cta-title" style="position:relative;z-index:1;max-width:10.5em;">让算力回归本地，让 AI 从聊天工具变成生产力系统。</h2>
-            <p id="cta-body" style="max-width:720px;color:var(--text-soft);margin-top:16px;position:relative;z-index:1;">如果你要的不是“聊两句”，而是一个能沉淀资产、守住边界、接管流程的本地 AI 生产力底座，那么 AgentCore OS 已经准备好了。</p>
-            <p id="cta-note" style="margin-top:16px;color:var(--text-muted);font-size:14px;">AgentCore OS（智枢 OS）V1.0 · Local-First · Human-in-the-loop · Apache 2.0</p>
+            <h2 id="cta-title" style="position:relative;z-index:1;max-width:10.5em;">让 AI 进入公司，像员工一样工作</h2>
+            <p id="cta-body" style="max-width:720px;color:var(--text-soft);margin-top:16px;position:relative;z-index:1;">如果你要的不是“再多一个聊天工具”，而是一套能下地干活、能守住边界、能沉淀企业资产的本地 AI 工作系统，那么 AgentCore OS 已经进入可体验阶段。</p>
+            <p id="cta-note" style="margin-top:16px;color:var(--text-muted);font-size:14px;">企业定制咨询：+86 156 8888 2042</p>
           </div>
         </div>
       </section>
@@ -911,9 +927,9 @@
           <div>
             <div class="footer-title">AgentCore OS</div>
             <div class="footer-links">
-              <a href="#top">Local-First AI Productivity OS</a>
-              <a href="#manifesto">让算力回归本地，让 AI 真正下地干活</a>
-              <a href="#quickstart">Private by default. Useful by design.</a>
+              <a href="#top" id="brand-l1">数字员工工作桌面</a>
+              <a href="#manifesto" id="brand-l2">让 AI 像员工一样出活</a>
+              <a href="#quickstart" id="brand-l3">让系统真正跑起来</a>
             </div>
           </div>
           <div>
@@ -922,22 +938,22 @@
               <a href="#philosophy" id="f1-l1">核心理念</a>
               <a href="#use-cases" id="f1-l2">落地场景</a>
               <a href="#architecture" id="f1-l3">架构优势</a>
-              <a href="#developers" id="f1-l4">开发者</a>
+              <a href="#download" id="f1-l4">下载</a>
             </div>
           </div>
           <div>
             <div class="footer-title" id="f2-title">资源</div>
             <div class="footer-links">
               <a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="f2-l1">国内开源站</a>
-              <a href="#manifesto" id="f2-l2">开源宣言</a>
-              <a href="#quickstart" id="f2-l3">快速开始</a>
+              <a href="docs/usage-notes.html" id="f2-l2">使用说明</a>
+              <a href="docs/index.html" id="f2-l3">Docs 文档中心</a>
             </div>
           </div>
           <div>
-            <div class="footer-title" id="f3-title">许可</div>
+            <div class="footer-title" id="f3-title">联系</div>
             <div class="footer-links">
-              <a href="https://cnb.cool/aidiyangyu/agentcore-os/blob/main/LICENSE" target="_blank" rel="noreferrer" id="f3-l1">Apache 2.0</a>
-              <a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="f3-l2">CNB.cool</a>
+              <a href="#bottom-cta" id="f3-l1">企业定制咨询</a>
+              <a href="tel:+8615688882042" id="f3-l2">+86 156 8888 2042</a>
               <a href="#top" id="f3-l3">Back to Top</a>
             </div>
           </div>
@@ -992,95 +1008,98 @@
       }
 
       const en = {
-        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDocs: 'Docs', navDevelopers: 'Developers', navChinaMirror: 'China Mirror', navDownload: 'Download', navQuickstart: 'Quick Start',
-        heroTitle: 'A Local-First AI Productivity Foundation for Every Individual and Team.',
-        heroSub: 'AgentCore OS is not meant to be just another chat interface. It is built to give more people a lower-friction, secure, privacy-first local AI foundation that can do real work and continuously accumulate operational assets.',
-        heroBtn1: 'View the GitHub Repository', heroBtn2: 'How to Start',
-        heroSideTitle: 'This is not another chat client.',
-        heroSideBody: 'AgentCore OS is a Tauri-based local AI operating system designed for real operational flow. Its purpose is not to keep you talking, but to let AI participate in real work while waiting at key approval boundaries.',
-        hp1Title: '100% Data Stays Local', hp1Body: 'The execution brain and asset database remain on your own device, without hidden telemetry uploads.',
-        hp2Title: 'The Amber Firewall', hp2Body: 'Before editing files or sending emails, the system pauses for your physical approval.',
-        hp3Title: 'Make AI Actually Work', hp3Body: 'Turn model capability into reusable workflow assets instead of one-off conversations.',
-        mTitle: 'AgentCore OS V1.0 Is Now Open Source',
-        mLead: 'Today we are officially open-sourcing AgentCore OS V1.0 — not another wrapper around chat, but a local AI operating system designed for real operational workflows.',
-        mQuote: 'Break the cloud compute monopoly and bring the super digital worker back to every desktop.',
-        pTitle: 'Our Vision: Make AI Productivity Accessible to More People',
-        pSub: 'Whether you are a business owner, an independent creator, a complete computer beginner, or an operator managing complex chains, you should be able to own a secure, private, and low-friction productivity foundation.',
-        p1Title: 'Make It Usable for Ordinary People', p1Body: 'This should not be limited to technical users. More everyday people should be able to access automation, local knowledge, and workflow orchestration without unnecessary friction.',
-        p2Title: 'Help Teams Turn Ideas into Execution Faster', p2Body: 'Business teams should not have to wait through long development cycles before they can build executable, reusable, and auditable workflows.',
-        p3Title: 'Turn AI Capability into Long-Term Assets', p3Body: 'Gradually convert scattered conversations into structured knowledge, scripts, business steps, and long-term operational assets instead of consuming everything in one-off chats.',
-        sTitle: 'Extreme Security: A Local Line of Defense You Can Trust', sSub: 'Security is not a slogan here. It is the default design principle.',
-        s1Title: '100% Data Stays Inside Your Boundary', s1Body: 'The execution engine and asset database stay on your own machine. Customer lists, pricing, and project materials remain as local as possible.',
-        s2Title: 'Pure BYOK', s2Body: 'Connect GPT, Claude, GLM, Qwen, Kimi, DeepSeek, and other domestic or international models with real model freedom and swapability.',
-        s3Title: 'The Amber Final Firewall', s3Body: 'When the system is about to modify files or send outbound communication, it pauses. Without your approval, it does not cross the line.',
-        s4Title: 'Human-in-the-loop by Default', s4Body: 'Critical steps always preserve manual approval. Efficiency and control no longer have to compete.',
-        uTitle: 'Real Deployment: Proven Scenarios from Practical Use', uSub: 'AgentCore OS is not a concept demo. It is an execution foundation for real work.',
-        u1Title: '🤝 Sales and Global Trade', u1Short: 'Monitor inbound cross-border leads and complete account research instantly.', u1Body: 'Use local product specifications and historical pricing files to generate multilingual follow-up emails, account summaries, and next-step suggestions — with final approval still in your hands.', u1t1: 'Lead Research', u1t2: 'Multilingual Email', u1t3: 'Pricing Context', u1t4: 'Approval Before Send',
-        u2Title: '💻 Everyday Builders and Makers', u2Short: 'Describe an idea in plain language, and let the local coding agent work.', u2Body: 'A local coding agent can write code, debug issues, generate scripts, and package working tools so more people can cross the technical threshold.', u2t1: 'Natural Language Dev', u2t2: 'Auto Debugging', u2t3: 'Script Generation', u2t4: 'Local Execution',
-        u3Title: '🏭 Industry and Shop Floors', u3Short: 'Connect planning, procurement, and delivery alerts.', u3Body: 'Track supply chain exceptions, detect delays, and turn equipment drawings and long manuals into interactive troubleshooting guidance for frontline workers.', u3t1: 'Delivery Tracking', u3t2: 'Supply Alerts', u3t3: 'Drawing to Guidance', u3t4: 'Shop-Floor Troubleshooting',
-        u4Title: '🚀 Operations and Growth', u4Short: 'Monitor competitors, extract topics, and build multilingual SEO content engines.', u4Body: 'Automatically identify pain points, generate insights, and turn temporary growth ideas into repeatable content systems across platforms and languages.', u4t1: 'Competitor Monitoring', u4t2: 'Topic Extraction', u4t3: 'SEO Content Engine', u4t4: 'Cross-Platform Distribution',
-        aTitle: 'Industrial Architecture, Beginner-Friendly Experience', aSub: 'Strong underneath, light on the surface.',
-        a1Title: 'Ready to Run', a1Body: 'Skip Docker complexity and command-line friction. Provide standard .exe and .dmg packages for direct launch.',
-        a2Title: 'Hardware Friendly', a2Body: 'Run smoothly on Apple Silicon as well as low-power N100 / N97 mini-PC clusters.',
-        a3Title: 'Immersive Card-Based UI', a3Body: 'Replace exposed node graphs with an intuitive card interface and business timeline.',
-        d1Title: 'Apache 2.0 and an Open Core Commercial Direction', d1Body: 'AgentCore OS is fully open source under Apache 2.0. Individuals and teams are welcome to use, modify, and integrate it into commercial products.',
-        d2Title: 'Ready for Developers and Integrators', d2Body: 'Use it as a personal desktop AI operating system, an internal automation layer, or the foundation for your own digital workforce platform.',
-        ctaTitle: 'Bring Compute Back to Local. Let AI Do Real Work.',
-        ctaBody: 'If what you want is not more chatting, but a local AI foundation that preserves assets, respects boundaries, and takes over workflows, AgentCore OS is ready.',
-        ctaNote: 'AgentCore OS V1.0 · Local-First · Human-in-the-loop · Apache 2.0',
-        f1Title: 'Product', f1l1: 'Philosophy', f1l2: 'Use Cases', f1l3: 'Architecture', f1l4: 'Developers',
-        f2Title: 'Resources', f2l1: 'China Mirror', f2l2: 'Manifesto', f2l3: 'Quick Start',
-        downloadTitle: 'Downloads and China Access Entry Points',
-        downloadSub: 'This ECS site is mainly aimed at users in mainland China, so the most frequently used entry points are placed first: installers, the domestic mirror, the docs center, and the live access URL. This reduces friction caused by jumping to slower external sites. The current public build is <strong>0.2.0-beta.2</strong>: macOS is provided as an Apple Silicon (aarch64) .dmg, and Windows is provided as an x64 .exe installer.',
-        downloadMacTitle: 'Mac Download and Source Access',
-        downloadMacIntro: 'Mac users are encouraged to download the official installer directly. If you want source code, commit history, or document paths, you can continue through the domestic mirror entry.',
+        navProduct: 'Product', navAdvantages: 'Advantages', navUseCases: 'Use Cases', navDocs: 'Docs', navChinaMirror: 'China Mirror', navDownload: 'Download', navQuickstart: 'Quick Start',
+        heroTitle: 'Turn AI into a digital workforce system that delivers real work.',
+        heroSub: 'AgentCore OS is a local-first AI business workspace. You do not need to understand workflows, nodes, or APIs. You assign work like a business owner and digital employees across sales, finance, engineering, and IT start executing.',
+        heroBtn1: 'Download for Mac', heroBtn2: 'Download for Windows', heroBtn3: 'View Docs',
+        heroSideTitle: 'This is not another AI chat window.',
+        heroSideBody: 'Its goal is not to chat with you, but to place AI inside your real business flow so it can work like a department, an employee, or an operational function.',
+        hp1Title: 'Keep Data in Your Hands', hp1Body: 'Support local, LAN, and private model deployment for sensitive scenarios such as factories, trade, government, and healthcare.',
+        hp2Title: 'Critical Actions Need Your Approval', hp2Body: 'Before sending email, editing files, or taking external action, the system stops at a human approval boundary.',
+        hp3Title: 'Results Become Assets, Not One-Off Chats', hp3Body: 'Quotes, drawing conclusions, customer follow-ups, financial checks, and development notes are preserved as company assets.',
+        mTitle: 'AgentCore OS V1.0: Bring AI into Real Company Work, Not Just a Chat Box',
+        mLead: 'AgentCore OS has evolved from a workflow toolkit into a digital workforce desktop. It is not another chat UI and not an experiment only for geeks. It packages AI into an operating system business owners can understand, teams can use, and real work can adopt.',
+        mQuote: 'Let AI deliver work like employees do, and let companies use AI the way they use teams.',
+        pTitle: 'Our Goal Is Not to Teach Users AI — It Is to Let AI Learn to Work',
+        pSub: 'Our goal is to hide workflows, model access, orchestration, and approval boundaries behind the product so users can use AI in the language of business.',
+        p1Title: 'Business Owners Can Use It Directly', p1Body: 'Users no longer need to understand workflows, nodes, model parameters, or APIs. They simply choose a department, assign tasks, and review results.',
+        p2Title: 'Real Business Can Actually Land', p2Body: 'From customer inquiries and drawing processing to finance checks and development requests, the system is designed around real work instead of demo scenarios.',
+        p3Title: 'Assets Keep Accumulating', p3Body: 'Each task can turn into company knowledge, templates, records, and operational assets instead of disappearing as a one-off conversation.',
+        sTitle: 'What Fits Real Business Is Not the Best Chatting AI, but the Most Controllable AI', sSub: 'Security, boundaries, and private deployment determine whether AI can enter real work.',
+        s1Title: 'Data Stays Inside Your Boundary', s1Body: 'Support local models, LAN models, and private gateways so sensitive data does not need to leave for the public internet.',
+        s2Title: 'Model Freedom', s2Body: 'Connect OpenAI, Kimi, DeepSeek, Qwen, as well as Ollama, vLLM, and privately deployed models.',
+        s3Title: 'Human Approval for Critical Actions', s3Body: 'For outbound sending, important modifications, and formal delivery, the final approval remains with a human.',
+        s4Title: 'Control Stays with the Enterprise', s4Body: 'AI can improve efficiency, but final control always stays in human hands.',
+        uTitle: 'Not a Universal AI, but a Deployable Digital Workforce Team', uSub: 'Each scenario is mapped to real departmental responsibility instead of demo chat.',
+        u1Title: '🤝 Sales and Global Trade', u1Short: 'Automatically organize overseas inquiries, deepen customer background checks, match product materials, and draft multilingual follow-up emails before waiting for boss approval.', u1Body: 'Turn lead research, follow-up email, quote linkage, and payment tracking into one connected workflow.', u1t1: 'Account Research', u1t2: 'Follow-up Email', u1t3: 'Quote Linkage', u1t4: 'Payment Tracking',
+        u2Title: '💼 Finance and Audit', u2Short: 'Collect bank slips, receipts, payment records, and invoices to complete checks, audit reminders, margin reviews, and finance summaries.', u2Body: 'Bring scattered finance materials together and output structured checking and review results.', u2t1: 'Document Check', u2t2: 'Audit List', u2t3: 'Margin Review', u2t4: 'Finance Brief',
+        u3Title: '🛠 Technical and Production Support', u3Short: 'Review drawings, select drawings, and organize drafting requirements so complex files become executable follow-up tasks.', u3Body: 'Move technical support and production support from reading documents to generating tasks, connecting production, and outputting requirements.', u3t1: 'Drawing Review', u3t2: 'Drafting Requirements', u3t3: 'Drawing Organization', u3t4: 'Production Handoff',
+        u4Title: '💻 IT and R&D', u4Short: 'Break websites, apps, scripts, and system requirements into clear development notes, scope lists, and delivery plans.', u4Body: 'Clarify development requirements, decomposition, and delivery instead of leaving them as spoken ideas.', u4t1: 'Website Development', u4t2: 'App Development', u4t3: 'Script Automation', u4t4: 'Delivery Planning',
+        aTitle: 'Solid Underneath, Simple on the Surface', aSub: 'Desktop experience, department-style interaction, and runtime protection together form a deployable digital workforce system.',
+        a1Title: 'Desktop-Grade Experience', a1Body: 'Built on a Tauri desktop shell with a real multi-window workspace instead of a fake desktop wrapped in a browser page.',
+        a2Title: 'Department-Style Interaction', a2Body: 'The front-end is organized around departments and digital employees, while workflows, runtime, and tools remain behind the scenes.',
+        a3Title: 'Runtime Protection', a3Body: 'Health checks, heartbeats, automatic recovery, stability validation, and remote verification are already integrated.',
+        d1Title: 'Apache 2.0 Open Source', d1Body: 'Suitable for individuals, teams, and companies to extend their own digital workforce systems on top of it.',
+        d2Title: 'A Foundation Layer for Enterprises', d2Body: 'Use it both as a local AI desktop and as the front-end plus orchestration layer for an internal digital workforce platform.',
+        ctaTitle: 'Bring AI into the Company and Let It Work Like Employees',
+        ctaBody: 'If what you want is not one more chat tool, but a local AI work system that can deliver, respect boundaries, and accumulate company assets, AgentCore OS is ready for hands-on trials.',
+        ctaNote: 'Enterprise custom consulting: +86 156 8888 2042',
+        brandL1: 'Digital Workforce Desktop', brandL2: 'Let AI Deliver Work Like Employees', brandL3: 'Get the System Running for Real',
+        f1Title: 'Product', f1l1: 'Product', f1l2: 'Use Cases', f1l3: 'Architecture', f1l4: 'Download',
+        f2Title: 'Resources', f2l1: 'China Mirror', f2l2: 'Usage Guide', f2l3: 'Docs Center',
+        downloadTitle: 'Download and Access Entry',
+        downloadSub: 'The current public version is <strong>0.2.0-beta.2</strong>. It is suitable for trying the desktop shell, department workspace, and industry blueprint entry points first.',
+        downloadMacTitle: 'Mac Download and Source Entry',
+        downloadMacIntro: 'Mac users can download the Apple Silicon installer directly, or visit the China mirror for source code and documents.',
         downloadMacNote: 'Version 0.2.0-beta.2 · Apple Silicon (aarch64) · .dmg installer.',
-        downloadMirror: 'Domestic Mirror Repository',
-        downloadMirrorNote: 'Open CNB.cool to view the project, source code, commits, and notes.',
+        downloadMirror: 'China Mirror',
+        downloadMirrorNote: 'Open the China mirror to view source code, commit history, and document entry points.',
         downloadWinTitle: 'Windows Download and Docs Entry',
-        downloadWinIntro: 'Windows users can download the x64 installer directly. If you prefer to understand installation steps, common workflows, and the FAQ first, start with the docs center.',
+        downloadWinIntro: 'Windows users can download the x64 installer directly. If you want the full explanation first, start from the docs center.',
         downloadWinNote: 'Version 0.2.0-beta.2 · Windows x64 · .exe installer.',
         downloadDocs: 'Docs Center',
         downloadDocsNote: 'Browse getting started, install/deploy guides, workflows, and the FAQ in one place.',
-        quickstartTitle: 'Documentation',
-        quickstartSub: 'We place “how to start using AgentCore OS” after the use cases and architecture sections: first understand what problem it solves and how it is structured, then continue into the real, clickable documentation entry points.',
-        quickstartCardTitle: 'How to Start with AgentCore OS',
-        quickstartCardIntro: 'Start from the most practical real entry points: the repository, README, docs center, and live preview — not empty download buttons.',
+        quickstartTitle: 'Usage Guide',
+        quickstartSub: 'This section no longer just explains concepts. It shows how to get the system running, configured, and used in practice.',
+        quickstartCardTitle: 'How First-Time Use Starts',
+        quickstartCardIntro: 'Start the desktop, choose an industry blueprint, configure a model, and then assign work directly to a department.',
         quickstartDocs: 'Docs Center',
         quickstartDocsNote: 'Browse all documentation entry points in one place.',
-        quickstartGettingStarted: 'Getting Started Guide',
-        quickstartGettingStartedNote: 'Enter the current public version step by step.',
+        quickstartGettingStarted: 'Quick Start',
+        quickstartGettingStartedNote: 'Start from launching the desktop and choosing a blueprint.',
         quickstartReadme: 'README',
-        quickstartReadmeNote: 'See the project overview and local preview instructions.',
-        quickstartMore: 'More entry points and notes',
-        quickstartLive: 'Live Preview URL',
-        quickstartLiveNote: 'See the current ECS deployment directly.',
+        quickstartReadmeNote: 'See the overall project introduction.',
+        quickstartMore: 'More links',
+        quickstartLive: 'China Mirror',
+        quickstartLiveNote: 'Return to the source code and document origin.',
         quickstartMirror: 'Domestic Mirror Repository',
         quickstartMirrorNote: 'View the source code, project tree, and commit history.',
-        usageCardTitle: 'Read by Role, Not Just by Slogan',
-        usageCardIntro: 'The homepage keeps role-oriented guidance and documentation entry points only; detailed explanation lives in the docs pages to avoid overloading this screen.',
-        usageRole1: 'Makers / Independent Developers:',
-        usageRole1Note: 'Start with use cases and architecture, then move into usage notes and workflows.',
-        usageRole2: 'Business Owners:',
-        usageRole2Note: 'Focus on local-first design, approval flow, and controllable boundaries before deciding whether it fits your team.',
-        usageRole3: 'Integrators:',
-        usageRole3Note: 'Start from protocols, repository layout, and architecture, then move into install/deploy and FAQ.',
+        usageCardTitle: 'Understand by Role, Not by Terms',
+        usageCardIntro: 'The goal is no longer abstract description, but telling users how to really run, configure, and use the system.',
+        usageRole1: 'Business Owners:',
+        usageRole1Note: 'Start with industry blueprints, department entry points, and enterprise customization.',
+        usageRole2: 'Business Leads:',
+        usageRole2Note: 'Focus on department collaboration, approval boundaries, and asset accumulation.',
+        usageRole3: 'Developers and Integrators:',
+        usageRole3Note: 'Start with architecture, configuration, deployment, and integration capability.',
         usageNotesLink: 'Usage Notes',
-        usageNotesLinkNote: 'A fuller reading path.',
+        usageNotesLinkNote: 'Start from the overall usage path.',
         usageInstallLink: 'Install & Deploy',
-        usageInstallLinkNote: 'Local preview and Pages publishing.',
+        usageInstallLinkNote: 'Enter the install and deployment path.',
         usageWorkflowsLink: 'Typical Workflows',
-        usageWorkflowsLinkNote: 'Review approval flows, automation flows, and collaboration flows.',
+        usageWorkflowsLinkNote: 'Review typical workflows.',
         usageFaqLink: 'FAQ',
-        usageFaqLinkNote: 'Clarify the most common questions first.',
+        usageFaqLinkNote: 'Quickly review common questions.',
         usageMore: 'Expand more links',
         foldExpand: 'Expand',
         foldCollapse: 'Collapse',
         usageBackCases: 'Back to Use Cases',
-        usageBackCasesNote: 'Compare the docs against the use cases again.',
+        usageBackCasesNote: 'Cross-check the scenarios and documentation entry points again.',
         usageBackArch: 'Back to Architecture',
-        usageBackArchNote: 'Continue reviewing the local-first, sidecar, approval, and controllable automation design.',
-        f3Title: 'License', f3l1: 'Apache 2.0', f3l2: 'Open Source', f3l3: 'Back to Top'
+        usageBackArchNote: 'Continue through architecture, deployment, and interface capability.',
+        f3Title: 'Contact', f3l1: 'Enterprise Consulting', f3l2: '+86 156 8888 2042', f3l3: 'Back to Top',
+        chip1: 'Local-First', chip2: 'Controllable Data', chip3: 'Private Models Supported', chip4: 'Digital Workforce Collaboration', chip5: 'Human Approval Boundaries', chip6: 'Company Assets That Keep Accumulating',
+        trust1: 'Local-First', trust2: 'Supports Ollama / vLLM / Private Models', trust3: 'Multi-Department Collaboration', trust4: 'Human-in-the-loop', trust5: 'Tauri Desktop Shell', trust6: 'Apache 2.0', trust7: 'Mac / Windows'
       };
 
       function setLanguage(lang) {
@@ -1091,12 +1110,11 @@
         document.getElementById('lang-en').classList.toggle('active', lang === 'en');
 
         if (lang === 'en') {
-          document.title = 'AgentCore OS - Local-First AI Productivity Operating System';
-          document.querySelector('[data-i18n="nav.philosophy"]').textContent = en.navPhilosophy;
+          document.title = 'AgentCore OS - Digital Workforce System';
+          document.querySelector('[data-i18n="nav.product"]').textContent = en.navProduct;
+          document.querySelector('[data-i18n="nav.advantages"]').textContent = en.navAdvantages;
           document.querySelector('[data-i18n="nav.useCases"]').textContent = en.navUseCases;
-          document.querySelector('[data-i18n="nav.architecture"]').textContent = en.navArchitecture;
           document.querySelector('[data-i18n="nav.docs"]').textContent = en.navDocs;
-          document.querySelector('[data-i18n="nav.developers"]').textContent = en.navDevelopers;
           document.getElementById('nav-china-mirror').textContent = en.navChinaMirror;
           document.querySelector('[data-i18n="nav.download"]').textContent = en.navDownload;
           document.querySelector('[data-i18n="nav.quickstart"]').textContent = en.navQuickstart;
@@ -1131,6 +1149,7 @@
           document.getElementById('d1-title').textContent = en.d1Title; document.getElementById('d1-body').textContent = en.d1Body;
           document.getElementById('d2-title').textContent = en.d2Title; document.getElementById('d2-body').textContent = en.d2Body;
           document.getElementById('cta-title').textContent = en.ctaTitle; document.getElementById('cta-body').textContent = en.ctaBody; document.getElementById('cta-note').textContent = en.ctaNote;
+          document.getElementById('brand-l1').textContent = en.brandL1; document.getElementById('brand-l2').textContent = en.brandL2; document.getElementById('brand-l3').textContent = en.brandL3;
           document.getElementById('f1-title').textContent = en.f1Title; document.getElementById('f1-l1').textContent = en.f1l1; document.getElementById('f1-l2').textContent = en.f1l2; document.getElementById('f1-l3').textContent = en.f1l3; document.getElementById('f1-l4').textContent = en.f1l4;
           document.getElementById('f2-title').textContent = en.f2Title; document.getElementById('f2-l1').textContent = en.f2l1; document.getElementById('f2-l2').textContent = en.f2l2; document.getElementById('f2-l3').textContent = en.f2l3;
           document.getElementById('download-title').textContent = en.downloadTitle;
@@ -1187,6 +1206,8 @@
           document.getElementById('usage-back-arch').textContent = en.usageBackArch;
           document.getElementById('usage-back-arch-note').textContent = en.usageBackArchNote;
           document.getElementById('f3-title').textContent = en.f3Title; document.getElementById('f3-l1').textContent = en.f3l1; document.getElementById('f3-l2').textContent = en.f3l2; document.getElementById('f3-l3').textContent = en.f3l3;
+          document.getElementById('chip-1').textContent = en.chip1; document.getElementById('chip-2').textContent = en.chip2; document.getElementById('chip-3').textContent = en.chip3; document.getElementById('chip-4').textContent = en.chip4; document.getElementById('chip-5').textContent = en.chip5; document.getElementById('chip-6').textContent = en.chip6;
+          document.getElementById('trust-1').textContent = en.trust1; document.getElementById('trust-2').textContent = en.trust2; document.getElementById('trust-3').textContent = en.trust3; document.getElementById('trust-4').textContent = en.trust4; document.getElementById('trust-5').textContent = en.trust5; document.getElementById('trust-6').textContent = en.trust6; document.getElementById('trust-7').textContent = en.trust7;
         } else {
           location.reload();
         }
