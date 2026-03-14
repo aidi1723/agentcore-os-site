@@ -526,8 +526,8 @@
             <a href="#" id="switch-en">EN</a>
           </div>
           <a class="btn btn-ghost" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="nav-china-mirror">国内仓库</a>
-          <a class="btn btn-ghost" href="#download" data-i18n="nav.download">下载</a>
-          <a class="btn btn-primary" href="#quickstart" data-i18n="nav.quickstart">快速开始</a>
+          <a class="btn btn-ghost" href="#download" data-i18n="nav.download" id="top-download">下载</a>
+          <a class="btn btn-primary" href="#quickstart" data-i18n="nav.quickstart" id="top-quickstart">快速开始</a>
         </div>
       </div>
     </header>
@@ -1118,6 +1118,8 @@
           document.getElementById('nav-china-mirror').textContent = en.navChinaMirror;
           document.querySelector('[data-i18n="nav.download"]').textContent = en.navDownload;
           document.querySelector('[data-i18n="nav.quickstart"]').textContent = en.navQuickstart;
+          document.getElementById('top-download').textContent = en.navDownload;
+          document.getElementById('top-quickstart').textContent = en.navQuickstart;
           document.getElementById('hero-side-title').textContent = en.heroSideTitle;
           document.getElementById('hero-side-body').textContent = en.heroSideBody;
           document.getElementById('hp1-title').textContent = en.hp1Title; document.getElementById('hp1-body').textContent = en.hp1Body;
