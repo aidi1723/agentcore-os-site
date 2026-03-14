@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgentCore OS - 安装与部署</title>
-    <meta name="description" content="AgentCore OS 官网站点的安装与部署说明：本地预览、静态服务、GitHub Pages 发布与后续扩展建议。" />
+    <meta name="description" content="AgentCore OS 官网站点的安装与部署说明：本地预览、静态服务、ECS 线上站点 发布与后续扩展建议。" />
     <style>
       :root {
         --bg:#09090b; --panel:#12141a; --panel2:#171a22; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.55); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:980px;
@@ -50,7 +50,7 @@
         <div class="actions">
           <a class="btn" href="index.html">Docs 首页</a>
           <a class="btn" href="../index.html#quickstart">返回首页</a>
-          <a class="btn primary" href="https://github.com/aidi1723/agentcore-os-site" target="_blank" rel="noreferrer">GitHub 仓库</a>
+          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
         </div>
         <div class="doc-nav">
           <a href="index.html">Docs 首页</a>
@@ -96,15 +96,15 @@ python3 -m http.server 8000</code></pre>
         </article>
 
         <article class="card">
-          <h2>2. GitHub Pages 部署</h2>
+          <h2>2. 线上站点部署</h2>
           <div class="step">
             <h3>线上地址</h3>
-            <p>当前 GitHub Pages 发布地址是：</p>
-            <pre><code>https://aidi1723.github.io/agentcore-os-site/</code></pre>
+            <p>当前 ECS 站点预览地址是：</p>
+            <pre><code>http://59.110.93.188</code></pre>
           </div>
           <div class="step">
             <h3>发布方式</h3>
-            <p>这个站点当前走的是 GitHub Pages 静态发布流。只要你把改动 push 到主分支，Pages workflow 就会重新构建并发布。</p>
+            <p>当前这套国内版页面由 ECS 上的静态站点直接提供。你改完 <code>index.html</code> 或 <code>docs/</code> 后，只需要同步到服务器并让 nginx 继续提供即可。</p>
           </div>
           <div class="step">
             <h3>适合当前阶段的发布策略</h3>
