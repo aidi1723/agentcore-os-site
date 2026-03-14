@@ -14,6 +14,9 @@
       .top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
       .btn { display:inline-block; text-decoration:none; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
       .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
       h1 { font-size:clamp(34px, 5vw, 54px); line-height:1.06; margin:0 0 12px; }
       .lead { color:var(--soft); max-width:760px; }
       .faq { display:grid; gap:18px; margin-top:28px; }
@@ -32,79 +35,65 @@
   <body>
     <main class="wrap">
       <div class="top">
-        <a class="btn" href="../index.html#quickstart">返回首页</a>
+        <a class="btn" href="../index.html#quickstart" id="back-home">返回首页</a>
         <div>
-          <a class="btn" href="index.html">Docs 首页</a>
-          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
+          <a class="btn" href="index.html" id="docs-home">Docs 首页</a>
+          <a class="btn primary" href="../index.html#quickstart" id="docs-cta">使用文档</a>
+          <span class="lang-switch"><a href="#" id="switch-zh" class="active">中文</a> | <a href="#" id="switch-en">EN</a></span>
         </div>
         <div class="doc-nav">
-          <a href="index.html">Docs 首页</a>
-          <a href="getting-started.html">快速开始</a>
-          <a href="usage-notes.html">使用说明</a>
-          <a href="install-deploy.html">安装部署</a>
-          <a href="workflows.html">典型工作流</a>
-          <a href="faq.html" class="active">FAQ</a>
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" id="nav-install">安装部署</a>
+          <a href="workflows.html" id="nav-workflows">典型工作流</a>
+          <a href="faq.html" class="active" id="nav-faq">FAQ</a>
         </div>
       </div>
 
-      <h1>常见问题</h1>
-      <p class="lead">把首页里最容易让人误会、但又最常问的问题先说清楚。这样用户不会看完一圈还停在“听起来很强，但到底是什么”。</p>
+      <h1 id="hero-title">常见问题</h1>
+      <p class="lead" id="hero-lead">把首页里最容易让人误会、但又最常问的问题先说清楚。这样用户不会看完一圈还停在“听起来很强，但到底是什么”。</p>
 
       <section class="faq">
-        <article class="item">
-          <h2>1. AgentCore OS 到底是什么？</h2>
-          <p>从当前官网表达看，它被定义为一个 <strong>本地优先的 AI 生产力底座 / AI 操作系统</strong>，核心不是“聊天”，而是让 AI 进入真实业务流、自动化流和审批流。</p>
-        </article>
-
-        <article class="item">
-          <h2>2. 它是一个聊天工具吗？</h2>
-          <p>不是首页想强调的重点。首页反复强调的主线是：它不是又一个聊天客户端，而是一个能够承接工作流、资产、审批和本地执行边界的系统。</p>
-        </article>
-
-        <article class="item">
-          <h2>3. 当前这个 国内仓库公开了什么？</h2>
-          <p>当前 <code>aidi1723/agentcore-os-site</code> 仓库公开的是官网静态站点本身，也就是 landing page 和 docs 页面的源码，不等于完整桌面产品安装包仓库。</p>
-        </article>
-
-        <article class="item">
-          <h2>4. 那我现在能怎么用它？</h2>
-          <ul>
-            <li>先通过官网理解产品定位。</li>
-            <li>通过 国内仓库查看公开内容。</li>
-            <li>通过 README、快速开始、安装部署页看清当前可预览范围。</li>
-            <li>如果你是品牌方或集成方，也可以先把这个站点当作对外入口继续完善。</li>
-          </ul>
-        </article>
-
-        <article class="item">
-          <h2>5. 当前站点适合谁？</h2>
-          <ul>
-            <li>创客 / 独立开发者：看是否值得 fork 或延展成自己的产品页。</li>
-            <li>业务负责人：判断它的本地优先、审批边界是否适合团队工作流。</li>
-            <li>集成者：评估协议、定位和架构表达是否适合作为未来集成入口。</li>
-          </ul>
-        </article>
-
-        <article class="item">
-          <h2>6. 为什么首页之前会让人觉得“按钮打不开”？</h2>
-          <p>因为那一版更像解释性内容，而不是文档导航。现在已经补上了真实可点击入口，包括快速开始、使用说明、安装与部署、FAQ 等页面。</p>
-        </article>
-
-        <article class="item">
-          <h2>7. 现在要去哪里开始？</h2>
-          <ul>
-            <li><a href="getting-started.html">快速开始</a></li>
-            <li><a href="install-deploy.html">安装与部署</a></li>
-            <li><a href="usage-notes.html">使用说明与阅读路径</a></li>
-            <li><a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">国内仓库</a></li>
-          </ul>
-          <p class="muted">如果后续补齐完整产品仓库、安装器或 API 文档，这个 FAQ 也应该同步更新，避免官网承诺超前于公开内容。</p>
-        </article>
-      <div class="doc-pager">
-        <a href="workflows.html">← 典型工作流</a>
-        <a href="index.html">返回 Docs 首页 →</a>
-      </div>
+        <article class="item"><h2 id="q1-title">1. AgentCore OS 到底是什么？</h2><p id="q1-body">从当前官网表达看，它被定义为一个 <strong>本地优先的 AI 生产力底座 / AI 操作系统</strong>，核心不是“聊天”，而是让 AI 进入真实业务流、自动化流和审批流。</p></article>
+        <article class="item"><h2 id="q2-title">2. 它是一个聊天工具吗？</h2><p id="q2-body">不是首页想强调的重点。首页反复强调的主线是：它不是又一个聊天客户端，而是一个能够承接工作流、资产、审批和本地执行边界的系统。</p></article>
+        <article class="item"><h2 id="q3-title">3. 当前这个国内仓库公开了什么？</h2><p id="q3-body">当前公开仓库包含官网静态站点本身，也就是 landing page、下载入口与 docs 页面源码；它不等于完整桌面产品的全部私有仓库与内部能力。</p></article>
+        <article class="item"><h2 id="q4-title">4. 那我现在能怎么用它？</h2><ul><li id="q4-li1">先通过官网理解产品定位。</li><li id="q4-li2">通过国内仓库查看公开内容。</li><li id="q4-li3">通过 README、快速开始、安装部署页看清当前可预览与可下载范围。</li><li id="q4-li4">如果你是品牌方或集成方，也可以先把这个站点当作对外入口继续完善。</li></ul></article>
+        <article class="item"><h2 id="q5-title">5. 当前站点适合谁？</h2><ul><li id="q5-li1">创客 / 独立开发者：看是否值得 fork 或延展成自己的产品页。</li><li id="q5-li2">业务负责人：判断它的本地优先、审批边界是否适合团队工作流。</li><li id="q5-li3">集成者：评估协议、定位和架构表达是否适合作为未来集成入口。</li></ul></article>
+        <article class="item"><h2 id="q6-title">6. 为什么之前会让人觉得“按钮打不开”或“英文不完整”？</h2><p id="q6-body">因为网站早期更像解释性内容，而不是一套完整的导航型公开站点。现在已经逐步补上了真实下载、docs 子页和中英切换逻辑，但还需要持续做整站级校对。</p></article>
+        <article class="item"><h2 id="q7-title">7. 现在要从哪里开始？</h2><ul><li><a href="getting-started.html" id="q7-li1">快速开始</a></li><li><a href="install-deploy.html" id="q7-li2">安装与部署</a></li><li><a href="usage-notes.html" id="q7-li3">使用说明与阅读路径</a></li><li><a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="q7-li4">国内仓库</a></li></ul><p class="muted" id="q7-note">如果后续补齐更完整的产品仓库、安装器说明或 API 文档，这个 FAQ 也应该同步更新，避免官网承诺超前于公开内容。</p></article>
       </section>
+      <div class="doc-pager">
+        <a href="workflows.html" id="pager-prev">← 典型工作流</a>
+        <a href="index.html" id="pager-next">返回 Docs 首页 →</a>
+      </div>
+
+      <script>
+        const en = {
+          title: 'AgentCore OS - FAQ', description: 'AgentCore OS FAQ: what it is, who it is for, what is public today, and how to use the current website and docs.',
+          backHome: 'Back to Home', docsHome: 'Docs Home', docsCta: 'Documentation', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
+          heroTitle: 'Frequently Asked Questions', heroLead: 'This page clears up the most common misunderstandings from the homepage first, so visitors do not finish the tour still thinking “it sounds strong, but what is it exactly?”',
+          q1t: '1. What exactly is AgentCore OS?', q1b: 'Based on the current site, it is positioned as a local-first AI productivity foundation / AI operating system. The core is not chatting—it is bringing AI into real business flows, automation flows, and approval flows.',
+          q2t: '2. Is it just a chat tool?', q2b: 'That is not the main point of the homepage. The repeated thread is that this is not another chat client, but a system that can hold workflows, assets, approvals, and local execution boundaries.',
+          q3t: '3. What does the current China-access repository expose?', q3b: 'The current public repository includes the static website itself: the landing page, download entry points, and docs page source. It is not the same as the full private desktop-product repository or every internal capability.',
+          q4t: '4. So how can I use it right now?', q4l1: 'Start from the website to understand the product positioning.', q4l2: 'Browse the China mirror repository to inspect the public materials.', q4l3: 'Use the README, getting started page, and install/deploy page to understand the current preview and download scope.', q4l4: 'If you are a brand owner or integrator, you can also treat this site as an external-facing entry and keep improving it.',
+          q5t: '5. Who is the current site for?', q5l1: 'Makers / indie developers: decide whether it is worth forking or extending into your own product page.', q5l2: 'Business owners: evaluate whether its local-first and approval-boundary model fits your team workflows.', q5l3: 'Integrators: judge whether the licensing, positioning, and architecture expression make sense as a future integration entry.',
+          q6t: '6. Why did the site previously feel like “buttons do not open” or “English is incomplete”?', q6b: 'Because the earlier site behaved more like explanatory content than a fully navigable public website. Real downloads, docs subpages, and bilingual switching have now been added progressively, but the whole site still needs continued audit and cleanup.',
+          q7t: '7. Where should I start now?', q7l1: 'Getting Started', q7l2: 'Install & Deploy', q7l3: 'Usage Notes and Reading Paths', q7l4: 'China Mirror Repository', q7n: 'If fuller product repositories, installer guides, or API docs are added later, this FAQ should be updated too so the public website does not promise more than the public scope actually delivers.',
+          pp: '← Workflows', pn: 'Back to Docs Home →'
+        };
+        function setLanguage(lang) {
+          if (lang === 'en') {
+            document.documentElement.lang = 'en'; document.title = en.title; document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+            for (const [id, value] of Object.entries({ 'back-home': en.backHome, 'docs-home': en.docsHome, 'docs-cta': en.docsCta, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-workflows': en.navWorkflows, 'nav-faq': en.navFaq, 'hero-title': en.heroTitle, 'hero-lead': en.heroLead, 'q1-title': en.q1t, 'q1-body': en.q1b, 'q2-title': en.q2t, 'q2-body': en.q2b, 'q3-title': en.q3t, 'q3-body': en.q3b, 'q4-title': en.q4t, 'q4-li1': en.q4l1, 'q4-li2': en.q4l2, 'q4-li3': en.q4l3, 'q4-li4': en.q4l4, 'q5-title': en.q5t, 'q5-li1': en.q5l1, 'q5-li2': en.q5l2, 'q5-li3': en.q5l3, 'q6-title': en.q6t, 'q6-body': en.q6b, 'q7-title': en.q7t, 'q7-li1': en.q7l1, 'q7-li2': en.q7l2, 'q7-li3': en.q7l3, 'q7-li4': en.q7l4, 'q7-note': en.q7n, 'pager-prev': en.pp, 'pager-next': en.pn })) document.getElementById(id).textContent = value;
+            document.getElementById('switch-zh').classList.remove('active'); document.getElementById('switch-en').classList.add('active');
+          } else { location.reload(); return; }
+          localStorage.setItem('agentcore-docs-lang', lang);
+        }
+        document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+        document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+        if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+      </script>
     </main>
   </body>
 </html>

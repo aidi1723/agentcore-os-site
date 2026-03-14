@@ -15,6 +15,9 @@
       .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; flex-wrap:wrap; }
       .btn { display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
       .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
       .hero { padding:56px 0 22px; }
       .eyebrow { color:var(--amber); text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:700; }
       h1 { font-size:clamp(34px, 6vw, 58px); line-height:1.04; margin:10px 0 12px; }
@@ -38,18 +41,19 @@
   <body>
     <header class="top">
       <div class="wrap">
-        <div>AgentCore OS · 典型工作流</div>
+        <div id="top-title">AgentCore OS · 典型工作流</div>
         <div>
-          <a class="btn" href="../index.html#use-cases">返回官网场景区</a>
-          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
+          <a class="btn" href="../index.html#use-cases" id="back-cases">返回官网场景区</a>
+          <a class="btn primary" href="../index.html#quickstart" id="docs-cta">使用文档</a>
+          <span class="lang-switch"><a href="#" id="switch-zh" class="active">中文</a> | <a href="#" id="switch-en">EN</a></span>
         </div>
         <div class="doc-nav">
-          <a href="index.html">Docs 首页</a>
-          <a href="getting-started.html">快速开始</a>
-          <a href="usage-notes.html">使用说明</a>
-          <a href="install-deploy.html">安装部署</a>
-          <a href="workflows.html" class="active">典型工作流</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" id="nav-install">安装部署</a>
+          <a href="workflows.html" class="active" id="nav-workflows">典型工作流</a>
+          <a href="faq.html" id="nav-faq">FAQ</a>
         </div>
       </div>
     </header>
@@ -57,64 +61,88 @@
     <main class="wrap">
       <section class="hero">
         <div class="eyebrow">Workflow Examples</div>
-        <h1>典型工作流</h1>
-        <p class="lead">这页的目的不是吹概念，而是把首页“让 AI 进入真实业务流”的说法，拆成几种更具体的工作流范式。它们不一定都已经在当前公开仓库里完整交付，但代表了这个产品叙事真正指向的方向。</p>
+        <h1 id="hero-title">典型工作流</h1>
+        <p class="lead" id="hero-lead">这页的目的不是吹概念，而是把首页“让 AI 进入真实业务流”的说法，拆成几种更具体的工作流范式。它们不一定都已经在当前公开内容里完整交付，但代表了产品叙事真正指向的方向。</p>
       </section>
 
       <section class="grid">
         <article class="card">
           <div class="mini">Workflow 01</div>
-          <h2>本地审批流</h2>
-          <p>AI 可以起草、汇总、整理、生成，但在关键动作前必须停下，等待人的最终确认。这种模式适合对风险、边界和可控性敏感的业务环境。</p>
-          <div class="flow">需求输入 → AI 生成草稿 / 修改建议 → 涉及写文件、发消息、外发前触发审批 → 人工确认 → 执行并留痕</div>
+          <h2 id="w1-title">本地审批流</h2>
+          <p id="w1-body">AI 可以起草、汇总、整理、生成，但在关键动作前必须停下，等待人的最终确认。这种模式适合对风险、边界和可控性敏感的业务环境。</p>
+          <div class="flow" id="w1-flow">需求输入 → AI 生成草稿 / 修改建议 → 涉及写文件、发消息、外发前触发审批 → 人工确认 → 执行并留痕</div>
           <ul>
-            <li>适合合同、报价、邮件、文档修改等场景。</li>
-            <li>强调 Human-in-the-loop，而不是让 AI 静默越权执行。</li>
-            <li>核心价值是减少重复劳动，同时保留最终控制权。</li>
+            <li id="w1-li1">适合合同、报价、邮件、文档修改等场景。</li>
+            <li id="w1-li2">强调 Human-in-the-loop，而不是让 AI 静默越权执行。</li>
+            <li id="w1-li3">核心价值是减少重复劳动，同时保留最终控制权。</li>
           </ul>
         </article>
 
         <article class="card">
           <div class="mini">Workflow 02</div>
-          <h2>业务自动化流</h2>
-          <p>把原本需要人手工串联的步骤交给 AI 去跑，例如信息收集、内容整理、状态同步、批量生成与结构化输出。</p>
-          <div class="flow">触发任务 → 收集数据 / 文件 / 页面信息 → AI 归纳整理 → 输出到文档、表格、站点或待审批动作</div>
+          <h2 id="w2-title">业务自动化流</h2>
+          <p id="w2-body">把原本需要人手工串联的步骤交给 AI 去跑，例如信息收集、内容整理、状态同步、批量生成与结构化输出。</p>
+          <div class="flow" id="w2-flow">触发任务 → 收集数据 / 文件 / 页面信息 → AI 归纳整理 → 输出到文档、表格、站点或待审批动作</div>
           <ul>
-            <li>适合外贸资料整理、内容生产、网站更新、信息汇总。</li>
-            <li>重点不是单次回答，而是把动作串起来形成可复用流程。</li>
-            <li>适合逐步沉淀为“资产”，而不是每次从零开始问模型。</li>
+            <li id="w2-li1">适合外贸资料整理、内容生产、网站更新、信息汇总。</li>
+            <li id="w2-li2">重点不是单次回答，而是把动作串起来形成可复用流程。</li>
+            <li id="w2-li3">适合逐步沉淀为“资产”，而不是每次从零开始问模型。</li>
           </ul>
         </article>
 
         <article class="card">
           <div class="mini">Workflow 03</div>
-          <h2>多智能体协同流</h2>
-          <p>不同模型或角色分别负责拆解、执行、校验、润色、发布等环节，由一个主接口统一分配和汇总结果。</p>
-          <div class="flow">主控代理拆任务 → 子代理分别执行 → 汇总结果 → 再由人或主控代理做决策与收口</div>
+          <h2 id="w3-title">多智能体协同流</h2>
+          <p id="w3-body">不同模型或角色分别负责拆解、执行、校验、润色、发布等环节，由一个主接口统一分配和汇总结果。</p>
+          <div class="flow" id="w3-flow">主控代理拆任务 → 子代理分别执行 → 汇总结果 → 再由人或主控代理做决策与收口</div>
           <ul>
-            <li>适合复杂任务：研究、写作、站点改版、运营资料打磨。</li>
-            <li>可以兼顾成本控制与执行效率。</li>
-            <li>关键不在“代理数量多”，而在分工清晰、结果可检查。</li>
+            <li id="w3-li1">适合复杂任务：研究、写作、站点改版、运营资料打磨。</li>
+            <li id="w3-li2">可以兼顾成本控制与执行效率。</li>
+            <li id="w3-li3">关键不在“代理数量多”，而在分工清晰、结果可检查。</li>
           </ul>
         </article>
 
         <article class="card">
           <div class="mini">Workflow 04</div>
-          <h2>知识沉淀与资产化流</h2>
-          <p>把一次次聊天、修改、总结和外部信息处理，逐步沉淀成长期可复用的文档、记忆、模板和工作方法。</p>
-          <div class="flow">日常任务 → 结构化记录 → 提炼长期规则 / 模板 / 文档 → 进入后续任务复用</div>
+          <h2 id="w4-title">知识沉淀与资产化流</h2>
+          <p id="w4-body">把一次次聊天、修改、总结和外部信息处理，逐步沉淀成长期可复用的文档、记忆、模板和工作方法。</p>
+          <div class="flow" id="w4-flow">日常任务 → 结构化记录 → 提炼长期规则 / 模板 / 文档 → 进入后续任务复用</div>
           <ul>
-            <li>适合个人知识管理、团队 SOP、产品文档和运营模板沉淀。</li>
-            <li>这比单次“问答”更接近真正的生产力系统。</li>
-            <li>长期价值在于越用越熟，而不是每次重新教模型。</li>
+            <li id="w4-li1">适合个人知识管理、团队 SOP、产品文档和运营模板沉淀。</li>
+            <li id="w4-li2">这比单次“问答”更接近真正的生产力系统。</li>
+            <li id="w4-li3">长期价值在于越用越熟，而不是每次重新教模型。</li>
           </ul>
-          <p class="muted">如果后续继续扩文档，我建议把这四类工作流分别长成独立专题页，配具体案例和流程图。</p>
+          <p class="muted" id="w4-note">如果后续继续扩文档，我建议把这四类工作流分别长成独立专题页，配具体案例和流程图。</p>
         </article>
-      <div class="doc-pager">
-        <a href="install-deploy.html">← 安装部署</a>
-        <a href="faq.html">下一篇：FAQ →</a>
-      </div>
       </section>
+      <div class="doc-pager">
+        <a href="install-deploy.html" id="pager-prev">← 安装部署</a>
+        <a href="faq.html" id="pager-next">下一篇：FAQ →</a>
+      </div>
     </main>
+
+    <script>
+      const en = {
+        title: 'AgentCore OS - Workflow Examples', description: 'AgentCore OS workflow examples: local approval flow, business automation flow, multi-agent collaboration, and knowledge asset building.',
+        topTitle: 'AgentCore OS · Workflow Examples', backCases: 'Back to Use Cases', docsCta: 'Documentation', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
+        heroTitle: 'Typical Workflows', heroLead: 'This page is not here to sell slogans. It breaks the homepage claim—bringing AI into real business flows—into several more concrete workflow patterns. They are not all fully delivered in today’s public scope, but they do reflect the real direction of the product story.',
+        w1t: 'Local Approval Flow', w1b: 'AI can draft, summarize, organize, and generate content, but must stop before critical actions and wait for final human confirmation. This model is well suited to environments that care about risk, boundaries, and controllability.', w1f: 'Request enters → AI drafts / proposes edits → file writes, outbound messages, or external actions trigger approval → human confirms → execution is recorded', w1l1: 'Useful for contracts, quotes, email drafts, and document edits.', w1l2: 'Emphasizes Human-in-the-loop instead of silent AI overreach.', w1l3: 'The value is reducing repetitive work while preserving final control.',
+        w2t: 'Business Automation Flow', w2b: 'Steps that once had to be manually chained together can be delegated to AI: information gathering, content organization, status syncing, batch generation, and structured output.', w2f: 'Task triggers → collect data / files / page info → AI organizes and summarizes → output goes to docs, sheets, sites, or pending approval actions', w2l1: 'Useful for export materials, content production, website updates, and information summaries.', w2l2: 'The point is not a single answer, but building a reusable flow from connected actions.', w2l3: 'It is better suited to gradual asset building than repeated one-off prompting.',
+        w3t: 'Multi-Agent Collaboration Flow', w3b: 'Different models or roles handle decomposition, execution, verification, polishing, or publishing, while a main interface coordinates the split and synthesizes the results.', w3f: 'Main controller decomposes the task → sub-agents execute → results are merged → a human or the controller closes the loop', w3l1: 'Useful for complex work: research, writing, site revisions, and operational material polishing.', w3l2: 'It can balance cost control with execution speed.', w3l3: 'The key is not having many agents, but clear division of labor and inspectable results.',
+        w4t: 'Knowledge and Asset Building Flow', w4b: 'Repeated chats, edits, summaries, and external information handling can be turned into reusable long-term assets: docs, memory, templates, and working methods.', w4f: 'Daily tasks → structured recording → extract long-term rules / templates / docs → reuse them in future work', w4l1: 'Useful for personal knowledge management, team SOPs, product docs, and operating templates.', w4l2: 'This is much closer to a real productivity system than one-off Q&A.', w4l3: 'The long-term value is becoming more effective with use, not reteaching the model every time.', w4n: 'If the docs keep expanding, each of these four workflow families deserves its own dedicated page with concrete examples and diagrams.',
+        pp: '← Install & Deploy', pn: 'Next: FAQ →'
+      };
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          document.documentElement.lang = 'en'; document.title = en.title; document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+          for (const [id, value] of Object.entries({ 'top-title': en.topTitle, 'back-cases': en.backCases, 'docs-cta': en.docsCta, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-workflows': en.navWorkflows, 'nav-faq': en.navFaq, 'hero-title': en.heroTitle, 'hero-lead': en.heroLead, 'w1-title': en.w1t, 'w1-body': en.w1b, 'w1-flow': en.w1f, 'w1-li1': en.w1l1, 'w1-li2': en.w1l2, 'w1-li3': en.w1l3, 'w2-title': en.w2t, 'w2-body': en.w2b, 'w2-flow': en.w2f, 'w2-li1': en.w2l1, 'w2-li2': en.w2l2, 'w2-li3': en.w2l3, 'w3-title': en.w3t, 'w3-body': en.w3b, 'w3-flow': en.w3f, 'w3-li1': en.w3l1, 'w3-li2': en.w3l2, 'w3-li3': en.w3l3, 'w4-title': en.w4t, 'w4-body': en.w4b, 'w4-flow': en.w4f, 'w4-li1': en.w4l1, 'w4-li2': en.w4l2, 'w4-li3': en.w4l3, 'w4-note': en.w4n, 'pager-prev': en.pp, 'pager-next': en.pn })) document.getElementById(id).textContent = value;
+          document.getElementById('switch-zh').classList.remove('active'); document.getElementById('switch-en').classList.add('active');
+        } else { location.reload(); return; }
+        localStorage.setItem('agentcore-docs-lang', lang);
+      }
+      document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+      document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+      if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+    </script>
   </body>
 </html>

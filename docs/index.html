@@ -14,6 +14,10 @@
       .top { position:sticky; top:0; backdrop-filter:blur(14px); background:rgba(9,9,11,.72); border-bottom:1px solid rgba(255,255,255,.06); }
       .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; flex-wrap:wrap; }
       .brand { font-weight:700; }
+      .topbar-right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
       .btn { display:inline-block; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
       .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
       .hero { padding:56px 0 26px; }
@@ -40,16 +44,22 @@
       <div class="wrap">
         <div class="brand">AgentCore OS Docs</div>
         <div>
-          <a class="btn" href="../index.html#quickstart">返回首页</a>
-          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
+          <a class="btn" href="../index.html#quickstart" id="back-home">返回首页</a>
+          <a class="btn primary" href="../index.html#quickstart" id="docs-home-cta">使用文档</a>
         </div>
-        <div class="doc-nav">
-          <a href="index.html" class="active">Docs 首页</a>
-          <a href="getting-started.html">快速开始</a>
-          <a href="usage-notes.html">使用说明</a>
-          <a href="install-deploy.html">安装部署</a>
-          <a href="workflows.html">典型工作流</a>
-          <a href="faq.html">FAQ</a>
+        <div class="topbar-right">
+          <div class="lang-switch">
+            <a href="#" id="switch-zh" class="active">中文</a> |
+            <a href="#" id="switch-en">EN</a>
+          </div>
+          <div class="doc-nav">
+            <a href="index.html" class="active" id="nav-index">Docs 首页</a>
+            <a href="getting-started.html" id="nav-start">快速开始</a>
+            <a href="usage-notes.html" id="nav-usage">使用说明</a>
+            <a href="install-deploy.html" id="nav-install">安装部署</a>
+            <a href="workflows.html" id="nav-workflows">典型工作流</a>
+            <a href="faq.html" id="nav-faq">FAQ</a>
+          </div>
         </div>
       </div>
     </header>
@@ -57,49 +67,153 @@
     <main class="wrap">
       <section class="hero">
         <div class="eyebrow">Documentation</div>
-        <h1>文档中心</h1>
-        <p class="lead">这里把 AgentCore OS 官网页面里分散的信息收拢成一个可导航的 docs 入口。当前重点不是 API 细节，而是让第一次接触的人快速理解：它是什么、怎么开始、当前公开了什么、以及典型能落到哪些工作流上。</p>
+        <h1 id="hero-title">文档中心</h1>
+        <p class="lead" id="hero-lead">这里把 AgentCore OS 官网页面里分散的信息收拢成一个可导航的 docs 入口。当前重点不是 API 细节，而是让第一次接触的人快速理解：它是什么、怎么开始、当前公开了什么、以及典型能落到哪些工作流上。</p>
       </section>
 
       <section class="grid">
         <a class="card" href="getting-started.html">
           <div class="mini">Start Here</div>
-          <h2>快速开始</h2>
-          <p>从仓库、README、许可证到线上预览，快速进入当前公开版本的真实入口。</p>
-          <div class="meta">适合第一次打开官网的人</div>
+          <h2 id="card-1-title">快速开始</h2>
+          <p id="card-1-body">从仓库、README、许可证到线上预览，快速进入当前公开版本的真实入口。</p>
+          <div class="meta" id="card-1-meta">适合第一次打开官网的人</div>
         </a>
 
         <a class="card" href="usage-notes.html">
           <div class="mini">Reading Path</div>
-          <h2>使用说明与阅读路径</h2>
-          <p>按创客、业务负责人、集成者三类角色，整理首页内容的阅读顺序。</p>
-          <div class="meta">适合“理念看懂了，但还想继续往下读”的人</div>
+          <h2 id="card-2-title">使用说明与阅读路径</h2>
+          <p id="card-2-body">按创客、业务负责人、集成者三类角色，整理首页内容的阅读顺序。</p>
+          <div class="meta" id="card-2-meta">适合“理念看懂了，但还想继续往下读”的人</div>
         </a>
 
         <a class="card" href="install-deploy.html">
           <div class="mini">Preview & Publish</div>
-          <h2>安装与部署</h2>
-          <p>说明当前官网仓库如何本地预览、如何通过 ECS 线上站点 发布，以及何时该升级站点结构。</p>
-          <div class="meta">适合维护站点和继续扩展文档的人</div>
+          <h2 id="card-3-title">安装与部署</h2>
+          <p id="card-3-body">说明当前官网仓库如何本地预览、如何通过 ECS 线上站点发布，以及何时该升级站点结构。</p>
+          <div class="meta" id="card-3-meta">适合维护站点和继续扩展文档的人</div>
         </a>
 
         <a class="card" href="workflows.html">
           <div class="mini">Workflow Examples</div>
-          <h2>典型工作流</h2>
-          <p>不再停在口号层，直接展示 AgentCore OS 适合承接的几类真实业务流与审批流。</p>
-          <div class="meta">适合判断“这东西到底能用在哪”的人</div>
+          <h2 id="card-4-title">典型工作流</h2>
+          <p id="card-4-body">不再停在口号层，直接展示 AgentCore OS 适合承接的几类真实业务流与审批流。</p>
+          <div class="meta" id="card-4-meta">适合判断“这东西到底能用在哪”的人</div>
         </a>
 
         <a class="card" href="faq.html">
           <div class="mini">Common Questions</div>
-          <h2>FAQ</h2>
-          <p>快速回答它是什么、适合谁、当前公开了什么、为什么官网和完整产品仓库不是一回事。</p>
-          <div class="meta">适合第一次接触、需要快速去误解的人</div>
+          <h2 id="card-5-title">FAQ</h2>
+          <p id="card-5-body">快速回答它是什么、适合谁、当前公开了什么、为什么官网和完整产品仓库不是一回事。</p>
+          <div class="meta" id="card-5-meta">适合第一次接触、需要快速去误解的人</div>
         </a>
         <div class="doc-pager">
-          <a href="getting-started.html">下一篇：快速开始 →</a>
+          <a href="getting-started.html" id="pager-next">下一篇：快速开始 →</a>
         </div>
       </section>
     </main>
+
+    <script>
+      const en = {
+        title: 'AgentCore OS Docs',
+        description: 'AgentCore OS docs hub: getting started, usage notes, install and deploy, workflow examples, and FAQ.',
+        backHome: 'Back to Home',
+        docsHomeCta: 'Documentation',
+        navIndex: 'Docs Home',
+        navStart: 'Getting Started',
+        navUsage: 'Usage Notes',
+        navInstall: 'Install & Deploy',
+        navWorkflows: 'Workflows',
+        navFaq: 'FAQ',
+        heroTitle: 'Documentation Hub',
+        heroLead: 'This page gathers the scattered information from the AgentCore OS website into one navigable docs entry. The current goal is not detailed API reference, but helping a first-time visitor quickly understand what it is, how to start, what is public today, and which workflows it is meant to support.',
+        c1t: 'Getting Started',
+        c1b: 'Move from the repository, README, and license to the real preview and download entry points of the current public build.',
+        c1m: 'Best for first-time visitors',
+        c2t: 'Usage Notes and Reading Paths',
+        c2b: 'Organize the homepage content by three roles: makers, business owners, and integrators.',
+        c2m: 'Best for people who understand the pitch and want the next reading path',
+        c3t: 'Install and Deploy',
+        c3b: 'Explain how to preview the current site locally, publish it on ECS, and decide when the site structure should grow up.',
+        c3m: 'Best for site maintainers and documentation expanders',
+        c4t: 'Typical Workflows',
+        c4b: 'Show the real workflow families that AgentCore OS is meant to support, rather than leaving everything at slogan level.',
+        c4m: 'Best for evaluating what this product can actually be used for',
+        c5t: 'FAQ',
+        c5b: 'Quickly answer what it is, who it is for, what is public today, and why the site repo is not the same as the full product repo.',
+        c5m: 'Best for clearing up first-contact confusion quickly',
+        pagerNext: 'Next: Getting Started →'
+      };
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          document.documentElement.lang = 'en';
+          document.title = en.title;
+          document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+          document.getElementById('back-home').textContent = en.backHome;
+          document.getElementById('docs-home-cta').textContent = en.docsHomeCta;
+          document.getElementById('nav-index').textContent = en.navIndex;
+          document.getElementById('nav-start').textContent = en.navStart;
+          document.getElementById('nav-usage').textContent = en.navUsage;
+          document.getElementById('nav-install').textContent = en.navInstall;
+          document.getElementById('nav-workflows').textContent = en.navWorkflows;
+          document.getElementById('nav-faq').textContent = en.navFaq;
+          document.getElementById('hero-title').textContent = en.heroTitle;
+          document.getElementById('hero-lead').textContent = en.heroLead;
+          document.getElementById('card-1-title').textContent = en.c1t;
+          document.getElementById('card-1-body').textContent = en.c1b;
+          document.getElementById('card-1-meta').textContent = en.c1m;
+          document.getElementById('card-2-title').textContent = en.c2t;
+          document.getElementById('card-2-body').textContent = en.c2b;
+          document.getElementById('card-2-meta').textContent = en.c2m;
+          document.getElementById('card-3-title').textContent = en.c3t;
+          document.getElementById('card-3-body').textContent = en.c3b;
+          document.getElementById('card-3-meta').textContent = en.c3m;
+          document.getElementById('card-4-title').textContent = en.c4t;
+          document.getElementById('card-4-body').textContent = en.c4b;
+          document.getElementById('card-4-meta').textContent = en.c4m;
+          document.getElementById('card-5-title').textContent = en.c5t;
+          document.getElementById('card-5-body').textContent = en.c5b;
+          document.getElementById('card-5-meta').textContent = en.c5m;
+          document.getElementById('pager-next').textContent = en.pagerNext;
+          document.getElementById('switch-zh').classList.remove('active');
+          document.getElementById('switch-en').classList.add('active');
+        } else {
+          document.documentElement.lang = 'zh-CN';
+          document.title = 'AgentCore OS Docs';
+          document.querySelector('meta[name="description"]').setAttribute('content', 'AgentCore OS 文档中心：快速开始、使用说明、安装部署、典型工作流与 FAQ。');
+          document.getElementById('back-home').textContent = '返回首页';
+          document.getElementById('docs-home-cta').textContent = '使用文档';
+          document.getElementById('nav-index').textContent = 'Docs 首页';
+          document.getElementById('nav-start').textContent = '快速开始';
+          document.getElementById('nav-usage').textContent = '使用说明';
+          document.getElementById('nav-install').textContent = '安装部署';
+          document.getElementById('nav-workflows').textContent = '典型工作流';
+          document.getElementById('nav-faq').textContent = 'FAQ';
+          document.getElementById('hero-title').textContent = '文档中心';
+          document.getElementById('hero-lead').textContent = '这里把 AgentCore OS 官网页面里分散的信息收拢成一个可导航的 docs 入口。当前重点不是 API 细节，而是让第一次接触的人快速理解：它是什么、怎么开始、当前公开了什么、以及典型能落到哪些工作流上。';
+          document.getElementById('card-1-title').textContent = '快速开始';
+          document.getElementById('card-1-body').textContent = '从仓库、README、许可证到线上预览，快速进入当前公开版本的真实入口。';
+          document.getElementById('card-1-meta').textContent = '适合第一次打开官网的人';
+          document.getElementById('card-2-title').textContent = '使用说明与阅读路径';
+          document.getElementById('card-2-body').textContent = '按创客、业务负责人、集成者三类角色，整理首页内容的阅读顺序。';
+          document.getElementById('card-2-meta').textContent = '适合“理念看懂了，但还想继续往下读”的人';
+          document.getElementById('card-3-title').textContent = '安装与部署';
+          document.getElementById('card-3-body').textContent = '说明当前官网仓库如何本地预览、如何通过 ECS 线上站点发布，以及何时该升级站点结构。';
+          document.getElementById('card-3-meta').textContent = '适合维护站点和继续扩展文档的人';
+          document.getElementById('card-4-title').textContent = '典型工作流';
+          document.getElementById('card-4-body').textContent = '不再停在口号层，直接展示 AgentCore OS 适合承接的几类真实业务流与审批流。';
+          document.getElementById('card-4-meta').textContent = '适合判断“这东西到底能用在哪”的人';
+          document.getElementById('card-5-title').textContent = 'FAQ';
+          document.getElementById('card-5-body').textContent = '快速回答它是什么、适合谁、当前公开了什么、为什么官网和完整产品仓库不是一回事。';
+          document.getElementById('card-5-meta').textContent = '适合第一次接触、需要快速去误解的人';
+          document.getElementById('pager-next').textContent = '下一篇：快速开始 →';
+          document.getElementById('switch-zh').classList.add('active');
+          document.getElementById('switch-en').classList.remove('active');
+        }
+        localStorage.setItem('agentcore-docs-lang', lang);
+      }
+      document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); setLanguage('zh'); });
+      document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+      setLanguage(localStorage.getItem('agentcore-docs-lang') || 'zh');
+    </script>
   </body>
 </html>

@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgentCore OS - 安装与部署</title>
-    <meta name="description" content="AgentCore OS 官网站点的安装与部署说明：本地预览、静态服务、ECS 线上站点 发布与后续扩展建议。" />
+    <meta name="description" content="AgentCore OS 官网站点的安装与部署说明：本地预览、静态服务、ECS 线上站点发布与后续扩展建议。" />
     <style>
-      :root {
-        --bg:#09090b; --panel:#12141a; --panel2:#171a22; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.55); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:980px;
-      }
+      :root { --bg:#09090b; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.55); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:980px; }
       * { box-sizing:border-box; }
       body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:linear-gradient(180deg,#0b0c10 0%, #09090b 100%); color:var(--text); line-height:1.72; }
       a { color:inherit; }
@@ -16,7 +14,10 @@
       .top { position:sticky; top:0; backdrop-filter:blur(14px); background:rgba(9,9,11,.72); border-bottom:1px solid rgba(255,255,255,.06); }
       .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:18px 0; flex-wrap:wrap; }
       .brand { font-weight:700; text-decoration:none; }
-      .actions { display:flex; gap:10px; flex-wrap:wrap; }
+      .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
       .btn { display:inline-block; text-decoration:none; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,.04); }
       .btn.primary { background:var(--amber); color:#111; border-color:transparent; font-weight:700; }
       .hero { padding:54px 0 18px; }
@@ -48,17 +49,18 @@
       <div class="wrap">
         <a class="brand" href="../index.html">AgentCore OS</a>
         <div class="actions">
-          <a class="btn" href="index.html">Docs 首页</a>
-          <a class="btn" href="../index.html#quickstart">返回首页</a>
-          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
+          <a class="btn" href="index.html" id="docs-home">Docs 首页</a>
+          <a class="btn" href="../index.html#quickstart" id="back-home">返回首页</a>
+          <a class="btn primary" href="../index.html#quickstart" id="docs-cta">使用文档</a>
+          <div class="lang-switch"><a href="#" id="switch-zh" class="active">中文</a> | <a href="#" id="switch-en">EN</a></div>
         </div>
         <div class="doc-nav">
-          <a href="index.html">Docs 首页</a>
-          <a href="getting-started.html">快速开始</a>
-          <a href="usage-notes.html">使用说明</a>
-          <a href="install-deploy.html" class="active">安装部署</a>
-          <a href="workflows.html">典型工作流</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" class="active" id="nav-install">安装部署</a>
+          <a href="workflows.html" id="nav-workflows">典型工作流</a>
+          <a href="faq.html" id="nav-faq">FAQ</a>
         </div>
       </div>
     </header>
@@ -66,90 +68,104 @@
     <main class="wrap">
       <section class="hero">
         <div class="eyebrow">Install & Deploy</div>
-        <h1>安装与部署</h1>
-        <p class="lead">当前仓库公开的是 AgentCore OS 的官网静态站点，而不是完整桌面应用安装器。因此这里的“安装与部署”，重点是如何预览、如何托管、以及后续如果站点升级成更完整产品文档时该怎么扩展。</p>
+        <h1 id="hero-title">安装与部署</h1>
+        <p class="lead" id="hero-lead">当前公开的不只是官网源码，也包含真实下载入口与文档页。因此这里的“安装与部署”分成两件事：一是用户如何获取公开版本，二是站点维护者如何本地预览并同步 ECS 线上页面。</p>
       </section>
 
       <section class="grid">
         <article class="card">
-          <h2>1. 本地预览</h2>
+          <h2 id="c1-title">1. 用户安装入口</h2>
           <div class="step">
-            <h3>方式 A：直接打开 HTML</h3>
-            <p>当前站点是纯静态页面，最简单的方式就是直接打开仓库中的 <code>index.html</code>。这适合快速看页面结构、文案和视觉效果。</p>
+            <h3 id="c1-s1-title">Mac 安装包</h3>
+            <p id="c1-s1-body">当前公开的 Mac 安装包已经放在官网下载区，适用于 Apple Silicon（aarch64）。</p>
           </div>
           <div class="step">
-            <h3>方式 B：用静态文件服务启动</h3>
-            <p>如果你希望更接近线上访问方式，可以在仓库目录下启动一个本地静态服务：</p>
-            <pre><code>cd agentcore-os-site
-python3 -m http.server 8000</code></pre>
-            <p>然后在浏览器里打开：</p>
-            <pre><code>http://localhost:8000</code></pre>
+            <h3 id="c1-s2-title">Windows 安装包</h3>
+            <p id="c1-s2-body">Windows x64 安装包也已经公开上线，首页下载区提供正式链接，并保留旧文件名兼容别名。</p>
           </div>
           <div class="step">
-            <h3>为什么这里不需要额外安装依赖</h3>
+            <h3 id="c1-s3-title">为什么这里还要保留 docs</h3>
             <ul>
-              <li>当前仓库没有复杂前端构建链要求。</li>
-              <li>页面由静态 HTML / CSS / JS 构成。</li>
-              <li>所以你不需要先装 Node 依赖，直接预览即可。</li>
+              <li id="c1-li1">下载入口解决“拿到什么”。</li>
+              <li id="c1-li2">docs 页面解决“它是什么、适合谁、怎么理解”。</li>
+              <li id="c1-li3">两者一起，才构成完整的公开版本体验。</li>
             </ul>
           </div>
         </article>
 
         <article class="card">
-          <h2>2. 线上站点部署</h2>
+          <h2 id="c2-title">2. 站点本地预览</h2>
           <div class="step">
-            <h3>线上地址</h3>
-            <p>当前 ECS 站点预览地址是：</p>
+            <h3 id="c2-s1-title">方式 A：直接打开 HTML</h3>
+            <p id="c2-s1-body">当前站点是纯静态页面，最简单的方式就是直接打开仓库中的 <code>index.html</code> 和 <code>docs/*.html</code>。</p>
+          </div>
+          <div class="step">
+            <h3 id="c2-s2-title">方式 B：启动静态文件服务</h3>
+            <p id="c2-s2-body">如果你希望更接近线上访问方式，可以在仓库目录下启动本地静态服务：</p>
+            <pre><code>cd agentcore-os-site-ecs-cn
+python3 -m http.server 8000</code></pre>
+            <p id="c2-s2-tail">然后在浏览器里打开 <code>http://localhost:8000</code>。</p>
+          </div>
+          <div class="step">
+            <h3 id="c2-s3-title">为什么这里不需要额外依赖</h3>
+            <ul>
+              <li id="c2-li1">当前仓库没有复杂前端构建链。</li>
+              <li id="c2-li2">页面由静态 HTML / CSS / JS 构成。</li>
+              <li id="c2-li3">所以不用先装 Node 依赖，直接预览即可。</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2 id="c3-title">3. ECS 发布与后续扩展</h2>
+          <div class="step">
+            <h3 id="c3-s1-title">线上地址</h3>
+            <p id="c3-s1-body">当前 ECS 站点地址是：</p>
             <pre><code>http://59.110.93.188</code></pre>
           </div>
           <div class="step">
-            <h3>发布方式</h3>
-            <p>当前这套国内版页面由 ECS 上的静态站点直接提供。你改完 <code>index.html</code> 或 <code>docs/</code> 后，只需要同步到服务器并让 nginx 继续提供即可。</p>
+            <h3 id="c3-s2-title">发布方式</h3>
+            <p id="c3-s2-body">当前国内版页面由 ECS 上的静态站点直接提供。改完 <code>index.html</code> 或 <code>docs/</code> 后，只需要同步到服务器并继续由 nginx 提供即可。</p>
           </div>
           <div class="step">
-            <h3>适合当前阶段的发布策略</h3>
+            <h3 id="c3-s3-title">什么时候该升级站点结构</h3>
             <ul>
-              <li>轻文案调整：直接改 <code>index.html</code> 和 <code>docs/</code> 下的页面。</li>
-              <li>结构扩展：继续在 <code>docs/</code> 目录新增文档页。</li>
-              <li>保持简单：在真正需要框架前，不急着引入 Astro / Next / Vite。</li>
+              <li id="c3-li1">当文档页数量继续明显增长。</li>
+              <li id="c3-li2">当你需要统一导航、搜索、版本管理或多语言体系。</li>
+              <li id="c3-li3">当官网不再只是 landing page，而是产品门户 + 文档中心。</li>
             </ul>
           </div>
+          <p class="note" id="c3-note">这一页讲的是当前公开站点如何预览和发布，不等于完整桌面产品的全部构建与交付流程都已经在这个仓库里公开。</p>
         </article>
-
-        <article class="card">
-          <h2>3. 后续扩展建议</h2>
-          <div class="step">
-            <h3>什么时候需要升级站点结构</h3>
-            <ul>
-              <li>当文档页数量明显增多。</li>
-              <li>当你需要统一导航、搜索、版本管理或多语言切换。</li>
-              <li>当官网不再只是 landing page，而是产品门户 + 文档中心。</li>
-            </ul>
-          </div>
-          <div class="step">
-            <h3>建议优先补的内容</h3>
-            <div class="links">
-              <a class="linkcard" href="faq.html">
-                <strong>FAQ</strong>
-                <span>快速回答“它是什么、适合谁、当前能做什么”。</span>
-              </a>
-              <a class="linkcard" href="usage-notes.html">
-                <strong>使用说明与阅读路径</strong>
-                <span>给第一次进入站点的人一个不迷路的阅读顺序。</span>
-              </a>
-              <a class="linkcard" href="getting-started.html">
-                <strong>快速开始</strong>
-                <span>用最短路径把用户带到真实入口，而不是停在口号里。</span>
-              </a>
-            </div>
-          </div>
-          <p class="note">这一页讲的是当前官网仓库怎么预览和发布，不代表完整桌面产品已经在这个仓库里公开交付。</p>
-        </article>
-      <div class="doc-pager">
-        <a href="usage-notes.html">← 使用说明</a>
-        <a href="workflows.html">下一篇：典型工作流 →</a>
-      </div>
       </section>
+      <div class="doc-pager">
+        <a href="usage-notes.html" id="pager-prev">← 使用说明</a>
+        <a href="workflows.html" id="pager-next">下一篇：典型工作流 →</a>
+      </div>
     </main>
+
+    <script>
+      const en = {
+        title: 'AgentCore OS - Install & Deploy',
+        description: 'AgentCore OS install and deploy guide: public installers, local preview, ECS publication, and when to evolve the site structure.',
+        docsHome: 'Docs Home', backHome: 'Back to Home', docsCta: 'Documentation', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
+        heroTitle: 'Install & Deploy', heroLead: 'What is public now is no longer just website source code. It also includes live download entry points and documentation pages. So “install and deploy” now means two things: how users obtain the public build, and how site maintainers preview and sync the ECS website.',
+        c1t: '1. Public installation entry points', c1s1t: 'Mac installer', c1s1b: 'The public Mac installer is already linked from the homepage download section for Apple Silicon (aarch64).', c1s2t: 'Windows installer', c1s2b: 'The Windows x64 installer is also publicly available. The homepage exposes the formal download link while keeping the old filename as a compatibility alias.', c1s3t: 'Why the docs still matter here', c1l1: 'The download section answers “what can I get”.', c1l2: 'The docs answer “what is it, who is it for, and how should I read it”.', c1l3: 'You need both to form a complete public-release experience.',
+        c2t: '2. Local site preview', c2s1t: 'Method A: open the HTML directly', c2s1b: 'The current site is fully static, so the simplest approach is to open index.html and docs/*.html directly from the repository.', c2s2t: 'Method B: run a static file server', c2s2b: 'If you want something closer to the online access path, start a simple local static file server in the repository root:', c2s2tail: 'Then open http://localhost:8000 in the browser.', c2s3t: 'Why no extra dependencies are required', c2l1: 'There is no complex frontend build chain in this repository.', c2l2: 'The pages are built from static HTML / CSS / JS.', c2l3: 'So you can preview them directly without first installing Node dependencies.',
+        c3t: '3. ECS publishing and future expansion', c3s1t: 'Live URL', c3s1b: 'The current ECS site is available at:', c3s2t: 'Publishing model', c3s2b: 'The China-facing site is served directly as static files on ECS. After editing index.html or docs/, you only need to sync the files to the server and let nginx keep serving them.', c3s3t: 'When the site structure should be upgraded', c3l1: 'When the number of docs pages keeps growing.', c3l2: 'When you need unified navigation, search, versioning, or a stronger multilingual system.', c3l3: 'When the website is no longer just a landing page but a product portal plus docs hub.', c3n: 'This page explains how the public website is previewed and published. It does not mean that the entire desktop product build and delivery pipeline is already public in this repository.',
+        pp: '← Usage Notes', pn: 'Next: Workflows →'
+      };
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          document.documentElement.lang = 'en'; document.title = en.title; document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+          for (const [id, value] of Object.entries({ 'docs-home': en.docsHome, 'back-home': en.backHome, 'docs-cta': en.docsCta, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-workflows': en.navWorkflows, 'nav-faq': en.navFaq, 'hero-title': en.heroTitle, 'hero-lead': en.heroLead, 'c1-title': en.c1t, 'c1-s1-title': en.c1s1t, 'c1-s1-body': en.c1s1b, 'c1-s2-title': en.c1s2t, 'c1-s2-body': en.c1s2b, 'c1-s3-title': en.c1s3t, 'c1-li1': en.c1l1, 'c1-li2': en.c1l2, 'c1-li3': en.c1l3, 'c2-title': en.c2t, 'c2-s1-title': en.c2s1t, 'c2-s1-body': en.c2s1b, 'c2-s2-title': en.c2s2t, 'c2-s2-body': en.c2s2b, 'c2-s2-tail': en.c2s2tail, 'c2-s3-title': en.c2s3t, 'c2-li1': en.c2l1, 'c2-li2': en.c2l2, 'c2-li3': en.c2l3, 'c3-title': en.c3t, 'c3-s1-title': en.c3s1t, 'c3-s1-body': en.c3s1b, 'c3-s2-title': en.c3s2t, 'c3-s2-body': en.c3s2b, 'c3-s3-title': en.c3s3t, 'c3-li1': en.c3l1, 'c3-li2': en.c3l2, 'c3-li3': en.c3l3, 'c3-note': en.c3n, 'pager-prev': en.pp, 'pager-next': en.pn })) document.getElementById(id).textContent = value;
+          document.getElementById('switch-zh').classList.remove('active'); document.getElementById('switch-en').classList.add('active');
+        } else { location.reload(); return; }
+        localStorage.setItem('agentcore-docs-lang', lang);
+      }
+      document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+      document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+      if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+    </script>
   </body>
 </html>

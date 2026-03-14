@@ -6,7 +6,7 @@
     <title>AgentCore OS - 使用说明与阅读路径</title>
     <meta name="description" content="AgentCore OS 使用说明与阅读路径：根据不同角色，快速理解首页内容和后续查看顺序。" />
     <style>
-      :root { --bg:#09090b; --panel:#12141a; --text:#f5f5f7; --soft:rgba(245,245,247,.75); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:960px; }
+      :root { --bg:#09090b; --panel:#12141a; --text:#f5f5f7; --soft:rgba(245,245,247,.75); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:960px; --muted:rgba(245,245,247,.56); }
       * { box-sizing:border-box; }
       body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
       .wrap { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:36px 0 72px; }
@@ -21,8 +21,11 @@
       .card h2 { margin-top:0; font-size:22px; }
       ul { margin:10px 0 0 18px; color:var(--soft); }
       li + li { margin-top:8px; }
-      .muted { color:rgba(245,245,247,.56); font-size:14px; }
-      .row { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+      .muted { color:var(--muted); font-size:14px; }
+      .row { display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; align-items:center; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
       .doc-nav { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
       .doc-nav a { display:inline-flex; padding:10px 14px; border-radius:999px; border:1px solid var(--line); text-decoration:none; background:rgba(255,255,255,.04); }
       .doc-nav a.active { background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.34); color: #ffe08a; }
@@ -33,68 +36,109 @@
   <body>
     <main class="wrap">
       <div class="top">
-        <a class="btn" href="../index.html#quickstart">返回首页</a>
+        <a class="btn" href="../index.html#quickstart" id="back-home">返回首页</a>
         <div class="row">
-          <a class="btn" href="index.html">Docs 首页</a>
-          <a class="btn primary" href="../index.html#quickstart">使用文档</a>
+          <a class="btn" href="index.html" id="docs-home">Docs 首页</a>
+          <a class="btn primary" href="../index.html#quickstart" id="docs-cta">使用文档</a>
+          <div class="lang-switch">
+            <a href="#" id="switch-zh" class="active">中文</a> |
+            <a href="#" id="switch-en">EN</a>
+          </div>
         </div>
         <div class="doc-nav">
-          <a href="index.html">Docs 首页</a>
-          <a href="getting-started.html">快速开始</a>
-          <a href="usage-notes.html" class="active">使用说明</a>
-          <a href="install-deploy.html">安装部署</a>
-          <a href="workflows.html">典型工作流</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" class="active" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" id="nav-install">安装部署</a>
+          <a href="workflows.html" id="nav-workflows">典型工作流</a>
+          <a href="faq.html" id="nav-faq">FAQ</a>
         </div>
       </div>
 
-      <h1>使用说明与阅读路径</h1>
-      <p class="lead">首页已经包含大量定位信息，但如果用户第一次接触 AgentCore OS，容易停在“理念很强、到底怎么用”这一层。所以这页把首页内容拆成更容易行动的阅读路径。</p>
+      <h1 id="hero-title">使用说明与阅读路径</h1>
+      <p class="lead" id="hero-lead">首页已经包含大量定位信息，但如果用户第一次接触 AgentCore OS，容易停在“理念很强、到底怎么用”这一层。所以这页把首页内容拆成更容易行动的阅读路径。</p>
 
       <div class="grid">
         <section class="card">
-          <h2>如果你是创客 / 独立开发者</h2>
+          <h2 id="c1-title">如果你是创客 / 独立开发者</h2>
           <ul>
-            <li>先看首页的 <strong>Use Cases</strong>，确认它想解决的是不是你自己的自动化问题。</li>
-            <li>再看 <strong>Architecture</strong>，理解本地优先、审批边界和资产沉淀这些核心主张。</li>
-            <li>最后回到 国内仓库，评估是否值得 fork 成你自己的品牌页或产品入口。</li>
+            <li id="c1-li1">先看首页的 <strong>Use Cases</strong>，确认它想解决的是不是你自己的自动化问题。</li>
+            <li id="c1-li2">再看 <strong>Architecture</strong>，理解本地优先、审批边界和资产沉淀这些核心主张。</li>
+            <li id="c1-li3">最后回到国内仓库，评估是否值得 fork 成你自己的品牌页或产品入口。</li>
           </ul>
         </section>
 
         <section class="card">
-          <h2>如果你是业务负责人</h2>
+          <h2 id="c2-title">如果你是业务负责人</h2>
           <ul>
-            <li>重点看首页里的“不是聊天，而是让 AI 进入真实业务流”这一主线。</li>
-            <li>关注 Human-in-the-loop 审批、本地存储、边界可控这几个关键词。</li>
-            <li>把它理解成一个生产力底座，而不是一个单点聊天工具。</li>
+            <li id="c2-li1">重点看首页里的“不是聊天，而是让 AI 进入真实业务流”这一主线。</li>
+            <li id="c2-li2">关注 Human-in-the-loop 审批、本地存储、边界可控这几个关键词。</li>
+            <li id="c2-li3">把它理解成一个生产力底座，而不是一个单点聊天工具。</li>
           </ul>
         </section>
 
         <section class="card">
-          <h2>如果你是集成者 / 技术合作方</h2>
+          <h2 id="c3-title">如果你是集成者 / 技术合作方</h2>
           <ul>
-            <li>先确认许可证与仓库公开范围。</li>
-            <li>再看首页的架构与开发者定位，判断未来如何嵌入自己的自动化系统或产品矩阵。</li>
-            <li>如果后续要扩展，这个站点本身也适合作为文档门户继续长出来。</li>
+            <li id="c3-li1">先确认许可证与仓库公开范围。</li>
+            <li id="c3-li2">再看首页的架构与开发者定位，判断未来如何嵌入自己的自动化系统或产品矩阵。</li>
+            <li id="c3-li3">如果后续要扩展，这个站点本身也适合作为文档门户继续长出来。</li>
           </ul>
         </section>
 
         <section class="card">
-          <h2>当前最实用的入口</h2>
+          <h2 id="c4-title">当前最实用的入口</h2>
           <ul>
-            <li><a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">国内仓库</a></li>
-            <li><a href="https://cnb.cool/aidiyangyu/agentcore-os/blob/main/README.md" target="_blank" rel="noreferrer">README</a></li>
-            <li><a href="http://59.110.93.188" target="_blank" rel="noreferrer">ECS 线上站点 线上地址</a></li>
-            <li><a href="../index.html#use-cases">首页 Use Cases</a></li>
-            <li><a href="../index.html#architecture">首页 Architecture</a></li>
+            <li><a href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="c4-li1">国内仓库</a></li>
+            <li><a href="https://cnb.cool/aidiyangyu/agentcore-os/blob/main/README.md" target="_blank" rel="noreferrer" id="c4-li2">README</a></li>
+            <li><a href="http://59.110.93.188" target="_blank" rel="noreferrer" id="c4-li3">ECS 线上站点地址</a></li>
+            <li><a href="../index.html#use-cases" id="c4-li4">首页 Use Cases</a></li>
+            <li><a href="../index.html#architecture" id="c4-li5">首页 Architecture</a></li>
           </ul>
-          <p class="muted">后续如果你愿意，我建议继续补三类正式文档：安装部署、典型工作流、FAQ。</p>
+          <p class="muted" id="c4-note">后续如果你愿意，我建议继续补三类正式文档：安装部署、典型工作流、FAQ。</p>
         </section>
+      </div>
+
       <div class="doc-pager">
-        <a href="getting-started.html">← 快速开始</a>
-        <a href="install-deploy.html">下一篇：安装部署 →</a>
+        <a href="getting-started.html" id="pager-prev">← 快速开始</a>
+        <a href="install-deploy.html" id="pager-next">下一篇：安装部署 →</a>
       </div>
-      </div>
+
+      <script>
+        const en = {
+          title: 'AgentCore OS - Usage Notes and Reading Paths',
+          description: 'AgentCore OS usage notes and reading paths: understand the homepage content and next steps by role.',
+          backHome: 'Back to Home', docsHome: 'Docs Home', docsCta: 'Documentation', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
+          heroTitle: 'Usage Notes and Reading Paths',
+          heroLead: 'The homepage already carries a lot of positioning information, but a first-time visitor can still get stuck at the “strong vision, but how do I actually use it?” layer. This page turns that homepage material into more actionable reading paths.',
+          c1t: 'If you are a maker or indie developer', c1l1: 'Start from the Use Cases section on the homepage and decide whether it targets the automation problems you actually have.', c1l2: 'Then read the Architecture section to understand the local-first, approval boundary, and asset-building principles.', c1l3: 'Finally, go back to the China mirror repository and decide whether it is worth forking into your own brand page or product entry.',
+          c2t: 'If you are a business owner', c2l1: 'Focus on the main thread of the homepage: this is not just chatting, it is about bringing AI into real business workflows.', c2l2: 'Pay attention to Human-in-the-loop approval, local storage, and controllable boundaries.', c2l3: 'Treat it as a productivity foundation rather than a single chat tool.',
+          c3t: 'If you are an integrator or technical partner', c3l1: 'Confirm the license and public repository scope first.', c3l2: 'Then review the homepage architecture and developer positioning to judge how it may fit into your own automation stack or product matrix.', c3l3: 'If the docs keep growing, this site itself can also become the long-term documentation portal.',
+          c4t: 'Most practical entry points right now', c4l1: 'China Mirror Repository', c4l2: 'README', c4l3: 'ECS Live Site', c4l4: 'Homepage Use Cases', c4l5: 'Homepage Architecture', c4n: 'If you want this documentation layer to become more complete, the next three pages worth strengthening are install and deploy, workflow examples, and FAQ.',
+          pp: '← Getting Started', pn: 'Next: Install & Deploy →'
+        };
+        function setLanguage(lang) {
+          if (lang === 'en') {
+            document.documentElement.lang = 'en';
+            document.title = en.title;
+            document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+            for (const [id, value] of Object.entries({
+              'back-home': en.backHome, 'docs-home': en.docsHome, 'docs-cta': en.docsCta, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-workflows': en.navWorkflows, 'nav-faq': en.navFaq,
+              'hero-title': en.heroTitle, 'hero-lead': en.heroLead,
+              'c1-title': en.c1t, 'c1-li1': en.c1l1, 'c1-li2': en.c1l2, 'c1-li3': en.c1l3,
+              'c2-title': en.c2t, 'c2-li1': en.c2l1, 'c2-li2': en.c2l2, 'c2-li3': en.c2l3,
+              'c3-title': en.c3t, 'c3-li1': en.c3l1, 'c3-li2': en.c3l2, 'c3-li3': en.c3l3,
+              'c4-title': en.c4t, 'c4-li1': en.c4l1, 'c4-li2': en.c4l2, 'c4-li3': en.c4l3, 'c4-li4': en.c4l4, 'c4-li5': en.c4l5, 'c4-note': en.c4n,
+              'pager-prev': en.pp, 'pager-next': en.pn
+            })) document.getElementById(id).textContent = value;
+            document.getElementById('switch-zh').classList.remove('active'); document.getElementById('switch-en').classList.add('active');
+          } else { location.reload(); return; }
+          localStorage.setItem('agentcore-docs-lang', lang);
+        }
+        document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+        document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+        if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+      </script>
     </main>
   </body>
 </html>

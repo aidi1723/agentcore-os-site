@@ -6,63 +6,32 @@
     <title>AgentCore OS - 快速开始</title>
     <meta name="description" content="AgentCore OS 快速开始文档：如何预览官网、查看仓库、理解许可证与后续接入方向。" />
     <style>
-      :root {
-        --bg: #09090b;
-        --panel: #111318;
-        --panel-2: #161a22;
-        --text: #f5f5f7;
-        --soft: rgba(245,245,247,.76);
-        --muted: rgba(245,245,247,.52);
-        --line: rgba(255,255,255,.1);
-        --amber: #fbbf24;
-        --max: 980px;
-        --radius: 20px;
-      }
+      :root { --bg:#09090b; --panel:#111318; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.52); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:980px; --radius:20px; }
       * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: linear-gradient(180deg, #0c0d10 0%, #09090b 100%);
-        color: var(--text);
-        line-height: 1.7;
-      }
+      body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #0c0d10 0%, #09090b 100%); color: var(--text); line-height: 1.7; }
       a { color: inherit; }
       .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-      .top {
-        padding: 22px 0;
-        position: sticky;
-        top: 0;
-        backdrop-filter: blur(14px);
-        background: rgba(9,9,11,.72);
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-      .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+      .top { padding: 22px 0; position: sticky; top: 0; backdrop-filter: blur(14px); background: rgba(9,9,11,.72); border-bottom: 1px solid rgba(255,255,255,.06); }
+      .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
       .brand { font-weight: 700; text-decoration: none; }
-      .actions { display:flex; gap:12px; flex-wrap:wrap; }
-      .btn {
-        display:inline-flex; align-items:center; justify-content:center;
-        padding: 10px 16px; border-radius: 999px; text-decoration:none;
-        border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);
-      }
+      .actions { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
+      .btn { display:inline-flex; align-items:center; justify-content:center; padding: 10px 16px; border-radius: 999px; text-decoration:none; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
       .btn.primary { background: var(--amber); color:#111; border-color: transparent; font-weight:700; }
       .hero { padding: 60px 0 28px; }
       .eyebrow { color: var(--amber); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
       h1 { font-size: clamp(32px, 5vw, 52px); line-height:1.08; margin: 10px 0 14px; }
       .lead { color: var(--soft); font-size: 18px; max-width: 760px; }
       .grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; padding: 22px 0 60px; }
-      .card {
-        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
-        border:1px solid var(--line); border-radius: var(--radius); padding: 24px;
-      }
+      .card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)); border:1px solid var(--line); border-radius: var(--radius); padding: 24px; }
       .step { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.08); }
       .step:first-of-type { border-top: 0; padding-top: 0; }
       .step h3 { margin: 0 0 8px; font-size: 20px; }
       .step p, li { color: var(--soft); }
       .links { display:grid; gap:12px; margin-top:14px; }
-      .linkcard {
-        display:block; text-decoration:none; border:1px solid rgba(255,255,255,.1);
-        border-radius:16px; padding:16px; background: rgba(255,255,255,.03);
-      }
+      .linkcard { display:block; text-decoration:none; border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:16px; background: rgba(255,255,255,.03); }
       .linkcard strong { display:block; margin-bottom:4px; }
       code { background: rgba(255,255,255,.08); padding: 2px 8px; border-radius:8px; }
       .note { color: var(--muted); font-size: 14px; margin-top: 14px; }
@@ -79,16 +48,20 @@
       <div class="wrap">
         <a class="brand" href="../index.html">AgentCore OS</a>
         <div class="actions">
-          <a class="btn" href="../index.html#quickstart">返回首页</a>
-          <a class="btn primary" href="index.html">文档中心</a>
+          <a class="btn" href="../index.html#quickstart" id="back-home">返回首页</a>
+          <a class="btn primary" href="index.html" id="docs-home">文档中心</a>
+          <div class="lang-switch">
+            <a href="#" id="switch-zh" class="active">中文</a> |
+            <a href="#" id="switch-en">EN</a>
+          </div>
         </div>
         <div class="doc-nav">
-          <a href="index.html">Docs 首页</a>
-          <a href="getting-started.html" class="active">快速开始</a>
-          <a href="usage-notes.html">使用说明</a>
-          <a href="install-deploy.html">安装部署</a>
-          <a href="workflows.html">典型工作流</a>
-          <a href="faq.html">FAQ</a>
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" class="active" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" id="nav-install">安装部署</a>
+          <a href="workflows.html" id="nav-workflows">典型工作流</a>
+          <a href="faq.html" id="nav-faq">FAQ</a>
         </div>
       </div>
     </header>
@@ -96,82 +69,142 @@
     <main class="wrap">
       <section class="hero">
         <div class="eyebrow">Getting Started</div>
-        <h1>如何开始使用 AgentCore OS</h1>
-        <p class="lead">当前公开站点是一个官网落地页，不是完整安装包分发页。所以“如何开始”最合理的路径，是先理解公开内容、查看仓库与许可证，再通过静态方式预览当前网站，并据此决定后续接入或扩展方向。</p>
+        <h1 id="hero-title">如何开始使用 AgentCore OS</h1>
+        <p class="lead" id="hero-lead">当前公开站点已经不只是概念页：它有官网、文档中心、下载入口和国内仓库。因此“如何开始”的最佳路径，是先看清公开边界，再进入仓库、文档、线上预览和下载页，而不是把它误解成一个只会聊天的演示页面。</p>
       </section>
 
       <section class="grid">
         <article class="card">
           <div class="step">
-            <h3>第一步：先看公开内容和仓库结构</h3>
-            <p>先进入 国内仓库，确认你当前拿到的到底是什么：官网源码、README、静态资源，以及 ECS 线上站点 部署方式。</p>
+            <h3 id="s1-title">第一步：先看公开内容和仓库结构</h3>
+            <p id="s1-body">先进入国内仓库，确认你当前拿到的是什么：官网源码、README、docs 页面，以及对外公开的下载与发布信息。</p>
             <div class="links">
               <a class="linkcard" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">
-                <strong>国内开源站仓库</strong>
-                <span>查看源码、目录结构、提交记录与后续演进。</span>
+                <strong id="s1-link1-title">国内仓库</strong>
+                <span id="s1-link1-body">查看源码、目录结构、提交记录与后续演进。</span>
               </a>
               <a class="linkcard" href="https://cnb.cool/aidiyangyu/agentcore-os/blob/main/README.md" target="_blank" rel="noreferrer">
-                <strong>README</strong>
-                <span>当前仓库的简要说明、技术栈与本地预览方式。</span>
+                <strong id="s1-link2-title">README</strong>
+                <span id="s1-link2-body">查看当前公开版本说明、技术边界与主要入口。</span>
               </a>
             </div>
           </div>
 
           <div class="step">
-            <h3>第二步：看清许可证与可用边界</h3>
-            <p>如果你要 fork、改版、接入商业项目，先看许可证最稳。当前项目页面与文案都强调 Apache 2.0，因此建议把这一点作为对外沟通的基础信息之一。</p>
+            <h3 id="s2-title">第二步：看清文档与公开边界</h3>
+            <p id="s2-body">如果你想判断它能不能直接拿来用，先看 docs 和公开发布说明最稳。现在的重点不是承诺完整私有能力，而是把当前公开版本的边界讲清楚。</p>
             <div class="links">
-              <a class="linkcard" href="../index.html#developers" target="_blank" rel="noreferrer">
-                <strong>Apache 2.0 许可证</strong>
-                <span>确认修改、分发、商业集成和保留声明等基本边界。</span>
+              <a class="linkcard" href="index.html">
+                <strong id="s2-link1-title">Docs 文档中心</strong>
+                <span id="s2-link1-body">统一查看快速开始、使用说明、安装部署、工作流与 FAQ。</span>
+              </a>
+              <a class="linkcard" href="../index.html#developers">
+                <strong id="s2-link2-title">开发者与许可证入口</strong>
+                <span id="s2-link2-body">回到首页开发者区，查看 Apache 2.0 与对外协作定位。</span>
               </a>
             </div>
           </div>
 
           <div class="step">
-            <h3>第三步：预览当前公开版本</h3>
-            <p>这个仓库当前是纯静态站点，最简单的预览方式有两种：</p>
+            <h3 id="s3-title">第三步：预览和下载当前公开版本</h3>
+            <p id="s3-body">现在最简单的体验方式有三种：</p>
             <ul>
-              <li>直接打开仓库中的 <code>index.html</code>。</li>
-              <li>访问 ECS 线上站点 线上地址，看部署后的真实落地页效果。</li>
+              <li id="s3-li1">访问 ECS 线上站点，看当前真实落地页与文档入口。</li>
+              <li id="s3-li2">从首页下载区直接获取当前公开安装包。</li>
+              <li id="s3-li3">在 docs 内继续阅读安装部署、工作流和 FAQ，再决定是否接入或继续扩展。</li>
             </ul>
             <div class="links">
               <a class="linkcard" href="http://59.110.93.188" target="_blank" rel="noreferrer">
-                <strong>线上预览地址</strong>
-                <span>查看当前 ECS 线上站点 发布版本。</span>
+                <strong id="s3-link1-title">线上预览地址</strong>
+                <span id="s3-link1-body">查看当前 ECS 线上站点发布版本。</span>
               </a>
-              <a class="linkcard" href="../index.html" target="_blank" rel="noreferrer">
-                <strong>index.html</strong>
-                <span>直接查看当前首页源码与文案结构。</span>
+              <a class="linkcard" href="../index.html#download" target="_blank" rel="noreferrer">
+                <strong id="s3-link2-title">下载入口</strong>
+                <span id="s3-link2-body">查看 Mac / Windows 安装包与文档入口。</span>
               </a>
             </div>
           </div>
         </article>
 
         <aside class="card">
-          <h3>继续往下怎么用</h3>
-          <p>如果你不是来看官网，而是想评估 AgentCore OS 的使用方式，建议顺着下面的顺序继续读：</p>
+          <h3 id="aside-title">继续往下怎么读</h3>
+          <p id="aside-body">如果你不是只想浏览官网，而是想判断 AgentCore OS 的实际使用方向，建议按下面顺序继续读：</p>
           <div class="links">
             <a class="linkcard" href="../index.html#use-cases">
-              <strong>典型使用场景</strong>
-              <span>看它面向的业务流、审批流和自动化定位。</span>
+              <strong id="aside-link1-title">典型使用场景</strong>
+              <span id="aside-link1-body">看它面向的业务流、审批流和自动化定位。</span>
             </a>
             <a class="linkcard" href="../index.html#architecture">
-              <strong>产品架构</strong>
-              <span>理解本地优先、边车、审批、防火墙等设计理念。</span>
+              <strong id="aside-link2-title">产品架构</strong>
+              <span id="aside-link2-body">理解本地优先、边车、审批、防火墙等设计理念。</span>
             </a>
             <a class="linkcard" href="usage-notes.html">
-              <strong>使用说明与阅读路径</strong>
-              <span>我帮你补的一页，把首页内容整理成更像文档的阅读入口。</span>
+              <strong id="aside-link3-title">使用说明与阅读路径</strong>
+              <span id="aside-link3-body">把首页内容整理成更像文档的行动入口。</span>
             </a>
           </div>
-          <p class="note">说明：如果后续仓库补充了更完整的产品文档、安装说明或 API 文档，这里可以继续扩展为 docs 目录，而不是把所有内容都塞回首页。</p>
+          <p class="note" id="aside-note">如果后续继续补充更完整的产品文档、安装说明或 API 文档，这个 docs 目录可以继续扩展，而不是把所有内容都塞回首页。</p>
         </aside>
-      <div class="doc-pager">
-        <a href="index.html">← Docs 首页</a>
-        <a href="usage-notes.html">下一篇：使用说明 →</a>
-      </div>
       </section>
+      <div class="wrap doc-pager">
+        <a href="index.html" id="pager-prev">← Docs 首页</a>
+        <a href="usage-notes.html" id="pager-next">下一篇：使用说明 →</a>
+      </div>
     </main>
+
+    <script>
+      const en = {
+        title: 'AgentCore OS - Getting Started',
+        description: 'AgentCore OS getting started guide: how to inspect the public scope, browse the repository, review the docs, and try the current public site and downloads.',
+        backHome: 'Back to Home', docsHome: 'Docs Hub', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
+        heroTitle: 'How to Start with AgentCore OS',
+        heroLead: 'The public site is no longer just a concept page: it now includes the website, a documentation hub, download entry points, and a China-access repository. So the best way to start is to understand the public boundary first, then move through the repository, docs, live preview, and download pages—instead of treating it as a chat-only demo.',
+        s1t: 'Step 1: Inspect the public scope and repository structure',
+        s1b: 'Start from the China-access repository and confirm what is actually public today: the website source, README, docs pages, and the public download and release information.',
+        s1l1t: 'China Mirror Repository', s1l1b: 'Browse source files, structure, commit history, and future iteration.',
+        s1l2t: 'README', s1l2b: 'See the current public version summary, technical boundaries, and major entry points.',
+        s2t: 'Step 2: Understand the docs and public boundary',
+        s2b: 'If you want to judge whether this is ready for real use, the safest path is to read the docs and public release boundary first. The focus now is not promising every private capability, but making the current public scope explicit.',
+        s2l1t: 'Docs Hub', s2l1b: 'Review getting started, usage notes, install and deploy, workflows, and FAQ in one place.',
+        s2l2t: 'Developer and License Entry', s2l2b: 'Jump back to the developer section on the homepage to review Apache 2.0 and the public collaboration stance.',
+        s3t: 'Step 3: Preview and download the current public build',
+        s3b: 'The simplest ways to try it today are:',
+        s3li1: 'Visit the ECS site to see the live landing page and docs entry points.',
+        s3li2: 'Use the homepage download section to get the current public installers.',
+        s3li3: 'Continue reading install and deploy, workflows, and FAQ before deciding whether to adopt or extend it.',
+        s3l1t: 'Live Preview URL', s3l1b: 'Open the currently published ECS version.',
+        s3l2t: 'Download Entry', s3l2b: 'See the Mac / Windows installers and the docs entry point.',
+        at: 'Where to read next', ab: 'If you are not just browsing the site but evaluating the actual direction of AgentCore OS, the best reading order is:',
+        al1t: 'Typical Use Cases', al1b: 'See the intended business flows, approval flows, and automation positioning.',
+        al2t: 'Product Architecture', al2b: 'Understand the local-first, sidecar, approval, and firewall design ideas.',
+        al3t: 'Usage Notes and Reading Paths', al3b: 'Turn the homepage content into a more actionable documentation path.',
+        an: 'If the project later adds fuller product docs, installation instructions, or API references, this docs directory can keep growing instead of pushing everything back into the homepage.',
+        pp: '← Docs Home', pn: 'Next: Usage Notes →'
+      };
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          document.documentElement.lang = 'en';
+          document.title = en.title;
+          document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+          for (const [id, value] of Object.entries({
+            'back-home': en.backHome, 'docs-home': en.docsHome, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-workflows': en.navWorkflows, 'nav-faq': en.navFaq,
+            'hero-title': en.heroTitle, 'hero-lead': en.heroLead,
+            's1-title': en.s1t, 's1-body': en.s1b, 's1-link1-title': en.s1l1t, 's1-link1-body': en.s1l1b, 's1-link2-title': en.s1l2t, 's1-link2-body': en.s1l2b,
+            's2-title': en.s2t, 's2-body': en.s2b, 's2-link1-title': en.s2l1t, 's2-link1-body': en.s2l1b, 's2-link2-title': en.s2l2t, 's2-link2-body': en.s2l2b,
+            's3-title': en.s3t, 's3-body': en.s3b, 's3-li1': en.s3li1, 's3-li2': en.s3li2, 's3-li3': en.s3li3, 's3-link1-title': en.s3l1t, 's3-link1-body': en.s3l1b, 's3-link2-title': en.s3l2t, 's3-link2-body': en.s3l2b,
+            'aside-title': en.at, 'aside-body': en.ab, 'aside-link1-title': en.al1t, 'aside-link1-body': en.al1b, 'aside-link2-title': en.al2t, 'aside-link2-body': en.al2b, 'aside-link3-title': en.al3t, 'aside-link3-body': en.al3b, 'aside-note': en.an,
+            'pager-prev': en.pp, 'pager-next': en.pn
+          })) document.getElementById(id).textContent = value;
+          document.getElementById('switch-zh').classList.remove('active'); document.getElementById('switch-en').classList.add('active');
+        } else {
+          location.reload();
+          return;
+        }
+        localStorage.setItem('agentcore-docs-lang', lang);
+      }
+      document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+      document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+      if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+    </script>
   </body>
 </html>
