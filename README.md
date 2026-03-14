@@ -108,6 +108,10 @@ Then open:
 
 - <http://localhost:8000>
 
+## Change summary
+
+- `docs/SITE_CHANGELOG.md` — summary of the 2026-03-14 homepage i18n repair, bilingual docs rebuild, deployment pitfall, and maintenance-documentation work.
+
 ## Live site
 
 Current ECS site:
