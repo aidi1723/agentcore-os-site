@@ -266,25 +266,39 @@
         background: rgba(255,255,255,0.025);
         overflow: hidden;
       }
-      .fold summary {
+      .fold-toggle {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
         cursor: pointer;
-        list-style: none;
         padding: 14px 16px;
         color: var(--text);
         font-weight: 600;
+        background: transparent;
+        border: 0;
+        text-align: left;
       }
-      .fold summary::-webkit-details-marker { display: none; }
-      .fold summary::after {
-        content: '展开';
-        float: right;
+      .fold-toggle:hover {
+        background: rgba(255,255,255,0.02);
+      }
+      .fold-label {
+        display: inline-flex;
+        align-items: center;
+      }
+      .fold-indicator {
         color: var(--text-muted);
         font-size: 13px;
         font-weight: 500;
+        flex-shrink: 0;
       }
-      .fold[open] summary::after { content: '收起'; }
       .fold-body {
         padding: 0 16px 16px;
         color: var(--text-soft);
+      }
+      .fold-body[hidden] {
+        display: none;
       }
       .fold-body p { margin: 0; }
       .list-item {
@@ -497,7 +511,7 @@
             <a href="#" id="switch-zh" class="active">中文</a> |
             <a href="#" id="switch-en">EN</a>
           </div>
-          <a class="btn btn-ghost" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">国内仓库</a>
+          <a class="btn btn-ghost" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer" id="nav-china-mirror">国内仓库</a>
           <a class="btn btn-ghost" href="#download" data-i18n="nav.download">下载</a>
           <a class="btn btn-primary" href="#quickstart" data-i18n="nav.quickstart">快速开始</a>
         </div>
@@ -799,9 +813,12 @@
                   <span id="quickstart-readme-note">查看项目说明与本地预览方式。</span>
                 </a>
               </div>
-              <details class="fold">
-                <summary id="quickstart-more">更多入口与说明</summary>
-                <div class="fold-body">
+              <div class="fold">
+                <button class="fold-toggle" type="button" aria-expanded="false" aria-controls="quickstart-fold-body" id="quickstart-more-toggle">
+                  <span class="fold-label" id="quickstart-more">更多入口与说明</span>
+                  <span class="fold-indicator" id="quickstart-more-indicator">展开</span>
+                </button>
+                <div class="fold-body" id="quickstart-fold-body" hidden>
                   <div class="doc-links">
                     <a class="doc-link" href="http://59.110.93.188" target="_blank" rel="noreferrer">
                       <strong id="quickstart-live">线上预览地址</strong>
@@ -810,7 +827,7 @@
                   </div>
                   <p class="meta-note">当前站点仍然以静态官网与文档为主，所以下载入口会优先指向国内仓库源码包与真实文档路径。</p>
                 </div>
-              </details>
+              </div>
             </div>
             <div class="card">
               <span class="mini">Usage Guide</span>
@@ -839,9 +856,12 @@
                   <span id="usage-faq-link-note">先把常见疑问说清楚。</span>
                 </a>
               </div>
-              <details class="fold">
-                <summary id="usage-more">展开更多跳转</summary>
-                <div class="fold-body">
+              <div class="fold">
+                <button class="fold-toggle" type="button" aria-expanded="false" aria-controls="usage-fold-body" id="usage-more-toggle">
+                  <span class="fold-label" id="usage-more">展开更多跳转</span>
+                  <span class="fold-indicator" id="usage-more-indicator">展开</span>
+                </button>
+                <div class="fold-body" id="usage-fold-body" hidden>
                   <div class="doc-links">
                     <a class="doc-link" href="#use-cases">
                       <strong id="usage-back-cases">返回落地场景</strong>
@@ -853,7 +873,7 @@
                     </a>
                   </div>
                 </div>
-              </details>
+              </div>
             </div>
           </div>
         </div>
@@ -936,8 +956,47 @@
         heroSideBody: '它不是陪你闲聊，而是让 AI 在本地进入真实业务流，在关键节点停下来等你拍板。'
       };
 
+
+      function bindFold(toggleId, bodyId, labels) {
+        const toggle = document.getElementById(toggleId);
+        const body = document.getElementById(bodyId);
+        if (!toggle || !body) return;
+        const indicator = toggle.querySelector('.fold-indicator');
+        const setExpanded = (expanded) => {
+          toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          body.hidden = !expanded;
+          if (indicator) indicator.textContent = expanded ? labels.collapse : labels.expand;
+        };
+        setExpanded(false);
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          setExpanded(!expanded);
+        });
+        return { setExpanded, indicator };
+      }
+
+      const foldControllers = {
+        quickstart: bindFold('quickstart-more-toggle', 'quickstart-fold-body', { expand: '展开', collapse: '收起' }),
+        usage: bindFold('usage-more-toggle', 'usage-fold-body', { expand: '展开', collapse: '收起' })
+      };
+
+      function setFoldLanguage(lang) {
+        const map = lang === 'en'
+          ? { expand: 'Expand', collapse: 'Collapse' }
+          : { expand: '展开', collapse: '收起' };
+        for (const controller of Object.values(foldControllers)) {
+          if (!controller) continue;
+          const expanded = controller.indicator && controller.indicator.textContent === (lang === 'en' ? 'Collapse' : '收起');
+          controller.setExpanded(expanded);
+          if (controller.indicator) {
+            const isOpen = controller.indicator.textContent === '收起' || controller.indicator.textContent === 'Collapse';
+            controller.indicator.textContent = isOpen ? map.collapse : map.expand;
+          }
+        }
+      }
+
       const en = {
-        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDocs: 'Docs', navDevelopers: 'Developers', navDownload: 'Download', navQuickstart: 'Quick Start',
+        navPhilosophy: 'Philosophy', navUseCases: 'Use Cases', navArchitecture: 'Architecture', navDocs: 'Docs', navDevelopers: 'Developers', navChinaMirror: 'China Mirror', navDownload: 'Download', navQuickstart: 'Quick Start',
         heroTitle: 'A Local-First AI Productivity Foundation for Every Individual and Team.',
         heroSub: 'AgentCore OS is not meant to be just another chat interface. It is built to give more people a lower-friction, secure, privacy-first local AI foundation that can do real work and continuously accumulate operational assets.',
         heroBtn1: 'View the GitHub Repository', heroBtn2: 'How to Start',
@@ -1019,6 +1078,8 @@
         usageFaqLink: 'FAQ',
         usageFaqLinkNote: 'Clarify the most common questions first.',
         usageMore: 'Expand more links',
+        foldExpand: 'Expand',
+        foldCollapse: 'Collapse',
         usageBackCases: 'Back to Use Cases',
         usageBackCasesNote: 'Compare the docs against the use cases again.',
         usageBackArch: 'Back to Architecture',
@@ -1040,6 +1101,7 @@
           document.querySelector('[data-i18n="nav.architecture"]').textContent = en.navArchitecture;
           document.querySelector('[data-i18n="nav.docs"]').textContent = en.navDocs;
           document.querySelector('[data-i18n="nav.developers"]').textContent = en.navDevelopers;
+          document.getElementById('nav-china-mirror').textContent = en.navChinaMirror;
           document.querySelector('[data-i18n="nav.download"]').textContent = en.navDownload;
           document.querySelector('[data-i18n="nav.quickstart"]').textContent = en.navQuickstart;
           document.getElementById('hero-side-title').textContent = en.heroSideTitle;
@@ -1122,6 +1184,8 @@
           document.getElementById('usage-faq-link').textContent = en.usageFaqLink;
           document.getElementById('usage-faq-link-note').textContent = en.usageFaqLinkNote;
           document.getElementById('usage-more').textContent = en.usageMore;
+          document.getElementById('quickstart-more-indicator').textContent = en.foldExpand;
+          document.getElementById('usage-more-indicator').textContent = en.foldExpand;
           document.getElementById('usage-back-cases').textContent = en.usageBackCases;
           document.getElementById('usage-back-cases-note').textContent = en.usageBackCasesNote;
           document.getElementById('usage-back-arch').textContent = en.usageBackArch;
