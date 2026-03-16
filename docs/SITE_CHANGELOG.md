@@ -1,5 +1,159 @@
 # Site Changelog
 
+## 2026-03-16 — Homepage demo section, local-first review flow, and ECS deployment record
+
+This round added a homepage demo block for the ECS site, formalized a safer local-first review workflow, and recorded the deployment / rollback details so future maintenance can query what happened quickly.
+
+### Scope of this round
+
+The work covered four connected parts:
+
+1. **Homepage demo placement**
+2. **Local preview and copy refinement**
+3. **ECS deployment and rollback discipline**
+4. **Repository traceability cleanup**
+
+---
+
+## 1. Homepage demo placement
+
+A product demo video (`demo/demo.mp4`) was added to the homepage.
+
+### Placement decision
+
+The chosen position was:
+
+- directly below the Hero section
+- before the trust bar
+
+This keeps the public flow coherent:
+
+- product positioning first
+- real workflow demo second
+- trust / capability cues after that
+
+### What was added
+
+- new homepage demo block in `index.html`
+- local video asset at `demo/demo.mp4`
+- bilingual headline/copy around the demo area
+
+### Related commit
+
+- `68df7f5` — `feat: add homepage demo section and video`
+
+---
+
+## 2. Local preview and copy refinement
+
+This round also established a clearer execution pattern for ECS site work.
+
+### Workflow used
+
+1. edit locally in `agentcore-os-site-ecs-cn`
+2. preview locally first
+3. get user confirmation
+4. deploy to ECS separately
+5. verify on ECS itself and via public fetch
+
+### Local preview entry
+
+The demo version was reviewed locally through:
+
+- `http://127.0.0.1:8016`
+
+### Copy refinement
+
+After the first deployment, the homepage demo CTA wording was refined from a more literal bilingual-style button copy into a more natural reading flow:
+
+- `查看使用说明 · Docs`
+- `继续看产品介绍`
+
+That wording update was then synced to ECS as a follow-up deployment.
+
+---
+
+## 3. ECS deployment and rollback discipline
+
+A useful deployment lesson came out of this round.
+
+### Key environment fact
+
+For the live ECS website, nginx serves:
+
+- `/usr/share/nginx/html`
+
+It does **not** serve:
+
+- `/root/agentcore-os-site`
+
+This means editing files under `/root/agentcore-os-site` does not change the live public site.
+
+### Rollback record
+
+Before the final local-first flow was re-established, a direct demo insertion on ECS was rolled back safely.
+
+The live homepage was restored from:
+
+- `/usr/share/nginx/html/index.html.bak-20260316-084402-predemo`
+
+The previously uploaded demo directory was preserved rather than deleted:
+
+- `/usr/share/nginx/html/demo.disabled-20260316-084613`
+
+### Final deployed files
+
+After local confirmation, the confirmed ECS homepage version was deployed to:
+
+- `/usr/share/nginx/html/index.html`
+- `/usr/share/nginx/html/demo/demo.mp4`
+
+### Verification pattern that worked
+
+Server-local verification:
+
+- `curl http://127.0.0.1/`
+- `curl -I http://127.0.0.1/demo/demo.mp4`
+
+Public-side confirmation:
+
+- fetch/check `http://59.110.93.188/`
+
+---
+
+## 4. Repository traceability cleanup
+
+To make future lookup easier, this round also tightened repository hygiene.
+
+### Repo hygiene updates
+
+- committed deployable homepage/video files into git
+- kept local rollback backup files out of version control
+- added local backup ignore rule:
+  - `index.html.bak-local-demo-*`
+
+### Current repo state after this round
+
+The repo now contains both:
+
+- the homepage demo/video addition
+- the later CTA wording refinement
+
+This makes the repo easier to use as the source of truth for future ECS updates.
+
+---
+
+## Recommended next follow-ups
+
+If future work continues, the most reasonable next steps are:
+
+1. add a lightweight screenshot-based review habit before ECS uploads for homepage changes
+2. continue tightening English copy so CN / EN button tone stays equally natural
+3. keep recording ECS deployment rounds in this changelog whenever live-site behavior diverges from local assumptions
+
+---
+
+
 ## 2026-03-14 — Homepage i18n repair, bilingual docs rebuild, and maintenance documentation
 
 This round turned the public ECS website from a partially localized landing page into a more consistent public site with a bilingual docs section.

@@ -110,7 +110,7 @@ Then open:
 
 ## Change summary
 
-- `docs/SITE_CHANGELOG.md` — summary of the 2026-03-14 homepage i18n repair, bilingual docs rebuild, deployment pitfall, and maintenance-documentation work.
+- `docs/SITE_CHANGELOG.md` — recorded site maintenance history, including the 2026-03-14 homepage/docs rebuild work and the 2026-03-16 homepage demo/video deployment round.
 
 ## Live site
 
