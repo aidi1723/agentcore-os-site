@@ -69,26 +69,26 @@
       <section class="hero">
         <div class="eyebrow">Install & Deploy</div>
         <h1 id="hero-title">安装与部署</h1>
-        <p class="lead" id="hero-lead">当前公开的不只是官网源码，也包含真实下载入口与文档页。因此这里的“安装与部署”分成两件事：一是用户如何获取公开版本，二是站点维护者如何本地预览并同步 ECS 线上页面。</p>
+        <p class="lead" id="hero-lead">当前国内公开内容以源码仓库和中文文档为主，不再提供 ECS 上的 Mac / Windows 安装包直链。因此这里的“安装与部署”分成两件事：一是用户如何从国内源码仓库开始体验，二是站点维护者如何本地预览并同步 ECS 线上页面。</p>
       </section>
 
       <section class="grid">
         <article class="card">
-          <h2 id="c1-title">1. 用户安装入口</h2>
+          <h2 id="c1-title">1. 用户体验入口</h2>
           <div class="step">
-            <h3 id="c1-s1-title">Mac 安装包</h3>
-            <p id="c1-s1-body">当前公开的 Mac 安装包已经放在官网下载区，适用于 Apple Silicon（aarch64）。</p>
+            <h3 id="c1-s1-title">国内源码仓库</h3>
+            <p id="c1-s1-body">当前推荐入口是国内源码仓库：<code>https://cnb.cool/aidiyangyu/agentcore-os</code>。建议先查看 README、文档和公开边界，再决定是否自行体验或构建。</p>
           </div>
           <div class="step">
-            <h3 id="c1-s2-title">Windows 安装包</h3>
-            <p id="c1-s2-body">Windows x64 安装包也已经公开上线，首页下载区提供正式链接，并保留旧文件名兼容别名。</p>
+            <h3 id="c1-s2-title">安装与使用说明</h3>
+            <p id="c1-s2-body">Windows 与 macOS 当前都不再通过 ECS 提供安装包下载。建议统一先阅读 README、快速开始和安装部署页，再从国内源码仓库获取源码。</p>
           </div>
           <div class="step">
             <h3 id="c1-s3-title">为什么这里还要保留 docs</h3>
             <ul>
-              <li id="c1-li1">下载入口解决“拿到什么”。</li>
-              <li id="c1-li2">docs 页面解决“它是什么、适合谁、怎么理解”。</li>
-              <li id="c1-li3">两者一起，才构成完整的公开版本体验。</li>
+              <li id="c1-li1">源码仓库入口解决“现在公开了什么”。</li>
+              <li id="c1-li2">docs 页面解决“它是什么、适合谁、怎么开始”。</li>
+              <li id="c1-li3">两者一起，才构成当前更准确的公开体验路径。</li>
             </ul>
           </div>
         </article>
@@ -149,8 +149,8 @@ python3 -m http.server 8000</code></pre>
         title: 'AgentCore OS - Install & Deploy',
         description: 'AgentCore OS install and deploy guide: public installers, local preview, ECS publication, and when to evolve the site structure.',
         docsHome: 'Docs Home', backHome: 'Back to Home', docsCta: 'Documentation', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navWorkflows: 'Workflows', navFaq: 'FAQ',
-        heroTitle: 'Install & Deploy', heroLead: 'What is public now is no longer just website source code. It also includes live download entry points and documentation pages. So “install and deploy” now means two things: how users obtain the public build, and how site maintainers preview and sync the ECS website.',
-        c1t: '1. Public installation entry points', c1s1t: 'Mac installer', c1s1b: 'The public Mac installer is already linked from the homepage download section for Apple Silicon (aarch64).', c1s2t: 'Windows installer', c1s2b: 'The Windows x64 installer is also publicly available. The homepage exposes the formal download link while keeping the old filename as a compatibility alias.', c1s3t: 'Why the docs still matter here', c1l1: 'The download section answers “what can I get”.', c1l2: 'The docs answer “what is it, who is it for, and how should I read it”.', c1l3: 'You need both to form a complete public-release experience.',
+        heroTitle: 'Install & Deploy', heroLead: 'The current China-facing public scope is centered on the source repository and Chinese documentation. Direct ECS download links for macOS and Windows are no longer provided. So “install and deploy” now means two things: how users begin from the source repository, and how site maintainers preview and sync the ECS website.',
+        c1t: '1. Public access path', c1s1t: 'China source repository', c1s1b: 'The public China source repository is already linked from the homepage download section for Apple Silicon (aarch64).', c1s2t: 'Install and usage guidance', c1s2b: 'Neither Windows nor macOS installers are now distributed from ECS. The recommended path is to read the README, Getting Started, and this page first, then obtain the source from the China repository.', c1s3t: 'Why the docs still matter here', c1l1: 'The repository entry answers “what is public right now”.', c1l2: 'The docs answer “what is it, who is it for, and how should I start”.', c1l3: 'Together they form the more accurate public experience path now.',
         c2t: '2. Local site preview', c2s1t: 'Method A: open the HTML directly', c2s1b: 'The current site is fully static, so the simplest approach is to open index.html and docs/*.html directly from the repository.', c2s2t: 'Method B: run a static file server', c2s2b: 'If you want something closer to the online access path, start a simple local static file server in the repository root:', c2s2tail: 'Then open http://localhost:8000 in the browser.', c2s3t: 'Why no extra dependencies are required', c2l1: 'There is no complex frontend build chain in this repository.', c2l2: 'The pages are built from static HTML / CSS / JS.', c2l3: 'So you can preview them directly without first installing Node dependencies.',
         c3t: '3. ECS publishing and future expansion', c3s1t: 'Live URL', c3s1b: 'The current ECS site is available at:', c3s2t: 'Publishing model', c3s2b: 'The China-facing site is served directly as static files on ECS. After editing index.html or docs/, you only need to sync the files to the server and let nginx keep serving them.', c3s3t: 'When the site structure should be upgraded', c3l1: 'When the number of docs pages keeps growing.', c3l2: 'When you need unified navigation, search, versioning, or a stronger multilingual system.', c3l3: 'When the website is no longer just a landing page but a product portal plus docs hub.', c3n: 'This page explains how the public website is previewed and published. It does not mean that the entire desktop product build and delivery pipeline is already public in this repository.',
         pp: '← Usage Notes', pn: 'Next: Workflows →'

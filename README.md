@@ -13,7 +13,7 @@ It is no longer just a single homepage. The public site now includes:
 
 - the main landing page: `index.html`
 - a bilingual docs section under `docs/`
-- real public download links for the current release
+- source-repository entry points and documentation for the current public experience
 - ECS-published static pages used as the live website
 
 ## Stack
@@ -122,11 +122,13 @@ Current docs entry:
 
 - <http://59.110.93.188/docs/index.html>
 
-## Current public downloads
+## Current public experience path
 
-- macOS (Apple Silicon / aarch64 DMG): <http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_aarch64.dmg>
-- Windows (x64 EXE installer): <http://59.110.93.188/downloads/AgentCore.OS_0.2.0-beta.2_x64_setup.exe>
-- Windows compatibility alias (legacy filename kept alive): <http://59.110.93.188/downloads/AgentCore%20OS_0.2.0-beta.2_x64-setup.exe>
+- China source repository: <https://cnb.cool/aidiyangyu/agentcore-os>
+- Repository README: <https://cnb.cool/aidiyangyu/agentcore-os/blob/main/README.md>
+- Docs hub on ECS: <http://59.110.93.188/docs/index.html>
+
+Direct ECS download links for macOS and Windows are no longer part of the current public China-facing path. The recommended route is to start from the source repository and Chinese documentation.
 
 ## Assets
 
