@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentCore OS - 下载与命令行体验说明</title>
+    <meta name="description" content="AgentCore OS 下载与命令行体验说明：源码体验优先，安装包命令行安装作为补充路径，覆盖 macOS 与 Windows。" />
+    <style>
+      :root { --bg:#09090b; --panel:#111318; --text:#f5f5f7; --soft:rgba(245,245,247,.76); --muted:rgba(245,245,247,.52); --line:rgba(255,255,255,.1); --amber:#fbbf24; --max:1040px; --radius:20px; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: linear-gradient(180deg, #0c0d10 0%, #09090b 100%); color: var(--text); line-height: 1.72; }
+      a { color: inherit; text-decoration: none; }
+      .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+      .top { padding: 22px 0; position: sticky; top: 0; backdrop-filter: blur(14px); background: rgba(9,9,11,.72); border-bottom: 1px solid rgba(255,255,255,.06); z-index: 10; }
+      .top .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+      .brand { font-weight: 700; text-decoration: none; }
+      .actions { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+      .lang-switch { color:var(--muted); font-size:12px; }
+      .lang-switch a { color:var(--muted); padding:0 6px; }
+      .lang-switch a.active, .lang-switch a:hover { color:var(--text); }
+      .btn { display:inline-flex; align-items:center; justify-content:center; padding: 10px 16px; border-radius: 999px; text-decoration:none; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
+      .btn.primary { background: var(--amber); color:#111; border-color: transparent; font-weight:700; }
+      .doc-nav { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
+      .doc-nav a { display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); text-decoration:none; }
+      .doc-nav a.active { background: rgba(251,191,36,.14); border-color: rgba(251,191,36,.34); color: #ffe08a; }
+      .hero { padding: 56px 0 26px; }
+      .eyebrow { color: var(--amber); font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+      h1 { font-size: clamp(32px, 5vw, 52px); line-height:1.08; margin: 10px 0 14px; }
+      .lead { color: var(--soft); font-size: 18px; max-width: 820px; }
+      .grid { display:grid; grid-template-columns: 1.25fr .75fr; gap:24px; padding: 20px 0 56px; }
+      .card { background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025)); border:1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+      .section { padding-top: 8px; }
+      .section + .section { margin-top: 22px; border-top: 1px solid rgba(255,255,255,.08); padding-top: 22px; }
+      h2 { margin: 0 0 10px; font-size: 24px; }
+      h3 { margin: 0 0 8px; font-size: 18px; }
+      p, li { color: var(--soft); }
+      ul, ol { padding-left: 20px; }
+      .pill { display:inline-flex; padding:6px 10px; border-radius:999px; background: rgba(251,191,36,.12); border:1px solid rgba(251,191,36,.24); color:#f5d46b; font-size:12px; font-weight:700; margin-bottom:10px; }
+      .links { display:grid; gap:12px; margin-top:14px; }
+      .linkcard { display:block; border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:16px; background: rgba(255,255,255,.03); }
+      .linkcard strong { display:block; margin-bottom:4px; }
+      .meta { color: var(--muted); font-size: 14px; }
+      pre { margin: 12px 0 0; padding: 14px 16px; overflow:auto; border-radius: 16px; border:1px solid rgba(255,255,255,.08); background:#0d0f14; color:#f8f8f2; font-size: 13px; line-height:1.65; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .notice { border-left: 3px solid rgba(251,191,36,.7); padding: 10px 0 10px 14px; color: var(--soft); }
+      .doc-pager { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+      .doc-pager a { display:inline-flex; align-items:center; justify-content:center; padding:10px 16px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); text-decoration:none; }
+      @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="../index.html">AgentCore OS</a>
+        <div class="actions">
+          <a class="btn" href="../index.html#download" id="back-home">返回首页</a>
+          <a class="btn primary" href="index.html" id="docs-home">文档中心</a>
+          <div class="lang-switch">
+            <a href="#" id="switch-zh" class="active">中文</a> |
+            <a href="#" id="switch-en">EN</a>
+          </div>
+        </div>
+        <div class="doc-nav">
+          <a href="index.html" id="nav-index">Docs 首页</a>
+          <a href="getting-started.html" id="nav-start">快速开始</a>
+          <a href="usage-notes.html" id="nav-usage">使用说明</a>
+          <a href="install-deploy.html" id="nav-install">安装部署</a>
+          <a href="command-line-download.html" class="active" id="nav-download">下载说明</a>
+          <a href="faq.html" id="nav-faq">FAQ</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Download & CLI Guide</div>
+        <h1 id="hero-title">下载与命令行体验说明</h1>
+        <p class="lead" id="hero-lead">如果你现在要给用户一条最稳、最少歧义的体验路径，优先推荐“源码命令行体验”。安装包命令行安装只适合已经拿到桌面安装包、且明确知道来源可信的用户。</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <div class="section">
+            <span class="pill" id="p1">当前最推荐</span>
+            <h2 id="s1-title">方式 A：源码命令行体验</h2>
+            <p id="s1-body">这是当前最准确、最稳的公开体验方式，适合开发者、技术用户、内测用户，以及需要快速验证功能链路的人。</p>
+            <div class="links">
+              <a class="linkcard" href="https://cnb.cool/aidiyangyu/agentcore-os" target="_blank" rel="noreferrer">
+                <strong id="repo-title">国内仓库地址</strong>
+                <span id="repo-body">https://cnb.cool/aidiyangyu/agentcore-os</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="section">
+            <h2 id="mac-title">一、macOS</h2>
+            <h3 id="mac-a-title">方式 A：通过源码命令行体验</h3>
+            <p id="mac-a-body">适合开发者、技术用户、内测用户。</p>
+            <pre><code id="mac-a-code">git clone https://cnb.cool/aidiyangyu/agentcore-os.git
+cd agentcore-os
+npm install
+npm run dev:clean</code></pre>
+            <p class="meta" id="mac-a-meta">启动后打开：<code>http://localhost:3000</code></p>
+            <div class="notice" id="first-use-note">首次进入后，建议先去“设置”里完成 provider、base URL、model、API key 配置，再从“内容创作 / 销售跟进 / 研究分析”三条核心链路开始体验。</div>
+          </div>
+
+          <div class="section">
+            <h3 id="mac-b-title">方式 B：通过 .pkg 命令行安装桌面版</h3>
+            <p id="mac-b-body">只适合已经拿到 mac 安装包的用户，例如：<code>AgentCore OS_0.2.0-beta.2_aarch64.pkg</code></p>
+            <pre><code id="mac-b-code">sudo installer -pkg "/path/to/AgentCore OS_0.2.0-beta.2_aarch64.pkg" -target /
+open "/Applications/AgentCore OS.app"</code></pre>
+            <p class="meta" id="mac-b-meta">如果首次启动被系统拦截，可在确认安装包来源可信后再移除隔离标记：</p>
+            <pre><code id="mac-b-extra">sudo xattr -dr com.apple.quarantine "/Applications/AgentCore OS.app"
+open "/Applications/AgentCore OS.app"</code></pre>
+          </div>
+
+          <div class="section">
+            <h3 id="mac-c-title">方式 C：通过 .dmg 命令行安装桌面版</h3>
+            <p id="mac-c-body">如果你拿到的是：<code>AgentCore OS_0.2.0-beta.2_aarch64.dmg</code></p>
+            <pre><code id="mac-c-code">hdiutil attach "/path/to/AgentCore OS_0.2.0-beta.2_aarch64.dmg"
+sudo cp -R "/Volumes/AgentCore OS/AgentCore OS.app" /Applications/
+hdiutil detach "/Volumes/AgentCore OS"
+open "/Applications/AgentCore OS.app"</code></pre>
+            <p class="meta" id="mac-c-meta">如需移除隔离标记：</p>
+            <pre><code id="mac-c-extra">sudo xattr -dr com.apple.quarantine "/Applications/AgentCore OS.app"
+open "/Applications/AgentCore OS.app"</code></pre>
+          </div>
+
+          <div class="section">
+            <h2 id="win-title">二、Windows</h2>
+            <h3 id="win-a-title">方式 A：通过源码命令行体验</h3>
+            <p id="win-a-body">这是当前最准确、最稳的 Windows 命令行体验方式。</p>
+            <pre><code id="win-a-code">git clone https://cnb.cool/aidiyangyu/agentcore-os.git
+cd agentcore-os
+npm install
+npm run dev:clean</code></pre>
+            <p class="meta" id="win-a-meta">启动后打开：<code>http://localhost:3000</code></p>
+          </div>
+
+          <div class="section">
+            <h3 id="win-b-title">方式 B：通过 Windows 安装包命令行安装</h3>
+            <p id="win-b-body">如果你已经拿到了 Windows 安装包，请根据文件类型选择命令。</p>
+            <pre><code id="win-b-code">Start-Process -FilePath "C:\path\to\AgentCore-OS-setup.exe" -Wait</code></pre>
+            <p class="meta" id="win-b-meta">如果该安装包支持静默参数，可使用：</p>
+            <pre><code id="win-b-extra">Start-Process -FilePath "C:\path\to\AgentCore-OS-setup.exe" -ArgumentList "/S" -Wait</code></pre>
+            <p class="meta" id="win-b-meta2">如果是 <code>.msi</code> 安装包：</p>
+            <pre><code id="win-b-msi">Start-Process msiexec.exe -ArgumentList '/i "C:\path\to\AgentCore-OS.msi"' -Wait</code></pre>
+            <p class="meta" id="win-b-meta3">静默安装示例：</p>
+            <pre><code id="win-b-msi2">Start-Process msiexec.exe -ArgumentList '/i "C:\path\to\AgentCore-OS.msi" /passive /norestart' -Wait</code></pre>
+          </div>
+        </article>
+
+        <aside class="card">
+          <div class="section" style="padding-top:0; margin-top:0; border-top:0;">
+            <span class="pill" id="p2">推荐策略</span>
+            <h2 id="recommend-title">当前最推荐的公开写法</h2>
+            <p id="recommend-body">面向官网与文档时，建议明确区分两条路径：</p>
+            <ul>
+              <li id="rec-1"><strong>方式 A：源码命令行体验</strong> —— 当前最准确、最稳的方式。</li>
+              <li id="rec-2"><strong>方式 B：安装包命令行安装</strong> —— 只适合已经拿到桌面安装包的用户。</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3 id="summary-title">三、推荐命令摘要</h3>
+            <p class="meta" id="sum-mac">macOS 推荐命令：</p>
+            <pre><code id="sum-mac-code">git clone https://cnb.cool/aidiyangyu/agentcore-os.git
+cd agentcore-os
+npm install
+npm run dev:clean</code></pre>
+            <p class="meta" id="sum-win">Windows 推荐命令：</p>
+            <pre><code id="sum-win-code">git clone https://cnb.cool/aidiyangyu/agentcore-os.git
+cd agentcore-os
+npm install
+npm run dev:clean</code></pre>
+          </div>
+
+          <div class="section">
+            <h3 id="notice-title">四、补充说明</h3>
+            <ul>
+              <li id="note-1">AgentCore OS 当前仍处于 <strong>Early Access / Beta</strong> 阶段。</li>
+              <li id="note-2">源码体验路径最稳定，最适合作为对外公开说明。</li>
+              <li id="note-3">mac 测试包可能需要手动允许，未必已经是完整签名 / 公证版。</li>
+              <li id="note-4">更适合内测、技术用户、极客用户与远程部署场景。</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="links">
+              <a class="linkcard" href="install-deploy.html">
+                <strong id="link-install-title">安装与部署</strong>
+                <span id="link-install-body">继续查看站点维护、公开边界与部署说明。</span>
+              </a>
+              <a class="linkcard" href="getting-started.html">
+                <strong id="link-start-title">快速开始</strong>
+                <span id="link-start-body">如果你想先从整体阅读路径进入，从这里开始更合适。</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <div class="doc-pager">
+        <a href="install-deploy.html" id="pager-prev">← 上一篇：安装部署</a>
+        <a href="faq.html" id="pager-next">下一篇：FAQ →</a>
+      </div>
+    </main>
+
+    <script>
+      const en = {
+        title: 'AgentCore OS - Download and CLI Guide',
+        description: 'AgentCore OS download and command-line guide: source-first experience path, with installer-based CLI installation as a secondary path for users who already have desktop packages.',
+        backHome: 'Back to Home', docsHome: 'Docs Hub', navIndex: 'Docs Home', navStart: 'Getting Started', navUsage: 'Usage Notes', navInstall: 'Install & Deploy', navDownload: 'Download Guide', navFaq: 'FAQ',
+        heroTitle: 'Download and Command-Line Guide',
+        heroLead: 'If you need one public path that is accurate, stable, and low on ambiguity, recommend the source-based CLI experience first. Installer-based command-line installation should only be treated as a secondary path for users who already have the desktop packages and trust the source.',
+        p1: 'Recommended First', s1t: 'Path A: Source-based command-line experience', s1b: 'This is the most accurate and stable public experience path right now. It works best for developers, technical users, early-access testers, and anyone who wants to validate the real workflow quickly.',
+        repoTitle: 'China repository', repoBody: 'https://cnb.cool/aidiyangyu/agentcore-os',
+        macTitle: '1. macOS', macATitle: 'Path A: Start from source in the terminal', macABody: 'Best for developers, technical users, and early-access testers.', macAMeta: 'After launch, open: http://localhost:3000', firstUse: 'After first launch, go to Settings and finish provider, base URL, model, and API key setup first. Then begin with the three core flows: content creation, sales follow-up, and research analysis.',
+        macBTitle: 'Path B: Install a .pkg desktop build from the terminal', macBBody: 'Only for users who already have a macOS installer package, for example: AgentCore OS_0.2.0-beta.2_aarch64.pkg', macBMeta: 'If first launch is blocked by the system, remove the quarantine attribute only after confirming the package source is trustworthy:',
+        macCTitle: 'Path C: Install a .dmg desktop build from the terminal', macCBody: 'If what you received is: AgentCore OS_0.2.0-beta.2_aarch64.dmg', macCMeta: 'To remove the quarantine attribute if needed:',
+        winTitle: '2. Windows', winATitle: 'Path A: Start from source in the terminal', winABody: 'This is the most accurate and stable Windows CLI path right now.', winAMeta: 'After launch, open: http://localhost:3000',
+        winBTitle: 'Path B: Install from a Windows package in the terminal', winBBody: 'If you already have a Windows package, choose the command by file type.', winBMeta: 'If the installer supports a silent flag, you can use:', winBMeta2: 'If you have an .msi package:', winBMeta3: 'Silent installation example:',
+        p2: 'Suggested Positioning', recTitle: 'Recommended public wording', recBody: 'For the website and docs, make the two paths explicit:', rec1: 'Path A: Source-based command-line experience — the most accurate and stable path right now.', rec2: 'Path B: Installer-based command-line installation — only for users who already have desktop packages.',
+        summaryTitle: '3. Recommended command summary', sumMac: 'Recommended macOS commands:', sumWin: 'Recommended Windows commands:',
+        noticeTitle: '4. Additional notes', note1: 'AgentCore OS is still in the Early Access / Beta stage.', note2: 'The source-based path is the most stable and should be the default public guidance.', note3: 'Test builds on macOS may still require manual allowance and may not yet be fully signed / notarized.', note4: 'This stage is a better fit for internal testing, technical users, power users, and remote deployment scenarios.',
+        linkInstallTitle: 'Install & Deploy', linkInstallBody: 'Continue to the site-maintenance, public-boundary, and deployment notes.', linkStartTitle: 'Getting Started', linkStartBody: 'If you prefer the broader reading path first, start there.',
+        pagerPrev: '← Previous: Install & Deploy', pagerNext: 'Next: FAQ →'
+      };
+      function setLanguage(lang) {
+        if (lang === 'en') {
+          document.documentElement.lang = 'en';
+          document.title = en.title;
+          document.querySelector('meta[name="description"]').setAttribute('content', en.description);
+          const map = {
+            'back-home': en.backHome, 'docs-home': en.docsHome, 'nav-index': en.navIndex, 'nav-start': en.navStart, 'nav-usage': en.navUsage, 'nav-install': en.navInstall, 'nav-download': en.navDownload, 'nav-faq': en.navFaq,
+            'hero-title': en.heroTitle, 'hero-lead': en.heroLead,
+            'p1': en.p1, 's1-title': en.s1t, 's1-body': en.s1b, 'repo-title': en.repoTitle, 'repo-body': en.repoBody,
+            'mac-title': en.macTitle, 'mac-a-title': en.macATitle, 'mac-a-body': en.macABody, 'mac-a-meta': en.macAMeta, 'first-use-note': en.firstUse,
+            'mac-b-title': en.macBTitle, 'mac-b-body': en.macBBody, 'mac-b-meta': en.macBMeta,
+            'mac-c-title': en.macCTitle, 'mac-c-body': en.macCBody, 'mac-c-meta': en.macCMeta,
+            'win-title': en.winTitle, 'win-a-title': en.winATitle, 'win-a-body': en.winABody, 'win-a-meta': en.winAMeta,
+            'win-b-title': en.winBTitle, 'win-b-body': en.winBBody, 'win-b-meta': en.winBMeta, 'win-b-meta2': en.winBMeta2, 'win-b-meta3': en.winBMeta3,
+            'p2': en.p2, 'recommend-title': en.recTitle, 'recommend-body': en.recBody, 'rec-1': en.rec1, 'rec-2': en.rec2,
+            'summary-title': en.summaryTitle, 'sum-mac': en.sumMac, 'sum-win': en.sumWin,
+            'notice-title': en.noticeTitle, 'note-1': en.note1, 'note-2': en.note2, 'note-3': en.note3, 'note-4': en.note4,
+            'link-install-title': en.linkInstallTitle, 'link-install-body': en.linkInstallBody, 'link-start-title': en.linkStartTitle, 'link-start-body': en.linkStartBody,
+            'pager-prev': en.pagerPrev, 'pager-next': en.pagerNext
+          };
+          for (const [id, value] of Object.entries(map)) document.getElementById(id).innerHTML = value;
+          document.getElementById('switch-zh').classList.remove('active');
+          document.getElementById('switch-en').classList.add('active');
+        } else {
+          localStorage.setItem('agentcore-docs-lang', 'zh');
+          location.reload();
+          return;
+        }
+        localStorage.setItem('agentcore-docs-lang', lang);
+      }
+      document.getElementById('switch-zh').addEventListener('click', (e) => { e.preventDefault(); localStorage.setItem('agentcore-docs-lang', 'zh'); location.reload(); });
+      document.getElementById('switch-en').addEventListener('click', (e) => { e.preventDefault(); setLanguage('en'); });
+      if ((localStorage.getItem('agentcore-docs-lang') || 'zh') === 'en') setLanguage('en');
+    </script>
+  </body>
+</html>

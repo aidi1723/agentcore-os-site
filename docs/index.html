@@ -106,6 +106,13 @@
           <p id="card-5-body">快速回答它是什么、适合谁、当前公开了什么、为什么官网和完整产品仓库不是一回事。</p>
           <div class="meta" id="card-5-meta">适合第一次接触、需要快速去误解的人</div>
         </a>
+
+        <a class="card" href="command-line-download.html">
+          <div class="mini">CLI Experience</div>
+          <h2 id="card-6-title">下载与命令行体验说明</h2>
+          <p id="card-6-body">把源码体验、安装包命令行安装和 Early Access 边界讲清楚，给用户一条更稳的公开说明。</p>
+          <div class="meta" id="card-6-meta">适合需要明确下载路径与命令的用户</div>
+        </a>
         <div class="doc-pager">
           <a href="getting-started.html" id="pager-next">下一篇：快速开始 →</a>
         </div>
@@ -141,6 +148,9 @@
         c5t: 'FAQ',
         c5b: 'Quickly answer what it is, who it is for, what is public today, and why the site repo is not the same as the full product repo.',
         c5m: 'Best for clearing up first-contact confusion quickly',
+        c6t: 'Download and CLI Guide',
+        c6b: 'Clarify the source-first path, installer-based terminal installation, and the current Early Access boundary.',
+        c6m: 'Best for users who need explicit download and command guidance',
         pagerNext: 'Next: Getting Started →'
       };
       function setLanguage(lang) {
@@ -173,6 +183,9 @@
           document.getElementById('card-5-title').textContent = en.c5t;
           document.getElementById('card-5-body').textContent = en.c5b;
           document.getElementById('card-5-meta').textContent = en.c5m;
+          document.getElementById('card-6-title').textContent = en.c6t;
+          document.getElementById('card-6-body').textContent = en.c6b;
+          document.getElementById('card-6-meta').textContent = en.c6m;
           document.getElementById('pager-next').textContent = en.pagerNext;
           document.getElementById('switch-zh').classList.remove('active');
           document.getElementById('switch-en').classList.add('active');
